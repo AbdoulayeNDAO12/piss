@@ -22,6 +22,7 @@
           <ion-label floating>Mot de passe</ion-label>
           <ion-input type="password" formControlName="password"></ion-input>
         </ion-item>
+        <ion-item>{{email}}</ion-item>
       </ion-list>
           <button ion-button full (click)="onSubmitForm()">Soumettre</button>
       <span ion-text color="danger">{{ errorMessage }}</span>
