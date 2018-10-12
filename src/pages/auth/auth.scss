@@ -6,11 +6,15 @@ page-auth{
       padding-top: 50px;
       padding-bottom: 20px;
     }
+    .titre{
+      position: -ms-page;
+    }
  
     .login-box {
-      background: green;
+      background:whitesmoke;
       padding: 20px 20px 0px 20px;
       margin-top: 30px;
+      border-radius: 30px !important;
     }
     .menus{
       background:green;
@@ -20,6 +24,9 @@ page-auth{
        align-items: center;
        text-align: center;
      }
+     ion-buttons {
+      order: 1
+      }
 
   ion-item {
       border-radius: 30px !important;
@@ -49,11 +56,11 @@ page-auth{
   }
 
   .register-btn {
-    color: #ffffff;
+    color: #51CFB1;;
     font-size: 0.8em;
   }
   .register-btns {
-    color: white;
+    color: #51CFB1;;
     font-size: 0.8em;
     background-position-x: right;
   }
