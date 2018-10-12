@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MenuController, NavParams,NavController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {TabsPage} from '../tabs/tabs';
-import { AuthService } from '../../authService/sevice';
+import { AuthService } from '../../Service/auth.sevice';
 import { HomePage } from '../home/home';
 import { AccueilPage } from '../accueil/accueil';
 
