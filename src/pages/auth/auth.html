@@ -1,33 +1,43 @@
 <ion-header>
-    <ion-navbar>
-      <ion-buttons start>
-        <button ion-button icon-only (click)="onToggleMenu()">
-          <ion-icon name="menu"></ion-icon>
-        </button>
-      </ion-buttons>
-      <ion-title *ngIf="mode === 'new'">Nouvel utilisateur</ion-title>
-      <ion-title *ngIf="mode === 'connect'">Connexion</ion-title>
+    <ion-navbar color="secondary">
+      <ion-title>Connexion</ion-title>
+      <ion-buttons ion-button end><ion-title>Faire un don</ion-title></ion-buttons>
     </ion-navbar>
   </ion-header>
   
-  <ion-content padding>
-      <ion-content padding>
-    <form [formGroup]="authForm">
-      <ion-list>
-        <ion-item>
-          <ion-label floating>Adresse mail</ion-label>
-          <ion-input type="email" formControlName="email"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label floating>Mot de passe</ion-label>
-          <ion-input type="password" formControlName="password"></ion-input>
-        </ion-item>
-        <ion-item>{{email}}</ion-item>
-      </ion-list>
-          <button ion-button full (click)="onSubmitForm()">Soumettre</button>
-      <span ion-text color="danger">{{ errorMessage }}</span>
-    </form>
-  </ion-content>
-    
+  <ion-content class="login-content" padding>
+    <ion-row class="logo-row">
+      <ion-col></ion-col>
+      <ion-col width-67>
+        <img src="../assets/imgs/500_F_21158928_Y5PAc4to8oFig3u1yzQMvWG1H6ZpEQnc.jpg"/>
+      </ion-col>
+      <ion-col></ion-col>
+    </ion-row>
+    <div class="login-box">
+        <form [formGroup]="authForm">
+            <ion-row>
+              <ion-col>
+                 <ion-list inset>
+                     <ion-item>
+                       <ion-label floating>Adresse mail</ion-label>
+                       <ion-input type="email" formControlName="email"></ion-input>
+                     </ion-item>
+                     <ion-item>
+                       <ion-label floating>Mot de passe</ion-label>
+                       <ion-input type="password" formControlName="password"></ion-input>
+                     </ion-item>
+                  </ion-list>
+              </ion-col>
+            </ion-row>
+              <ion-row>
+                <ion-col class="signup-col">
+                   <button ion-button full (click)="onSubmitForm()" class="submit-btn">Soumettre</button>
+                   <button ion-button class="register-btns" bloc clear>mot de passe oublié</button>
+                   <button ion-button  class="register-btn" (click)="onClick()"  bloc clear>S'inscrire</button>
+                </ion-col>
+              </ion-row>
+                 <span ion-text color="danger">{{ message }}</span>
+           </form>
+    </div>
   </ion-content>
   

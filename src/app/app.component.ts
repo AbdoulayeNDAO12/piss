@@ -10,8 +10,7 @@ import { AuthPage } from '../pages/auth/auth';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = TabsPage;
-  authPage:any = AuthPage;
+  rootPage:any = AuthPage;
   @ViewChild('content') content: NavController;
 
   constructor(private menuCtrl:MenuController) {

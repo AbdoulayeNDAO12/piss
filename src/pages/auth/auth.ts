@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {TabsPage} from '../tabs/tabs';
 import { AuthService } from '../../authService/sevice';
 import { HomePage } from '../home/home';
+import { AccueilPage } from '../accueil/accueil';
 
 @Component({
   selector: 'page-auth',
@@ -15,6 +16,7 @@ export class AuthPage implements OnInit {
   authForm: FormGroup;
   errorMessage: string;
   authen:any[];
+ 
 
   constructor(private navParams: NavParams,
               private menuCtrl: MenuController,
@@ -44,7 +46,11 @@ export class AuthPage implements OnInit {
        if(email===this.authen[0] && password===this.authen[1]){
         this.navCtrl.push(HomePage);
        }else{
+         this.errorMessage='Identifiants incorrects';
         this.navCtrl.push(AuthPage);
        }
+    }
+    onClick(){
+      this.navCtrl.push(AccueilPage);
     }
 }

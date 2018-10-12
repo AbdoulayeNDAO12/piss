@@ -12,6 +12,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AuthPage } from '../pages/auth/auth';
 import { AuthService } from '../authService/sevice';
+import { AccueilPage } from '../pages/accueil/accueil';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AuthService } from '../authService/sevice';
     ContactPage,
     HomePage,
     TabsPage,
-    AuthPage
+    AuthPage,
+    AccueilPage
   ],
   imports: [
     BrowserModule,
@@ -33,7 +35,8 @@ import { AuthService } from '../authService/sevice';
     ContactPage,
     HomePage,
     TabsPage,
-    AuthPage
+    AuthPage,
+    AccueilPage
   ],
   providers: [
     StatusBar,
