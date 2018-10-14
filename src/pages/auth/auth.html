@@ -1,17 +1,22 @@
 <ion-header>
 
-  <ion-navbar hideBackButton="true"> <!-- If you don't need back here -->
+  <ion-navbar hideBackButton="true" color="menus"> <!-- If you don't need back here -->
   
       <ion-title class="titre">Authentification</ion-title>
-  
-      <ion-buttons end>
-  
-        <button ion-button color="secondary" round>Faire un don</button>
-      </ion-buttons>
   </ion-navbar>
   </ion-header>
   
   <ion-content class="login-content" padding>
+      <ion-row>
+        <ion-col></ion-col>
+          <ion-col><ion-buttons end>
+  
+              <div class="bouton">
+                 <button ion-item icon-start >
+                  <ion-icon ios="ios-hand" md="md-hand"></ion-icon> Faire un don</button></div>
+            </ion-buttons></ion-col>
+          <ion-col></ion-col>
+        </ion-row>
     <ion-row class="logo-row">
       <ion-col></ion-col>
       <ion-col width-67>

@@ -44,7 +44,7 @@ export class AuthPage implements OnInit {
     const email = this.authForm.get('email').value;
     const password = this.authForm.get('password').value;
        if(email===this.authen[0] && password===this.authen[1]){
-        this.navCtrl.push(HomePage);
+        this.navCtrl.push(TabsPage);
        }else{
          this.errorMessage='Identifiants incorrects';
         this.navCtrl.push(AuthPage);

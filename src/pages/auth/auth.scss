@@ -9,15 +9,17 @@ page-auth{
     .titre{
       position: -ms-page;
     }
+    .buton{
+      background: #51CFB1;
+      border-radius: 15px !important;
+
+    }
  
     .login-box {
-      background:whitesmoke;
+      background:#f5f5f5;
       padding: 20px 20px 0px 20px;
       margin-top: 30px;
       border-radius: 30px !important;
-    }
-    .menus{
-      background:green;
     }
  
     ion-row {
