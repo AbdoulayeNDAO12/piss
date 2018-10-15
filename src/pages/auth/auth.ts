@@ -3,8 +3,7 @@ import { MenuController, NavParams,NavController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {TabsPage} from '../tabs/tabs';
 import { AuthService } from '../../Service/auth.sevice';
-import { HomePage } from '../home/home';
-import { AccueilPage } from '../accueil/accueil';
+import { InscriptionPage } from '../inscription/inscription';
 
 @Component({
   selector: 'page-auth',
@@ -12,20 +11,17 @@ import { AccueilPage } from '../accueil/accueil';
 })
 export class AuthPage implements OnInit {
 
-  mode: string;
   authForm: FormGroup;
   errorMessage: string;
   authen:any[];
  
 
-  constructor(private navParams: NavParams,
-              private menuCtrl: MenuController,
+  constructor(private menuCtrl: MenuController,
               private navCtrl:NavController,
               private formBuilder: FormBuilder,
               private auth:AuthService) {}
 
   ngOnInit() {
-    this.mode = this.navParams.get('mode');
     this.initForm();
     this.authen=this.auth.listLogin;
   }
@@ -51,6 +47,6 @@ export class AuthPage implements OnInit {
        }
     }
     onClick(){
-      this.navCtrl.push(AccueilPage);
+      this.navCtrl.push(InscriptionPage);
     }
 }

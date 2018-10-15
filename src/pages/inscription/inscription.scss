@@ -1,3 +1,62 @@
 page-inscription {
+        .login-content {
+          background:white;
+       
+          .logo-row {
+            padding-top: 50px;
+            padding-bottom: 20px;
+          }
+          .titre{
+            position: -ms-page;
+          }
+          .buton{
+            background: #51CFB1;
+            border-radius: 15px !important;
+      
+          }
+       
+          .login-box {
+            background:#f5f5f5;
+            padding: 20px 20px 0px 20px;
+            margin-top: 30px;
+            border-radius: 30px !important;
+          }
+       
+          ion-row {
+             align-items: center;
+             text-align: center;
+           }
+           ion-buttons {
+            order: 1
+            }
+      
+        ion-item {
+            border-radius: 30px !important;
+            padding-left: 30px !important;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+            border: 1px solid #ffffff;
+            border-bottom: 0px !important;
+            box-shadow: none !important;
+          
+        }
+      
+        .signup-col {
+          margin: 0px 16px 0px 16px;
+          padding-bottom: 20px;
+        }
+      
+        .item-inner {
+          border-bottom-color: #ffffff !important;
+          box-shadow: none !important;
+        }
+      
+        .submit-btn{
+          background: #51CFB1;
+          border-radius: 30px !important;
+          border: 1px solid #ffffff;
+        }
+        }
+      }
 
-}
+

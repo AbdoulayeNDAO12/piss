@@ -13,6 +13,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { AuthPage } from '../pages/auth/auth';
 import { AuthService } from '../Service/auth.sevice';
 import { AccueilPage } from '../pages/accueil/accueil';
+import { InscriptionPage } from '../pages/inscription/inscription';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { AccueilPage } from '../pages/accueil/accueil';
     HomePage,
     TabsPage,
     AuthPage,
-    AccueilPage
+    AccueilPage,
+    InscriptionPage
   ],
   imports: [
     BrowserModule,
@@ -36,7 +38,9 @@ import { AccueilPage } from '../pages/accueil/accueil';
     HomePage,
     TabsPage,
     AuthPage,
-    AccueilPage
+    AccueilPage,
+InscriptionPage 
+
   ],
   providers: [
     StatusBar,
