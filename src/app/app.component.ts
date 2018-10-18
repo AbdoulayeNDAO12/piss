@@ -11,6 +11,7 @@ import { AuthPage } from '../pages/auth/auth';
 })
 export class MyApp {
   rootPage:any = AuthPage;
+  authPage:AuthPage;
   @ViewChild('content') content: NavController;
 
   constructor(private menuCtrl:MenuController) {

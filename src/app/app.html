@@ -8,27 +8,31 @@
       <ion-list>
       <button ion-item icon-start (click)="onNavigate(authPage)">
         <ion-icon name="person"></ion-icon>
-        Profil
+       Compte
       </button>
-       <button ion-item icon-start >
+       <button ion-item icon-start (click)="onNavigate(authPage)">
           <ion-icon ios="ios-hand" md="md-hand"></ion-icon>
           Donner une Zakat
       </button>
-      <button ion-item icon-start >
+      <button ion-item icon-start (click)="onNavigate(authPage)">
           <ion-icon ios="ios-people" md="md-people"></ion-icon>
           Parrainage
       </button>
-      <button ion-item icon-start >
+      <button ion-item icon-start (click)="onNavigate(authPage)">
+          <ion-icon ios="ios-people" md="md-people"></ion-icon>
+          Assurance
+      </button>
+      <button ion-item icon-start (click)="onNavigate(authPage)">
           <ion-icon ios="ios-archive" md="md-archive"></ion-icon>
           Consulter son historique
       </button>
-      <button ion-item icon-start >
-        <ion-icon name="exit"></ion-icon>
-        Déconnexion
-      </button>
-      <button ion-item icon-start ><ion-icon name="settings"></ion-icon>
+      <button ion-item icon-start (click)="onNavigate(authPage)"><ion-icon name="settings"></ion-icon>
         Reglages
       </button>
+      <button ion-item icon-start (click)="onNavigate(authPage)">
+          <ion-icon name="exit"></ion-icon>
+          Déconnexion
+        </button>
       </ion-list>
   </ion-content>
 </ion-menu>
