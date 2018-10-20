@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {TabsPage} from '../tabs/tabs';
 import { AuthService } from '../../Service/auth.sevice';
 import { InscriptionPage } from '../inscription/inscription';
+import { ZakatPage } from '../zakat/zakat';
 
 @Component({
   selector: 'page-auth',
@@ -14,6 +15,7 @@ export class AuthPage implements OnInit {
   authForm: FormGroup;
   errorMessage: string;
   authen:any[];
+  zakatPage = ZakatPage;
  
 
   constructor(private menuCtrl: MenuController,
