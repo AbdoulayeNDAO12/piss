@@ -15,6 +15,7 @@ import { AuthService } from '../Service/auth.sevice';
 import { AccueilPage } from '../pages/accueil/accueil';
 import { InscriptionPage } from '../pages/inscription/inscription';
 import { ZakatPage } from '../pages/zakat/zakat';
+import { ParrainerEnfantPage} from '../pages/parrainerEnfant/parrainerEnfant';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ZakatPage } from '../pages/zakat/zakat';
     AuthPage,
     AccueilPage,
     InscriptionPage,
-    ZakatPage
+    ZakatPage,
+    ParrainerEnfantPage
   ],
   imports: [
     BrowserModule,
@@ -42,7 +44,8 @@ import { ZakatPage } from '../pages/zakat/zakat';
     AuthPage,
     AccueilPage,
     InscriptionPage,
-    ZakatPage
+    ZakatPage,
+    ParrainerEnfantPage
   ],
   providers: [
     StatusBar,
