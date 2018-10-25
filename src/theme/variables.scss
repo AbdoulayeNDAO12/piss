@@ -88,3 +88,14 @@ $colors: (
 
 @import "roboto";
 @import "noto-sans";
+
+ion-header{
+  ion-navbar{
+      div.toolbar-background{
+           background-image: url('../../assets/imgs/selflessness.jpg');
+           background-repeat: no-repeat;
+           background-size:cover;
+           text-align: center;
+      }
+  }
+} 

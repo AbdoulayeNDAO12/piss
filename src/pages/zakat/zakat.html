@@ -1,12 +1,36 @@
 <ion-header>
-    <ion-navbar color="menus">
+    <ion-navbar color="menus" class="head"  #clickme class="itemadspace" no-lines no-padding>
         <ion-title class="title">Faire un don</ion-title>
+        <div class="toolbar-background"></div>
     </ion-navbar>
 </ion-header>
 
 
 <ion-content>
-    
+    <ion-card>
+        <img src="../../assets/imgs/zakat.jpg" alt="">
+        <ion-card-content>
+            <ion-card-title>Zakat</ion-card-title>
+            <p>Cliquer ici pour verser la zakat</p>
+            <button ion-button full>verser zakat</button>
+        </ion-card-content>
+    </ion-card>
+    <ion-card>
+            <img src="../../assets/imgs/donation.png" alt="">
+            <ion-card-content>
+                <ion-card-title>Don</ion-card-title>
+                <p>Cliquer ici pour faire une donnation</p>
+            </ion-card-content>
+            <button ion-button full>donner</button>
+    </ion-card>
+    <ion-card>
+            <img src="../../assets/imgs/receive_donation.png" alt="">
+            <ion-card-content>
+                <ion-card-title>Recevoir don</ion-card-title>
+                <p>Cliquer ici pour recevoir une donnation</p>
+            </ion-card-content>
+            <button ion-button full>recevoir</button>
+    </ion-card>
 </ion-content>
 
 <ion-footer>
