@@ -5,21 +5,38 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { TabsPage } from '../pages/tabs/tabs';
 import { AuthPage } from '../pages/auth/auth';
+import * as firebase from 'firebase';
+import { platformBrowser } from '@angular/platform-browser';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = AuthPage;
-  authPage:AuthPage;
+  rootPage: any = AuthPage;
+  authPage: AuthPage;
   @ViewChild('content') content: NavController;
 
-  constructor(private menuCtrl:MenuController) {
-  
+  constructor(platform: Platform,
+    statusBar: StatusBar,
+    splashScreen: SplashScreen,
+    private menuCtrl: MenuController) {
+    platform.ready().then(() => {
+      statusBar.styleDefault();
+      splashScreen.hide();
+      var config = {
+        apiKey: "AIzaSyBSiXlXqHR0_CjRjllbtHmKJycJtIxJlJ4",
+        authDomain: "piss-fd1b5.firebaseapp.com",
+        databaseURL: "https://piss-fd1b5.firebaseio.com",
+        projectId: "piss-fd1b5",
+        storageBucket: "",
+        messagingSenderId: "1090307730027"
+      };
+      firebase.initializeApp(config);
+    });
   }
 
   onNavigate(page: any, data?: {}) {
     this.content.setRoot(page, data ? data : null);
     this.menuCtrl.close();
-}
+  }
 }
