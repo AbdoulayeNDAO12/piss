@@ -15,8 +15,10 @@ import { AuthService } from '../Service/auth.sevice';
 import { AccueilPage } from '../pages/accueil/accueil';
 import { InscriptionPage } from '../pages/inscription/inscription';
 import { ZakatPage } from '../pages/zakat/zakat';
-import { AccueilParrainagePage} from '../pages/accueilParrainage/accueilParrainage';
+import { AccueilParrainagePage} from '../pages/Parrainage/accueilParrainage/accueilParrainage';
+
 import { NotificationPage } from '../pages/notification/notification';
+import { ParrainageEnfantPage } from '../pages/Parrainage/parrainageEnfant/parrainageEnfant';
 
 @NgModule({
   declarations: [
@@ -30,8 +32,8 @@ import { NotificationPage } from '../pages/notification/notification';
     InscriptionPage,
     ZakatPage,
     AccueilParrainagePage,
-    NotificationPage 
-
+    NotificationPage,
+    ParrainageEnfantPage 
   ],
   imports: [
     BrowserModule,
@@ -49,7 +51,8 @@ import { NotificationPage } from '../pages/notification/notification';
     InscriptionPage,
     ZakatPage,
     AccueilParrainagePage,
-    NotificationPage
+    NotificationPage,
+    ParrainageEnfantPage
   ],
   providers: [
     StatusBar,
