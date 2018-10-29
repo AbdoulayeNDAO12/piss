@@ -17,6 +17,26 @@ import { InscriptionPage } from '../pages/inscription/inscription';
 import { ZakatPage } from '../pages/zakat/zakat';
 import { ParrainerEnfantPage} from '../pages/parrainerEnfant/parrainerEnfant';
 import { NotificationPage } from '../pages/notification/notification';
+import { UserService } from '../Service/utilisateur.service';
+import { TuteurService } from '../Service/tuteur.service';
+import { BeneficiaireService } from '../Service/Benefiaire.service';
+import { CompteService } from '../Service/compte.service';
+import { FilleulService } from '../Service/filleul.service';
+import { HopitalService } from '../Service/hopital.service';
+import { InstitutionService } from '../Service/institution.service';
+import { PharmacieService } from '../Service/pharmacie.service';
+import { PrestataireService } from '../Service/prestataire.service';
+import { Tuteur_FilleulService } from '../Service/tuteur_filleul.service';
+import { Tuteur_Institution } from '../models/Tuteur_Institution.models';
+import { Tuteur_InstitutionService } from '../Service/tuteur_institution.service';
+import { VersementService } from '../Service/versement.service';
+import { Donneur_ZakatService } from '../Service/donneur_zakat.service';
+import { DonneurService } from '../Service/Donneur.service';
+import { DonService } from '../Service/don.service';
+import { NotificationService } from '../Service/notification.service';
+import { ConsultationService } from '../Service/consultation.service';
+import { RemboursementService } from '../Service/remboursement.service';
+import { AllocationService } from '../Service/allocation.service';
 
 @NgModule({
   declarations: [
@@ -55,6 +75,25 @@ import { NotificationPage } from '../pages/notification/notification';
     StatusBar,
     SplashScreen,
     AuthService,
+    UserService,
+    TuteurService,
+    BeneficiaireService,
+    CompteService,
+    FilleulService,
+    HopitalService,
+    InstitutionService,
+    PharmacieService,
+    PrestataireService,
+    Tuteur_FilleulService,
+    Tuteur_InstitutionService,
+    VersementService,
+    Donneur_ZakatService,
+    DonneurService,
+    DonService,
+    NotificationService,
+    ConsultationService,
+    RemboursementService,
+    AllocationService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
