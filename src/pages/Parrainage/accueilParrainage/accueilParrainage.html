@@ -1,0 +1,95 @@
+<ion-header>
+    <ion-navbar>
+  
+      <ion-buttons left>
+        <button ion-button icon-only (click)="onToggleMenu()">
+          <ion-icon ios="ios-settings" md="md-settings"></ion-icon>
+        </button>
+      </ion-buttons>
+  
+      <ion-title class="titre1">Parrainage</ion-title>
+  
+      <ion-buttons right>
+        <button ion-button icon-only (click)="onSearch()">
+          <ion-icon name="ios-search"></ion-icon>
+        </button>
+        <button ion-button icon-only (click)="onToggleMenu()">
+            <ion-icon ios="ios-notifications" md="md-notifications" class="notif"></ion-icon>
+        </button>
+        <button ion-button icon-only (click)="onToggleMenu()">
+            <ion-icon ios="ios-more" md="md-more"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content padding >
+    <ion-grid>
+      <ion-row>
+        <ion-col width-50>
+          <ion-card width-50 (click)="onNavigate(ParrainageEnfantPage)">
+            <img src="../assets/imgs/parrainer.jpg" />
+            <ion-card-content>
+              <ion-card-title>
+                Parrainage enfant
+              </ion-card-title>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+        <ion-col width-50>
+          <ion-card width-50 >
+            <img src="../assets/imgs/parrainageInst.jpg" />
+            <ion-card-content>
+              <ion-card-title>
+                Parrainage institution
+              </ion-card-title>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col width-50>
+          <ion-card width-50 >
+            <img src="../assets/imgs/moncompte.png" />
+            <ion-card-content>
+              <ion-card-title class="card-title">
+                Mon compte
+              </ion-card-title>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+        <ion-col width-50>
+          <ion-card width-50 >
+            <img src="../assets/imgs/historique.png" />
+            <ion-card-content>
+              <ion-card-title>
+                Mon historique
+              </ion-card-title>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col width-50>
+          <ion-card width-50 >
+            <img src="../assets/imgs/donner-recevoir.jpg" />
+            <ion-card-content>
+              <ion-card-title>
+                Faire un don
+              </ion-card-title>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+        <ion-col width-50>
+          <ion-card width-50 >
+            <img src="../assets/imgs/autres.jpg" />
+            <ion-card-content>
+              <ion-card-title>
+                Plus d'infos
+              </ion-card-title>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-content>

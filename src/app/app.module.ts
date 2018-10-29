@@ -15,8 +15,10 @@ import { AuthService } from '../Service/auth.sevice';
 import { AccueilPage } from '../pages/accueil/accueil';
 import { InscriptionPage } from '../pages/inscription/inscription';
 import { ZakatPage } from '../pages/zakat/zakat';
-import { ParrainerEnfantPage} from '../pages/parrainerEnfant/parrainerEnfant';
+import { AccueilParrainagePage} from '../pages/Parrainage/accueilParrainage/accueilParrainage';
+
 import { NotificationPage } from '../pages/notification/notification';
+import { ParrainageEnfantPage } from '../pages/Parrainage/parrainageEnfant/parrainageEnfant';
 import { UserService } from '../Service/utilisateur.service';
 import { TuteurService } from '../Service/tuteur.service';
 import { BeneficiaireService } from '../Service/Benefiaire.service';
@@ -27,7 +29,6 @@ import { InstitutionService } from '../Service/institution.service';
 import { PharmacieService } from '../Service/pharmacie.service';
 import { PrestataireService } from '../Service/prestataire.service';
 import { Tuteur_FilleulService } from '../Service/tuteur_filleul.service';
-import { Tuteur_Institution } from '../models/Tuteur_Institution.models';
 import { Tuteur_InstitutionService } from '../Service/tuteur_institution.service';
 import { VersementService } from '../Service/versement.service';
 import { Donneur_ZakatService } from '../Service/donneur_zakat.service';
@@ -49,9 +50,9 @@ import { AllocationService } from '../Service/allocation.service';
     AccueilPage,
     InscriptionPage,
     ZakatPage,
-    ParrainerEnfantPage,
-    NotificationPage 
-
+    AccueilParrainagePage,
+    NotificationPage,
+    ParrainageEnfantPage 
   ],
   imports: [
     BrowserModule,
@@ -68,8 +69,9 @@ import { AllocationService } from '../Service/allocation.service';
     AccueilPage,
     InscriptionPage,
     ZakatPage,
-    ParrainerEnfantPage,
-    NotificationPage
+    AccueilParrainagePage,
+    NotificationPage,
+    ParrainageEnfantPage
   ],
   providers: [
     StatusBar,

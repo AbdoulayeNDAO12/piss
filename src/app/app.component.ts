@@ -7,6 +7,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { AuthPage } from '../pages/auth/auth';
 import * as firebase from 'firebase';
 import { platformBrowser } from '@angular/platform-browser';
+import {AccueilParrainagePage} from '../pages/Parrainage/accueilParrainage/accueilParrainage';
 
 @Component({
   templateUrl: 'app.html'
@@ -15,6 +16,7 @@ export class MyApp {
   rootPage: any = AuthPage;
   authPage: AuthPage;
   @ViewChild('content') content: NavController;
+  accueilParrainagePage = AccueilParrainagePage;
 
   constructor(platform: Platform,
     statusBar: StatusBar,
