@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
@@ -19,6 +20,10 @@ import { AccueilParrainagePage} from '../pages/Parrainage/accueilParrainage/accu
 
 import { NotificationPage } from '../pages/notification/notification';
 import { ParrainageEnfantPage } from '../pages/Parrainage/parrainageEnfant/parrainageEnfant';
+import { DonParrainagePage} from '../pages/Parrainage/donParrainage/donParrainage';
+import { HistoriqueParrainagePage } from '../pages/Parrainage/historiqueParrainage/historiqueParrainage';
+import { InfosParrainagePage } from '../pages/Parrainage/infosParrainage/infosParrainage';
+import { ParrainageInstitutionPage } from '../pages/Parrainage/parrainageInstitution/parrainageInstitution';
 import { UserService } from '../Service/utilisateur.service';
 import { TuteurService } from '../Service/tuteur.service';
 import { BeneficiaireService } from '../Service/Benefiaire.service';
@@ -38,6 +43,8 @@ import { NotificationService } from '../Service/notification.service';
 import { ConsultationService } from '../Service/consultation.service';
 import { RemboursementService } from '../Service/remboursement.service';
 import { AllocationService } from '../Service/allocation.service';
+import { HistoireFilleulPage } from '../pages/Parrainage/histoireFilleul/histoireFilleul';
+import { FormParrainageEnfantPage } from '../pages/Parrainage/formParrainageEnfant/formParrainageEnfant';
 
 @NgModule({
   declarations: [
@@ -52,9 +59,16 @@ import { AllocationService } from '../Service/allocation.service';
     ZakatPage,
     AccueilParrainagePage,
     NotificationPage,
-    ParrainageEnfantPage 
+    ParrainageEnfantPage,
+    DonParrainagePage,
+    HistoriqueParrainagePage,
+    InfosParrainagePage,
+    ParrainageInstitutionPage,
+    HistoireFilleulPage,
+    FormParrainageEnfantPage  
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     IonicModule.forRoot(MyApp)
   ],
@@ -71,7 +85,13 @@ import { AllocationService } from '../Service/allocation.service';
     ZakatPage,
     AccueilParrainagePage,
     NotificationPage,
-    ParrainageEnfantPage
+    ParrainageEnfantPage,
+    DonParrainagePage,
+    HistoriqueParrainagePage,
+    InfosParrainagePage,
+    ParrainageInstitutionPage,
+    HistoireFilleulPage,
+    FormParrainageEnfantPage
   ],
   providers: [
     StatusBar,

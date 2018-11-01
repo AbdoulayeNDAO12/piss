@@ -1,12 +1,93 @@
 <ion-header>
-    <ion-navbar>
-         <ion-title>Parrainer un enfant</ion-title>
-    </ion-navbar>
+  <ion-navbar>
+    <ion-title>Parrainer un enfant</ion-title>
+  </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-    <p>Le parrainage est un excellent moyen de permettre à un enfant vulnérable de grandir en bonne santé, protégé de toute forme d’abus.
-        En parrainant un enfant, vous participez à l’amélioration concrète et durable de ses conditions de vie et celles de toute sa communauté.
-    </p>
+  <p class="intro">Le parrainage est un excellent moyen de permettre à un enfant vulnérable de grandir en bonne santé,
+    protégé et
+    éduqué.
+    En parrainant un enfant, vous participez à l’amélioration concrète et durable de ses conditions de vie et celles de
+    toute sa communauté.
+  </p>
+
+  <p class="demande"> Le parrainage change des vies</p>
+  <ion-card class="indiv" >
+    <img src="../assets/imgs/learning.jpg" />
+
+    <ion-card-content>
+      <ion-card-title>
+        Abdou
+      </ion-card-title>
+      <p>
+        Bonjour, je m'appelle Abdou, j'ai 10 ans et je vis au Sénégal avec mes parents...
+      </p>
+      <ion-row>
+        <ion-col>
+      <button ion-button color="light" (click)="onGoToHistoire()" class="mbutton">        
+        Mon histoire
+      </button>
+      </ion-col>
+      <ion-col>
+      <button ion-button color="light" (click)="onGoToParraineMoi()" class="mbutton">        
+        Parrainez moi
+      </button>
+    </ion-col>
+    </ion-row>
+    </ion-card-content>
+
+  </ion-card>
+
+  <ion-card class="indiv" >
+    <img src="../assets/imgs/cutty.jpg" />
+
+    <ion-card-content>
+      <ion-card-title>
+        Aissatou
+      </ion-card-title>
+      <p>
+        Bonjour, je m'appelle Aissatou, j'ai 9 ans et je vis au Sénégal avec mes parents...
+      </p>
+      <ion-row>
+          <ion-col>
+        <button ion-button color="light" (click)="onGoToHistoire()" class="mbutton">        
+          Mon histoire
+        </button>
+        </ion-col>
+        <ion-col>
+        <button ion-button color="light" (click)="onGoToParraineMoi()" class="mbutton">        
+          Parrainez moi
+        </button>
+      </ion-col>
+      </ion-row>
+    </ion-card-content>
+
+  </ion-card>
+
+  <ion-card class="indiv">
+    <img src="../assets/imgs/sweety.jpg" />
+
+    <ion-card-content>
+      <ion-card-title>
+        Anna
+      </ion-card-title>
+      <p>
+        Bonjour, je m'appelle Anna, j'ai 7 ans et je vis au Sénégal avec mes parents...
+      </p>
+      <ion-row>
+          <ion-col>
+        <button ion-button color="light" (click)="onGoToHistoire()" class="mbutton">        
+          Mon histoire
+        </button>
+        </ion-col>
+        <ion-col>
+        <button ion-button color="light" (click)="onGoToParraineMoi()" class="mbutton">        
+          Parrainez moi
+        </button>
+      </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
 
 </ion-content>
