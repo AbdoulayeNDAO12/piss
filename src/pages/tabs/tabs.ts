@@ -6,6 +6,7 @@ import { AccueilPage } from '../accueil/accueil';
 import { NotificationPage } from '../notification/notification';
 
 @Component({
+  selector: 'page-tabs',
   templateUrl: 'tabs.html'
 })
 export class TabsPage {

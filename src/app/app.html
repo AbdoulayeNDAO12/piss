@@ -30,6 +30,10 @@
         Reglages
       </button>
       <button ion-item icon-start (click)="onNavigate(authPage)">
+        <ion-icon name="person"></ion-icon>
+        Connexion
+      </button>
+        <button ion-item icon-start (click)="onNavigate(authPage, {mode: 'connect'})">
           <ion-icon name="exit"></ion-icon>
           Déconnexion
         </button>

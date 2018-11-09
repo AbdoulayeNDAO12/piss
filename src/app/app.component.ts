@@ -13,8 +13,8 @@ import {AccueilParrainagePage} from '../pages/Parrainage/accueilParrainage/accue
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage: any = AuthPage;
-  authPage: AuthPage;
+  rootPage: any = TabsPage;
+  authPage:any = AuthPage;
   @ViewChild('content') content: NavController;
   accueilParrainagePage = AccueilParrainagePage;
 

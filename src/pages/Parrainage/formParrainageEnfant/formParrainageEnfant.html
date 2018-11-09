@@ -4,8 +4,9 @@
     </ion-navbar>
 </ion-header>
 
-<ion-content padding>   
+<ion-content class="login-content" padding>   
     <h4> Vos informations</h4> 
+    <div class="login-box">
     <form [formGroup]="authForm">
             <ion-row>
               <ion-col>
@@ -61,5 +62,6 @@
               </ion-row>
                  <span ion-text color="danger">{{ message }}</span>
            </form>
+    </div>
 
 </ion-content>

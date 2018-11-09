@@ -13,68 +13,16 @@
   </p>
 
   <p class="demande"> Le parrainage change des vies</p>
-  <ion-card class="indiv" >
-    <img src="../assets/imgs/learning.jpg" />
 
-    <ion-card-content>
-      <ion-card-title>
-        Abdou
-      </ion-card-title>
-      <p>
-        Bonjour, je m'appelle Abdou, j'ai 10 ans et je vis au Sénégal avec mes parents...
-      </p>
-      <ion-row>
-        <ion-col>
-      <button ion-button color="light" (click)="onGoToHistoire()" class="mbutton">        
-        Mon histoire
-      </button>
-      </ion-col>
-      <ion-col>
-      <button ion-button color="light" (click)="onGoToParraineMoi()" class="mbutton">        
-        Parrainez moi
-      </button>
-    </ion-col>
-    </ion-row>
-    </ion-card-content>
-
-  </ion-card>
-
-  <ion-card class="indiv" >
-    <img src="../assets/imgs/cutty.jpg" />
-
-    <ion-card-content>
-      <ion-card-title>
-        Aissatou
-      </ion-card-title>
-      <p>
-        Bonjour, je m'appelle Aissatou, j'ai 9 ans et je vis au Sénégal avec mes parents...
-      </p>
-      <ion-row>
-          <ion-col>
-        <button ion-button color="light" (click)="onGoToHistoire()" class="mbutton">        
-          Mon histoire
-        </button>
-        </ion-col>
-        <ion-col>
-        <button ion-button color="light" (click)="onGoToParraineMoi()" class="mbutton">        
-          Parrainez moi
-        </button>
-      </ion-col>
-      </ion-row>
-    </ion-card-content>
-
-  </ion-card>
-
-  <ion-card class="indiv">
+  <ion-card  *ngFor="let filleul of filleulList; let i = index" class="indiv">
     <img src="../assets/imgs/sweety.jpg" />
 
     <ion-card-content>
       <ion-card-title>
-        Anna
+        {{ filleul.prenom}}
       </ion-card-title>
       <p>
-        Bonjour, je m'appelle Anna, j'ai 7 ans et je vis au Sénégal avec mes parents...
-      </p>
+        Bonjour, je m'appelle {{ filleul.prenom}} {{ filleul.nom}}, j'ai </p>
       <ion-row>
           <ion-col>
         <button ion-button color="light" (click)="onGoToHistoire()" class="mbutton">        
