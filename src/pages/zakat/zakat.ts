@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
-import { Slide } from "ionic-angular";
+import { ZakatFormPage } from "./zakat-form/zakat-form";
+import { MenuController } from "ionic-angular";
 
 @Component({
     selector: 'page-zakat',
@@ -7,9 +8,13 @@ import { Slide } from "ionic-angular";
 })
 
 export class ZakatPage {
-
-    downstate: Slide;
-    constructor() {
+    zForm = ZakatFormPage;
+    dForm = null;
+    constructor(public menuCtrl:MenuController) {
         
+    }
+
+    onToggleMenu() {
+        this.menuCtrl.open();
     }
 }

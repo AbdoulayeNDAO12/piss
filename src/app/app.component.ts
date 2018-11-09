@@ -8,6 +8,7 @@ import { AuthPage } from '../pages/auth/auth';
 import * as firebase from 'firebase';
 import { platformBrowser } from '@angular/platform-browser';
 import {AccueilParrainagePage} from '../pages/Parrainage/accueilParrainage/accueilParrainage';
+import { ZakatPage } from '../pages/zakat/zakat';
 
 @Component({
   templateUrl: 'app.html'
@@ -15,6 +16,7 @@ import {AccueilParrainagePage} from '../pages/Parrainage/accueilParrainage/accue
 export class MyApp {
   rootPage: any = AuthPage;
   authPage: AuthPage;
+  zakatPage: any = ZakatPage;
   @ViewChild('content') content: NavController;
   accueilParrainagePage = AccueilParrainagePage;
 
