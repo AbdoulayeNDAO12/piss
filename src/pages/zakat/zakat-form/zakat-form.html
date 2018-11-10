@@ -1,0 +1,33 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>zakat-form</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="login-content">
+  <ion-row>
+    <ion-col>
+      <ion-list inset>
+        <div class="login-box">
+          <form [formGroup]="zakatForm">
+              <ion-list>
+                <ion-item>
+                  <ion-label floating>Votre nom</ion-label><br>
+                  <ion-input aria-placeholder="Name" formControlName="name"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label floating>Montant de la zakat</ion-label><br>
+                  <ion-input aria-placeholder="sum" formControlName="name"></ion-input>
+                </ion-item>
+              </ion-list>
+              <button full ion-button color="secondary" (click)="on" class="submit-btn">Confirmer le don</button>
+            </form>
+          </div>
+      </ion-list>
+    </ion-col>
+  </ion-row>
+
+</ion-content>

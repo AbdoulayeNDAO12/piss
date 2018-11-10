@@ -8,13 +8,20 @@ import { AuthPage } from '../pages/auth/auth';
 import * as firebase from 'firebase';
 import { platformBrowser } from '@angular/platform-browser';
 import {AccueilParrainagePage} from '../pages/Parrainage/accueilParrainage/accueilParrainage';
+import { ZakatPage } from '../pages/zakat/zakat';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
+<<<<<<< HEAD
   rootPage: any = TabsPage;
   authPage:any = AuthPage;
+=======
+  rootPage: any = AuthPage;
+  authPage: AuthPage;
+  zakatPage: any = ZakatPage;
+>>>>>>> ef662427811aaeea77072fb1ac3e830b383ce8a0
   @ViewChild('content') content: NavController;
   accueilParrainagePage = AccueilParrainagePage;
 

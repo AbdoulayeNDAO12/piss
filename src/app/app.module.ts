@@ -45,6 +45,7 @@ import { RemboursementService } from '../Service/remboursement.service';
 import { AllocationService } from '../Service/allocation.service';
 import { HistoireFilleulPage } from '../pages/Parrainage/histoireFilleul/histoireFilleul';
 import { FormParrainageEnfantPage } from '../pages/Parrainage/formParrainageEnfant/formParrainageEnfant';
+import { ZakatFormPage } from '../pages/zakat/zakat-form/zakat-form';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { FormParrainageEnfantPage } from '../pages/Parrainage/formParrainageEnfa
     AccueilPage,
     InscriptionPage,
     ZakatPage,
+    ZakatFormPage,
     AccueilParrainagePage,
     NotificationPage,
     ParrainageEnfantPage,
@@ -83,6 +85,7 @@ import { FormParrainageEnfantPage } from '../pages/Parrainage/formParrainageEnfa
     AccueilPage,
     InscriptionPage,
     ZakatPage,
+    ZakatFormPage,
     AccueilParrainagePage,
     NotificationPage,
     ParrainageEnfantPage,
