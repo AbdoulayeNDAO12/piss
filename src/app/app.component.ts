@@ -14,14 +14,9 @@ import { ZakatPage } from '../pages/zakat/zakat';
   templateUrl: 'app.html'
 })
 export class MyApp {
-<<<<<<< HEAD
   rootPage: any = TabsPage;
   authPage:any = AuthPage;
-=======
-  rootPage: any = AuthPage;
-  authPage: AuthPage;
   zakatPage: any = ZakatPage;
->>>>>>> ef662427811aaeea77072fb1ac3e830b383ce8a0
   @ViewChild('content') content: NavController;
   accueilParrainagePage = AccueilParrainagePage;
 
