@@ -1,24 +1,24 @@
 export class Utilisateur{
-    id_user:Number;
+    id_user:number;
     prenom:string;
     nom:string;
-    date_nais:Date;
     adresse:string;
+    profession:string;
     telephone:string;
     sexe:string;
+    date_nais:Date;
     email:string;
-    profession:string;
     mot_de_passe:string;
     type_user:string;
     constructor( id_user:number,
         prenom:string,
         nom:string,
-        date_nais:Date,
         adresse:string,
+        profession:string,
         telephone:string,
         sexe:string,
+        date_nais:Date,
         email:string,
-        profession:string,
         mot_de_passe:string,
         type_user:string){
             this.id_user=id_user,

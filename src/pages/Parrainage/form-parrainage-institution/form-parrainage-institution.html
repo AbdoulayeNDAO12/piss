@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-navbar>
+      <ion-title>Formulaire</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="login-content" padding>   
+  <h4> Vos informations</h4> 
+  <div class="login-box">
+  <form [formGroup]="authForm">
+          <ion-row>
+            <ion-col>
+               <ion-list inset>
+                   <ion-item>
+                     <ion-label floating>Prenom</ion-label>
+                     <ion-input type="text" formControlName="prenom"></ion-input>
+                   </ion-item>
+                   <ion-item>
+                      <ion-label floating>Nom</ion-label>
+                      <ion-input type="text" formControlName="nom"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label floating>Adresse</ion-label>
+                        <ion-input type="text" formControlName="adresse"></ion-input>
+                      </ion-item>
+                      <ion-item>
+                          <ion-label floating>profession</ion-label>
+                          <ion-input type="text" formControlName="profession"></ion-input>
+                        </ion-item>
+                      <ion-item>
+                          <ion-label floating>Telephone</ion-label>
+                          <ion-input type="tel" formControlName="telephone"></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label>Sexe</ion-label>
+                            <ion-select formControlName="sexe">
+                              <ion-option value="f">Féminin</ion-option>
+                              <ion-option value="m">Masculin</ion-option>
+                            </ion-select>
+                          </ion-item>
+
+                    <ion-item>
+                        <ion-label floating>Date de Naissance</ion-label>
+                        <ion-input type="date" formControlName="dateNaiss"></ion-input>
+                      </ion-item>
+                   <ion-item>
+                      <ion-label floating>Adresse mail</ion-label>
+                      <ion-input type="email" formControlName="email"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label floating>Mot de passe</ion-label>
+                      <ion-input type="password" formControlName="password"></ion-input>
+                    </ion-item>
+                   <ion-item>
+                     <ion-label floating>Conditions générales d'utilisation</ion-label>
+                     <ion-input type="checkbox" formControlName="checkbox"></ion-input>
+                   </ion-item>
+                   
+                </ion-list>
+            </ion-col>
+          </ion-row>
+            <ion-row>
+              <ion-col class="signup-col">
+                 <button ion-button full (click)="onSubmitForm()" class="submit-btn">Soumettre</button>
+                </ion-col>
+            </ion-row>
+               <span ion-text color="danger">{{ message }}</span>
+         </form>
+  </div>
+
+</ion-content>

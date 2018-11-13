@@ -46,6 +46,10 @@ import { AllocationService } from '../Service/allocation.service';
 import { HistoireFilleulPage } from '../pages/Parrainage/histoireFilleul/histoireFilleul';
 import { FormParrainageEnfantPage } from '../pages/Parrainage/formParrainageEnfant/formParrainageEnfant';
 import { ZakatFormPage } from '../pages/zakat/zakat-form/zakat-form';
+import { FormParrainageInstitutionPage } from '../pages/Parrainage/form-parrainage-institution/form-parrainage-institution';
+import { ParrainService } from '../Service/parrain.service';
+import { InstitutionParrainService } from '../Service/institution_parrain.service';
+import { DonPage } from '../pages/don/don';
 
 @NgModule({
   declarations: [
@@ -67,7 +71,9 @@ import { ZakatFormPage } from '../pages/zakat/zakat-form/zakat-form';
     InfosParrainagePage,
     ParrainageInstitutionPage,
     HistoireFilleulPage,
-    FormParrainageEnfantPage  
+    FormParrainageEnfantPage,
+    FormParrainageInstitutionPage,
+    DonPage
   ],
   imports: [
     FormsModule,
@@ -94,7 +100,9 @@ import { ZakatFormPage } from '../pages/zakat/zakat-form/zakat-form';
     InfosParrainagePage,
     ParrainageInstitutionPage,
     HistoireFilleulPage,
-    FormParrainageEnfantPage
+    FormParrainageEnfantPage,
+    FormParrainageInstitutionPage,
+    DonPage
   ],
   providers: [
     StatusBar,
@@ -119,6 +127,8 @@ import { ZakatFormPage } from '../pages/zakat/zakat-form/zakat-form';
     ConsultationService,
     RemboursementService,
     AllocationService,
+    ParrainService,
+    InstitutionParrainService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
