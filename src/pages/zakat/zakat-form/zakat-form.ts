@@ -17,8 +17,16 @@ export class ZakatFormPage implements OnInit{
 
   initForm() {
     this.zakatForm = this.formBuilder.group({
-      name: ['', Validators.required],
-      sum: ['', Validators.required]
+          prenom:['',  Validators.required],
+          nom:['',  Validators.required],
+          telephone:['',  Validators.required],
+          email: ['', [Validators.required, Validators.email]],
+          sum: ['', [Validators.required, Validators.nullValidator]],
+          checkbox:['',Validators.required]
     });
+  }
+
+  onConfirmDonation() {
+    
   }
 }
