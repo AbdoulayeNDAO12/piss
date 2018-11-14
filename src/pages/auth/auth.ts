@@ -45,13 +45,14 @@ export class AuthPage implements OnInit {
     onSubmitForm() {
     const email = this.authForm.get('email').value;
     const password = this.authForm.get('password').value;
-    for (this.person in this.list )
-       if(email===this.person.email){
+    this.user.signInUser(email,password).then(
+      () => {
         this.navCtrl.push(TabsPage);
-       }else{
-         this.errorMessage='Identifiants incorrects';
-        this.navCtrl.push(AuthPage);
-       }
+      },
+      (error) => {
+        this.errorMessage = error;
+      }
+    );
     }
     onClick(){
       this.navCtrl.push(InscriptionPage);

@@ -10,16 +10,18 @@ import * as paydunya from 'paydunya';
 import { platformBrowser } from '@angular/platform-browser';
 import {AccueilParrainagePage} from '../pages/Parrainage/accueilParrainage/accueilParrainage';
 import { ZakatPage } from '../pages/zakat/zakat';
+import { DonPage } from '../pages/don/don';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage: any = AuthPage;
-  authPage: any = AuthPage;
+  rootPage: any = TabsPage;
+  authPage:any = AuthPage;
   zakatPage: any = ZakatPage;
   @ViewChild('content') content: NavController;
   accueilParrainagePage = AccueilParrainagePage;
+  donPage= DonPage;
 
   constructor(platform: Platform,
     statusBar: StatusBar,

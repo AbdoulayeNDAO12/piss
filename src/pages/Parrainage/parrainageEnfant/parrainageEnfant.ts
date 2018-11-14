@@ -1,5 +1,5 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, ToastController, LoadingController, ModalController } from 'ionic-angular';
 import { HistoireFilleulPage } from '../histoireFilleul/histoireFilleul';
 import { FormParrainageEnfantPage } from '../formParrainageEnfant/formParrainageEnfant';
 import { Filleul } from '../../../models/Filleul.model';
@@ -14,23 +14,34 @@ export class ParrainageEnfantPage implements OnInit,OnDestroy{
 
     filleulList: Filleul[];
     filleulSubscription: Subscription;
-    constructor(public navCtrl: NavController,private filleulService: FilleulService ){
+    constructor(public navCtrl: NavController,private filleulService: FilleulService,
+        private toastCtrl: ToastController,
+        private loadingCtrl: LoadingController,private modalCtrl: ModalController ){
     }
     ngOnInit() {
-        this.filleulSubscription = this.filleulService.filleul$.subscribe(
-          (filleul: Filleul[]) => {
-            this.filleulList = filleul.slice();
-          }
-        );
-        this.filleulService.emitFilleul();
+        this.filleulService.retrieveData().then(
+            () => {
+              this.filleulSubscription = this.filleulService.filleul$.subscribe(
+                (filleul: Filleul[]) => {
+                  this.filleulList = filleul.slice();
+                }
+              );
+              this.filleulService.emitFilleul();
+            }
+          );
+        
       }
 
     onGoToHistoire(){
         this.navCtrl.push(HistoireFilleulPage);
     }
+    onLoadFilleul(index: number) {
+      let modal = this.modalCtrl.create(FormParrainageEnfantPage, {index: index});
+      modal.present();
+    }
 
-    onGoToParraineMoi(){
-        this.navCtrl.push(FormParrainageEnfantPage);
+    onGoToParraineMoi(filleul: Filleul){
+        this.navCtrl.push(FormParrainageEnfantPage, {filleul: filleul});
     }
     ngOnDestroy() {
         this.filleulSubscription.unsubscribe();

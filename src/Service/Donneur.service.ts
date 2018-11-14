@@ -5,7 +5,12 @@ import { Donneur } from '../models/Donneur.models';
 
 export class DonneurService {
 donneur$= new Subject<Donneur[]>();
-  donneurList: Donneur[]=[ ] ;
+  donneurList: Donneur[]=[ 
+    {
+      id_donneur: 0,
+      id_user:0
+    }
+  ] ;
     addDonneur(donneur: Donneur) {
     this.donneurList.push(donneur);
     this.emitDonneur();
