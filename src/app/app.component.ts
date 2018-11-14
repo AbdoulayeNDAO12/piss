@@ -6,6 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { TabsPage } from '../pages/tabs/tabs';
 import { AuthPage } from '../pages/auth/auth';
 import * as firebase from 'firebase';
+import * as paydunya from 'paydunya';
 import { platformBrowser } from '@angular/platform-browser';
 import {AccueilParrainagePage} from '../pages/Parrainage/accueilParrainage/accueilParrainage';
 import { ZakatPage } from '../pages/zakat/zakat';
@@ -39,6 +40,14 @@ export class MyApp {
         messagingSenderId: "1090307730027"
       };
       firebase.initializeApp(config);
+
+      /*var setup = new paydunya.Setup({
+        masterKey: 'wQzk9ZwR-Qq9m-0hD0-zpud-je5coGC3FHKW',
+        privateKey: 'test_private_rMIdJM3PLLhLjyArx9tF3VURAF5',
+        publicKey: 'test_public_kb9Wo0Qpn8vNWMvMZOwwpvuTUja-OSDNhUqKoaTI4wc',
+        token: 'IivOiOxGJuWhc5znlIiK',
+        mode: 'test' // optional. use in sandbox mode.
+      });*/
     });
   }
 
