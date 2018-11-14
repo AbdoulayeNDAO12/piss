@@ -5,12 +5,7 @@ import { InstitutionParrain } from '../models/Institution_Parrain.models';
 
 export class InstitutionParrainService {
 institutionParrain$= new Subject<InstitutionParrain[]>();
-institutionParrainList: InstitutionParrain[]=[
-  {
-    id_institution:0,
-    id_parrain:0
-  }
-] ;
+institutionParrainList: InstitutionParrain[]=[] ;
     addInstitutionParrain(institutionParrain: InstitutionParrain) {
     this.institutionParrainList.push(institutionParrain);
     this.emitInstitutionParrain();

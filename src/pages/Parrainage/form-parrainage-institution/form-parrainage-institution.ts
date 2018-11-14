@@ -12,7 +12,6 @@ import { Compte } from '../../../models/Compte.models';
 import { Parrain } from '../../../models/Parrain.models';
 import { InstitutionParrain } from '../../../models/Institution_Parrain.models';
 import { InstitutionParrainService } from '../../../Service/institution_parrain.service';
-import { institution } from '../../../models/institution.model';
 import { Institution } from '../../../models/Institution.models';
 import { ParrainageInstitutionPage } from '../parrainageInstitution/parrainageInstitution';
 import { InstitutionService } from '../../../Service/institution.service';
@@ -124,9 +123,9 @@ export class FormParrainageInstitutionPage {
       );
       this.institution_parrainService.retrieveData().then(
         () => {
-          this.institutionparrainSubscription = this.institutionService.institution$.subscribe(
-            (institution: institution[]) => {
-              this.institutionparrainList = institution.slice();
+          this.institutionparrainSubscription = this.institution_parrainService.institutionParrain$.subscribe(
+            (institution_parrain: InstitutionParrain[]) => {
+              this.institutionparrainList = institution_parrain.slice();
             }
           );
           this.institution_parrainService.emitInstitutionParrain;
@@ -173,27 +172,28 @@ export class FormParrainageInstitutionPage {
 
     this.utilisateur = new Utilisateur(this.utilisateurList.length + 1, prenom, nom, adresse, profession, telephone, sexe, dateNais, email, password, "parrain");
     this.utilisateurService.signUpUser(email, password);
-    this.utilisateurList.push(this.utilisateur);
-    this.utilisateurService.utilisateurList=this.utilisateurList;
+    this.utilisateurService.addUser(this.utilisateur);
     this.donneur = new Donneur(this.donneurList.length + 1, this.utilisateur.id_user);
-    this.donneurList.push(this.donneur);
-    this.donneurService.donneurList=this.donneurList;
+    this.donneurService.addDonneur(this.donneur);
     this.compte = new Compte(this.compteList.length + 1, 0);
-    this.compteList.push(this.compte);
-    this.compteService.compteList=this.compteList;
+    this.compteService.addCompte(this.compte);
     this.parrain = new Parrain(this.parrainList.length + 1, this.donneur.id_donneur, this.compte.id_compte);
-    this.parrainList.push(this.parrain);
-    this.parrainService.parrainList=this.parrainList;
+    this.parrainService.addParrain(this.parrain);
     this.institution_parrain = new InstitutionParrain(this.institution.id_institution, this.parrain.id_parrain);
-    this.institutionparrainList.push(this.institution_parrain);
-    this.institution_parrainService.institutionParrainList=this.institutionparrainList;
+    this.institution_parrainService.addInstitutionParrain(this.institution_parrain);
     let loader1 = this.loadingCtrl.create({
-      content: 'Sauvegarde en cours…'
+      content: ''
     });
     loader1.present();
     this.utilisateurService.saveData().then(
       () => {
         
+          loader4.dismiss();
+          this.toastCtrl.create({
+            message: 'Données sauvegardées !',
+            duration: 3000,
+            position: 'bottom'
+          }).present();
       },
       (error) => {
        
@@ -227,7 +227,7 @@ export class FormParrainageInstitutionPage {
       }
     );
     let loader4 = this.loadingCtrl.create({
-      content: ''
+      content: 'Sauvegarde en cours…'
     });
     loader4.present();
     this.parrainService.saveData().then(

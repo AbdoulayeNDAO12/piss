@@ -5,53 +5,7 @@ import { Compte } from '../models/Compte.models';
 
 export class CompteService {
 compte$= new Subject<Compte[]>();
-  compteList: Compte[]=[
-      {
-        id_compte:1,
-        solde:0
-      },
-      {
-        id_compte:1,
-        solde:0
-      },
-      {
-        id_compte:2,
-        solde:0
-      },
-      {
-        id_compte:3,
-        solde:0
-      },
-      {
-        id_compte:4,
-        solde:0
-      },
-      {
-        id_compte:5,
-        solde:0
-      },
-      {
-        id_compte:6,
-        solde:0
-      },
-      {
-        id_compte:7,
-        solde:0
-      },
-      {
-        id_compte:8,
-        solde:0
-      },
-      {
-        id_compte:9,
-        solde:0
-      },
-      {
-        id_compte:10,
-        solde:0
-      }
-    
-  ] ;
+  compteList: Compte[]=[] ;
     addCompte(compte: Compte) {
     this.compteList.push(compte);
     this.emitCompte();
