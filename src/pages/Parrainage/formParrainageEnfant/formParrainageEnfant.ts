@@ -12,7 +12,6 @@ import { UserService } from '../../../Service/utilisateur.service';
 import { CompteService } from '../../../Service/compte.service';
 import { ParrainService } from '../../../Service/parrain.service';
 import { DonneurService } from '../../../Service/Donneur.service';
-import { ParrainageutilisateurPage } from '../parrainageutilisateur/parrainageutilisateur';
 import { Filleul } from '../../../models/Filleul.model';
 import { Subscription } from 'rxjs/Subscription';
 import { FilleulService } from '../../../Service/filleul.service';
@@ -30,6 +29,7 @@ export class FormParrainageEnfantPage{
   parrain:Parrain;
   donneur:Donneur;
    compte: Compte;
+   filleul:Filleul;
   utilisateurSubscription: Subscription;
   utilisateurList: Utilisateur[];
   compteList:Compte[];
