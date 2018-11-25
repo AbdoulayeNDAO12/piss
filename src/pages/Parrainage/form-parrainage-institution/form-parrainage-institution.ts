@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { IonicPage, NavController, NavParams, MenuController, LoadingController, ToastController } from 'ionic-angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../../Service/auth.sevice';
@@ -16,6 +16,7 @@ import { Institution } from '../../../models/Institution.models';
 import { ParrainageInstitutionPage } from '../parrainageInstitution/parrainageInstitution';
 import { InstitutionService } from '../../../Service/institution.service';
 import { Subscription } from 'rxjs/Subscription';
+import { constructor, auth } from 'firebase';
 
 /**
  * Generated class for the FormParrainageInstitutionPage page.
@@ -29,7 +30,7 @@ import { Subscription } from 'rxjs/Subscription';
   selector: 'page-form-parrainage-institution',
   templateUrl: 'form-parrainage-institution.html',
 })
-export class FormParrainageInstitutionPage {
+export class FormParrainageInstitutionPage implements OnInit,OnDestroy {
 
   authForm: FormGroup;
   errorMessage: string;
@@ -182,75 +183,73 @@ export class FormParrainageInstitutionPage {
     this.institution_parrain = new InstitutionParrain(this.institution.id_institution, this.parrain.id_parrain);
     this.institution_parrainService.addInstitutionParrain(this.institution_parrain);
     let loader1 = this.loadingCtrl.create({
-      content: ''
+      content: 'Sauvegarde en cours…'
     });
     loader1.present();
     this.utilisateurService.saveData().then(
       () => {
-        
-          loader4.dismiss();
-          this.toastCtrl.create({
-            message: 'Données sauvegardées !',
-            duration: 3000,
-            position: 'bottom'
-          }).present();
-      },
-      (error) => {
-       
-      }
-    );
-    
-    this.donneurService.saveData().then(
-      () => {
-        
-      },
-      (error) => {
-       
-      }
-    );
-   
-
-    this.compteService.saveData().then(
-      () => {
-       
-      },
-      (error) => {
-       
-      }
-    );
-    this.institution_parrainService.saveData().then(
-      () => {
-        
-      },
-      (error) => {
-       
-      }
-    );
-    let loader4 = this.loadingCtrl.create({
-      content: 'Sauvegarde en cours…'
-    });
-    loader4.present();
-    this.parrainService.saveData().then(
-      () => {
-        loader4.dismiss();
+        this.donneurService.saveData().then(
+          () => {
+           
+          },
+          (error) => {
+           
+          }
+        );
+        this.compteService.saveData().then(
+          () => {
+           
+          },
+          (error) => {
+           
+          }
+        );
+        this.parrainService.saveData().then(
+          () => {
+           
+          },
+          (error) => {
+           
+          }
+        );
+        this.institution_parrainService.saveData().then(
+          () => {
+           
+          },
+          (error) => {
+           
+          }
+        );
+        loader1.dismiss();
         this.toastCtrl.create({
           message: 'Données sauvegardées !',
           duration: 3000,
           position: 'bottom'
         }).present();
       },
-      (error) => {
-        loader4.dismiss();
-        this.toastCtrl.create({
-          message: error,
-          duration: 3000,
-          position: 'bottom'
-        }).present();
-      }
-    );
-
-    this.navCtrl.push(ParrainageInstitutionPage);
-  }
+    (error) => {
+      loader1.dismiss();
+      this.toastCtrl.create({
+        message: error,
+        duration: 3000,
+        position: 'bottom'
+      }).present();
+    }
+  );
+  
+    
+  this.navCtrl.push(ParrainageInstitutionPage);
+}
+ngOnDestroy() {
+  this.filleulSubscription.unsubscribe();
+  this.utilisateurSubscription.unsubscribe();
+  this.parrainSubscription.unsubscribe();
+  this.donneurSubscription.unsubscribe();
+  this.donneurSubscription.unsubscribe();
+  this.institutionparrainSubscription.unsubscribe();
+}
 
 }
+
+
 

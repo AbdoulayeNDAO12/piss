@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { MenuController, NavParams,NavController, ToastController, LoadingController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {TabsPage} from '../tabs/tabs';
-import { AuthService } from '../../Service/auth.sevice';
 import { InscriptionPage } from '../inscription/inscription';
 import { ZakatPage } from '../zakat/zakat';
 import {UserService} from '../../Service/utilisateur.service';
 import { Utilisateur } from '../../models/Utilisateur.models';
-import { InstitutionParrainService } from '../../Service/institution_parrain.service';
+import { FilleulService } from '../../Service/filleul.service';
+import { ConsultationService } from '../../Service/consultation.service';
+import { Medicament_ConsultationService } from '../../Service/medicament_consultation.service';
 
 @Component({
   selector: 'page-auth',
@@ -26,7 +27,7 @@ export class AuthPage implements OnInit {
   constructor(private menuCtrl: MenuController,
               private navCtrl:NavController,
               private formBuilder: FormBuilder,
-              private user:UserService,private institution_parrainService: InstitutionParrainService,
+              private user:UserService,private medicament_consultationService: Medicament_ConsultationService,
               private loadingCtrl:LoadingController,
               private toastCtrl:ToastController) {}
 
@@ -65,7 +66,7 @@ export class AuthPage implements OnInit {
         content: 'Sauvegarde en cours'
       });
       loader.present();
-      this.user.saveData().then(
+      this.medicament_consultationService.saveData().then(
         () => {
           loader.dismiss();
           this.toastCtrl.create({

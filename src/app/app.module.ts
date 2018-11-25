@@ -50,6 +50,10 @@ import { FormParrainageInstitutionPage } from '../pages/Parrainage/form-parraina
 import { ParrainService } from '../Service/parrain.service';
 import { InstitutionParrainService } from '../Service/institution_parrain.service';
 import { DonPage } from '../pages/don/don';
+import { ConsutationMaladePage } from '../pages/consutation-malade/consutation-malade';
+import { VenteMedicamentPage } from '../pages/vente-medicament/vente-medicament';
+import { Medicament_ConsultationService } from '../Service/medicament_consultation.service';
+import { MedicamentService } from '../Service/medicament.service';
 
 @NgModule({
   declarations: [
@@ -73,7 +77,9 @@ import { DonPage } from '../pages/don/don';
     HistoireFilleulPage,
     FormParrainageEnfantPage,
     FormParrainageInstitutionPage,
-    DonPage
+    DonPage,
+    ConsutationMaladePage,
+    VenteMedicamentPage
   ],
   imports: [
     FormsModule,
@@ -102,7 +108,9 @@ import { DonPage } from '../pages/don/don';
     HistoireFilleulPage,
     FormParrainageEnfantPage,
     FormParrainageInstitutionPage,
-    DonPage
+    DonPage,
+    ConsutationMaladePage,
+    VenteMedicamentPage,
   ],
   providers: [
     StatusBar,
@@ -128,7 +136,9 @@ import { DonPage } from '../pages/don/don';
     RemboursementService,
     AllocationService,
     ParrainService,
+    Medicament_ConsultationService,
     InstitutionParrainService,
+    MedicamentService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

@@ -10,13 +10,15 @@ export class PrestataireService {
             id_prest: 1,
             nom: 'Hopital Universitaire de Fann',
             id_user: 6,
-            type: 'Hopital'
+            type: 'Hopital',
+            id_compte:0
         },
         {
             id_prest: 2,
             nom: 'Phamacie Khadimou Rassoul',
             id_user: 7,
-            type: 'Pharmacie'
+            type: 'Pharmacie',
+            id_compte:0
         }
     ];
     addPrestataire(prestataire: Prestataire) {

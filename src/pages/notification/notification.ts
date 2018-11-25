@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Consultation } from '../../models/Consultation.models';
 
 /**
  * Generated class for the NotificationPage page.
@@ -13,9 +14,13 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   selector: 'page-notification',
   templateUrl: 'notification.html',
 })
-export class NotificationPage {
+export class NotificationPage implements OnInit{
+  consultation: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+  }
+  ngOnInit() {
+    this.consultation = this.navParams.get('consultations'); 
   }
 
   ionViewDidLoad() {

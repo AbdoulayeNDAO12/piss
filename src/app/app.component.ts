@@ -11,7 +11,8 @@ import { platformBrowser } from '@angular/platform-browser';
 import {AccueilParrainagePage} from '../pages/Parrainage/accueilParrainage/accueilParrainage';
 import { ZakatPage } from '../pages/zakat/zakat';
 import { DonPage } from '../pages/don/don';
-import { InstitutionParrainService } from '../Service/institution_parrain.service';
+import { ConsutationMaladePage } from '../pages/consutation-malade/consutation-malade';
+import { VenteMedicamentPage } from '../pages/vente-medicament/vente-medicament';
 
 @Component({
   templateUrl: 'app.html'
@@ -20,6 +21,8 @@ export class MyApp {
   rootPage: any = TabsPage;
   authPage:any = AuthPage;
   zakatPage: any = ZakatPage;
+  consutationMaladePage :any = ConsutationMaladePage;
+  venteMedicamentPage = VenteMedicamentPage;
   @ViewChild('content') content: NavController;
   accueilParrainagePage = AccueilParrainagePage;
   donPage= DonPage;

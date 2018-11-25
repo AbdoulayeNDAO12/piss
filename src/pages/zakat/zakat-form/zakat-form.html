@@ -4,6 +4,7 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding class="login-content">
+     <div *ngFor="let filleul of versementList; let i = index" ><h1>{{i}}</h1></div> 
            <div class="login-box">
               <form [formGroup]="zakatForm">
                  <ion-list inset>
@@ -29,7 +30,7 @@
                     </ion-item>
 
                  </ion-list>
-                 <button full ion-button color="secondary" (click)="onConfirmDonation()" class="submit-btn">Confirmer le don</button>
+                 <button full ion-button color="secondary" (click)="onSubmitForm()" class="submit-btn">Confirmer le don</button>
 
               </form>
            </div>
