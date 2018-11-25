@@ -14,6 +14,10 @@ import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angul
   templateUrl: 'accueil.html',
 })
 export class AccueilPage {
+  assurance: any = 'AccueilAssurancePage';
+  parrainage: any = 'AccueilParrainagePage';
+  zakat: any = 'AccueilZakatPage';
+  
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public menuCtrl:MenuController) {
   }

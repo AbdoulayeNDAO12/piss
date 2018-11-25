@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams, MenuController, LoadingController,
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { DonService } from '../../Service/don.service';
 import { Don } from '../../models/Don.models';
-import { AccueilPage } from '../accueil/accueil';
+import { AccueilPage } from '../pageAccueil/accueil/accueil';
 
 /**
  * Generated class for the DonPage page.

@@ -1,18 +1,15 @@
 import {Component} from '@angular/core';
 import { ParrainageEnfantPage} from '../parrainageEnfant/parrainageEnfant';
-import { NavController } from 'ionic-angular';
-import { DonParrainagePage } from '../donParrainage/donParrainage';
-import { HistoriqueParrainagePage } from '../historiqueParrainage/historiqueParrainage';
-import { InfosParrainagePage } from '../infosParrainage/infosParrainage';
+import { NavController , MenuController} from 'ionic-angular';
 import { ParrainageInstitutionPage } from '../parrainageInstitution/parrainageInstitution';
-
+import { AccueilPage } from '../../pageAccueil/accueil/accueil';
 @Component({
     selector: 'page-accueilParrainage',
     templateUrl: 'accueilParrainage.html'
 })
-export class AccueilParrainagePage{
+export class AccueilParrainagePage{  
     
-    constructor(public navCtrl: NavController){
+    constructor(public navCtrl: NavController,public menuCtrl:MenuController){
     }
     onGoToParrainageEnfantPage(){
         this.navCtrl.push(ParrainageEnfantPage);
@@ -21,16 +18,8 @@ export class AccueilParrainagePage{
     onGoToParrainageInstitutionPage(){
         this.navCtrl.push(ParrainageInstitutionPage);
     }
-    onGoToComptePage(){
-        this.navCtrl.push(ParrainageEnfantPage);
-    }
-    onGoToHistoriquePage(){
-        this.navCtrl.push(HistoriqueParrainagePage);
-    }
-    onGoToFaireDonPage(){
-        this.navCtrl.push(DonParrainagePage);
-    }
-    onGoToInfosPage(){
-        this.navCtrl.push(InfosParrainagePage);
-    }
+    
+    onToggleMenu(){
+        this.menuCtrl.open() ;
+      }
 }

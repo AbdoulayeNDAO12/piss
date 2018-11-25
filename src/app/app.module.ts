@@ -13,16 +13,13 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AuthPage } from '../pages/auth/auth';
 import { AuthService } from '../Service/auth.sevice';
-import { AccueilPage } from '../pages/accueil/accueil';
+import { AccueilPage } from '../pages/pageAccueil/accueil/accueil';
 import { InscriptionPage } from '../pages/inscription/inscription';
 import { ZakatPage } from '../pages/zakat/zakat';
 import { AccueilParrainagePage} from '../pages/Parrainage/accueilParrainage/accueilParrainage';
 
 import { NotificationPage } from '../pages/notification/notification';
 import { ParrainageEnfantPage } from '../pages/Parrainage/parrainageEnfant/parrainageEnfant';
-import { DonParrainagePage} from '../pages/Parrainage/donParrainage/donParrainage';
-import { HistoriqueParrainagePage } from '../pages/Parrainage/historiqueParrainage/historiqueParrainage';
-import { InfosParrainagePage } from '../pages/Parrainage/infosParrainage/infosParrainage';
 import { ParrainageInstitutionPage } from '../pages/Parrainage/parrainageInstitution/parrainageInstitution';
 import { UserService } from '../Service/utilisateur.service';
 import { TuteurService } from '../Service/tuteur.service';
@@ -50,6 +47,7 @@ import { FormParrainageInstitutionPage } from '../pages/Parrainage/form-parraina
 import { ParrainService } from '../Service/parrain.service';
 import { InstitutionParrainService } from '../Service/institution_parrain.service';
 import { DonPage } from '../pages/don/don';
+import { SuperTabsModule } from 'ionic2-super-tabs';
 
 @NgModule({
   declarations: [
@@ -66,9 +64,6 @@ import { DonPage } from '../pages/don/don';
     AccueilParrainagePage,
     NotificationPage,
     ParrainageEnfantPage,
-    DonParrainagePage,
-    HistoriqueParrainagePage,
-    InfosParrainagePage,
     ParrainageInstitutionPage,
     HistoireFilleulPage,
     FormParrainageEnfantPage,
@@ -78,7 +73,8 @@ import { DonPage } from '../pages/don/don';
   imports: [
     FormsModule,
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    SuperTabsModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -95,9 +91,6 @@ import { DonPage } from '../pages/don/don';
     AccueilParrainagePage,
     NotificationPage,
     ParrainageEnfantPage,
-    DonParrainagePage,
-    HistoriqueParrainagePage,
-    InfosParrainagePage,
     ParrainageInstitutionPage,
     HistoireFilleulPage,
     FormParrainageEnfantPage,

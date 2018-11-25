@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 import { AboutPage } from '../about/about';
 import { ContactPage } from '../contact/contact';
-import { AccueilPage } from '../accueil/accueil';
+import { AccueilPage } from '../pageAccueil/accueil/accueil';
 import { NotificationPage } from '../notification/notification';
 
 @Component({
