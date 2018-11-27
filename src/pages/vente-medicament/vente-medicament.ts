@@ -20,7 +20,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { Medicament_Consultation } from '../../models/medicament_consultation.model';
 import { Medicament_ConsultationService } from '../../Service/medicament_consultation.service';
 import { NotificationPage } from '../notification/notification';
-import { AccueilPage } from '../accueil/accueil';
+import { AccueilPage } from '../pageAccueil/accueil/accueil';
 import { Medicament } from '../../models/Medicament.models';
 
 

@@ -12,7 +12,7 @@ import { Versement } from '../../../models/Versement.models';
 import { Donneur_Zakat } from '../../../models/Doneur_Zakat.models';
 import { Donneur_ZakatService } from '../../../Service/donneur_zakat.service';
 import { VersementService } from '../../../Service/versement.service';
-import { AccueilPage } from '../../accueil/accueil';
+import { AccueilPage } from '../../pageAccueil/accueil/accueil';
 
 @Component({
   selector: 'page-zakat-form',
