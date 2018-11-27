@@ -5,7 +5,16 @@ import { Consultation } from '../models/Consultation.models';
 
 export class ConsultationService {
 consultation$= new Subject<Consultation[]>();
-  consultationList: Consultation[]=[ ] ;
+  consultationList: Consultation[]=[
+    {
+    id_consultation:0,
+    montant:0,
+    ordonnance:['',''],
+    date:new Date,
+    id_hopital:0,
+    id_malade:0
+    }
+   ] ;
     addUser(consultation: Consultation) {
     this.consultationList.push(consultation);
     this.emitConsultation();

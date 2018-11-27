@@ -5,8 +5,8 @@ import { Donneur_Zakat } from '../models/Doneur_Zakat.models';
 
 export class Donneur_ZakatService {
 donneur_Zakat$= new Subject<Donneur_Zakat[]>();
-  donneur_ZakatList: Donneur_Zakat[]=[ ] ;
-    addUser(donneur_Zakat: Donneur_Zakat) {
+  donneur_ZakatList: Donneur_Zakat[]=[] ;
+    addDonneur_Zakat(donneur_Zakat: Donneur_Zakat) {
     this.donneur_ZakatList.push(donneur_Zakat);
     this.emitDonneur_Zakat();
   }

@@ -47,7 +47,14 @@ import { FormParrainageInstitutionPage } from '../pages/Parrainage/form-parraina
 import { ParrainService } from '../Service/parrain.service';
 import { InstitutionParrainService } from '../Service/institution_parrain.service';
 import { DonPage } from '../pages/don/don';
+<<<<<<< HEAD
 import { SuperTabsModule } from 'ionic2-super-tabs';
+=======
+import { ConsutationMaladePage } from '../pages/consutation-malade/consutation-malade';
+import { VenteMedicamentPage } from '../pages/vente-medicament/vente-medicament';
+import { Medicament_ConsultationService } from '../Service/medicament_consultation.service';
+import { MedicamentService } from '../Service/medicament.service';
+>>>>>>> eaaa00a64e31e0c925f5e0e17972aba1b273c057
 
 @NgModule({
   declarations: [
@@ -68,7 +75,9 @@ import { SuperTabsModule } from 'ionic2-super-tabs';
     HistoireFilleulPage,
     FormParrainageEnfantPage,
     FormParrainageInstitutionPage,
-    DonPage
+    DonPage,
+    ConsutationMaladePage,
+    VenteMedicamentPage
   ],
   imports: [
     FormsModule,
@@ -95,7 +104,9 @@ import { SuperTabsModule } from 'ionic2-super-tabs';
     HistoireFilleulPage,
     FormParrainageEnfantPage,
     FormParrainageInstitutionPage,
-    DonPage
+    DonPage,
+    ConsutationMaladePage,
+    VenteMedicamentPage,
   ],
   providers: [
     StatusBar,
@@ -121,7 +132,9 @@ import { SuperTabsModule } from 'ionic2-super-tabs';
     RemboursementService,
     AllocationService,
     ParrainService,
+    Medicament_ConsultationService,
     InstitutionParrainService,
+    MedicamentService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

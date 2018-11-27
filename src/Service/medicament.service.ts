@@ -5,7 +5,15 @@ import { Medicament } from '../models/Medicament.models';
 
 export class MedicamentService {
 medicament$= new Subject<Medicament[]>();
-  medicamentList: Medicament[]=[ ] ;
+  medicamentList: Medicament[]=[ 
+    {
+      id_medicament:0,
+      libelle:'',
+      quantite:0,
+      prix:0,
+      id_pharmacie:0
+    }
+  ] ;
     addMedicament(medicament: Medicament) {
     this.medicamentList.push(medicament);
     this.emitMedicament();

@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit, OnDestroy} from '@angular/core';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { MenuController, NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
 import { AuthService } from '../../../Service/auth.sevice';
@@ -16,13 +16,15 @@ import { Filleul } from '../../../models/Filleul.model';
 import { Subscription } from 'rxjs/Subscription';
 import { FilleulService } from '../../../Service/filleul.service';
 import { ParrainageEnfantPage } from '../parrainageEnfant/parrainageEnfant';
+import * as firebase from 'firebase';
+import { formArrayNameProvider } from '@angular/forms/src/directives/reactive_directives/form_group_name';
 
 
 @Component({
     selector: 'page-formParrainageEnfant',
     templateUrl: 'formParrainageEnfant.html'
 })
-export class FormParrainageEnfantPage{
+export class FormParrainageEnfantPage implements OnInit,OnDestroy{
     authForm: FormGroup;
   errorMessage: string;
   utilisateur:Utilisateur;
@@ -40,6 +42,7 @@ export class FormParrainageEnfantPage{
   compteSubscription: Subscription;
   filleulSubscription: Subscription;
   donneurSubscription: Subscription;
+  indx:number;
 
 
     constructor(private menuCtrl: MenuController,
@@ -115,6 +118,7 @@ export class FormParrainageEnfantPage{
               }
             );
             this.filleulService.emitFilleul();
+            this.indx=this.filleulService.filleulList.indexOf(this.filleul);
           },
           (error) => {
             
@@ -165,12 +169,46 @@ export class FormParrainageEnfantPage{
     this.compteService.addCompte(this.compte);
     this.parrain=new Parrain(this.parrainService.parrainList.length+1,this.donneur.id_donneur,this.compte.id_compte);
     this.parrainService.addParrain(this.parrain);
+    this.filleulList[this.indx].id_parrain=this.parrain.id_parrain;
+
     let loader1 = this.loadingCtrl.create({
         content: 'Sauvegarde en cours…'
       });
       loader1.present();
       this.utilisateurService.saveData().then(
         () => {
+          this.donneurService.saveData().then(
+            () => {
+             
+            },
+            (error) => {
+             
+            }
+          );
+          this.compteService.saveData().then(
+            () => {
+             
+            },
+            (error) => {
+             
+            }
+          );
+          this.parrainService.saveData().then(
+            () => {
+             
+            },
+            (error) => {
+             
+            }
+          );
+          this.filleulService.saveData().then(
+            () => {
+             
+            },
+            (error) => {
+             
+            }
+          );
           loader1.dismiss();
           this.toastCtrl.create({
             message: 'Données sauvegardées !',
@@ -178,83 +216,26 @@ export class FormParrainageEnfantPage{
             position: 'bottom'
           }).present();
         },
-        (error) => {
-          loader1.dismiss();
-          this.toastCtrl.create({
-            message: error,
-            duration: 3000,
-            position: 'bottom'
-          }).present();
-        }
-      );
-      let loader2 = this.loadingCtrl.create({
-        content: 'Sauvegarde en cours…'
-      });
-      loader2.present();
-      this.donneurService.saveData().then(
-        () => {
-          loader2.dismiss();
-          this.toastCtrl.create({
-            message: 'Données sauvegardées !',
-            duration: 3000,
-            position: 'bottom'
-          }).present();
-        },
-        (error) => {
-          loader2.dismiss();
-          this.toastCtrl.create({
-            message: error,
-            duration: 3000,
-            position: 'bottom'
-          }).present();
-        }
-      );
-      let loader3 = this.loadingCtrl.create({
-        content: 'Sauvegarde en cours…'
-      });
-      loader3.present();
-      this.compteService.saveData().then(
-        () => {
-          loader3.dismiss();
-          this.toastCtrl.create({
-            message: 'Données sauvegardées !',
-            duration: 3000,
-            position: 'bottom'
-          }).present();
-        },
-        (error) => {
-          loader3.dismiss();
-          this.toastCtrl.create({
-            message: error,
-            duration: 3000,
-            position: 'bottom'
-          }).present();
-        }
-      );
-      let loader4 = this.loadingCtrl.create({
-        content: 'Sauvegarde en cours…'
-      });
-      loader4.present();
-      this.parrainService.saveData().then(
-        () => {
-          loader4.dismiss();
-          this.toastCtrl.create({
-            message: 'Données sauvegardées !',
-            duration: 3000,
-            position: 'bottom'
-          }).present();
-        },
-        (error) => {
-          loader4.dismiss();
-          this.toastCtrl.create({
-            message: error,
-            duration: 3000,
-            position: 'bottom'
-          }).present();
-        }
-      );
-       this.navCtrl.push(ParrainageEnfantPage);
+      (error) => {
+        loader1.dismiss();
+        this.toastCtrl.create({
+          message: error,
+          duration: 3000,
+          position: 'bottom'
+        }).present();
+      }
+    );
     
+      
+      this.navCtrl.push(ParrainageEnfantPage);
+    
+    }
+    ngOnDestroy() {
+      this.filleulSubscription.unsubscribe();
+      this.utilisateurSubscription.unsubscribe();
+      this.parrainSubscription.unsubscribe();
+      this.donneurSubscription.unsubscribe();
+      this.donneurSubscription.unsubscribe();
     }
     
 }

@@ -10,6 +10,7 @@ export class Filleul{
         this.situat_famillial=situat_famillial;
         this.prenom=prenom;
         this.nom=nom;
+        this.date_nais=date_nais
         this.id_parrain=id_parrain
     }
 }

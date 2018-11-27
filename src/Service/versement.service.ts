@@ -5,7 +5,7 @@ import { Versement } from '../models/Versement.models';
 
 export class VersementService {
 versement$= new Subject<Versement[]>();
-  versementList: Versement[]=[ ] ;
+  versementList: Versement[]=[] ;
     addVersement(versement: Versement) {
     this.versementList.push(versement);
     this.emitVersement();
