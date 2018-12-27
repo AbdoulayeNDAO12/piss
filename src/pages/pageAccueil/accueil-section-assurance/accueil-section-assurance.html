@@ -20,29 +20,5 @@
         </ion-card>
       </ion-col>
     </ion-row>      
-    <ion-row *ngIf="type=='Prestataire'">
-        <ion-col >
-          <ion-card  (click)="onGoToParrainageEnfantPage()" color="menus">
-            <img src="../assets/imgs/QR_code.png" />
-            <ion-card-content>
-              <ion-card-title>
-                Scanner le QRCODE du malade
-              </ion-card-title>
-            </ion-card-content>
-          </ion-card>
-        </ion-col>
-      </ion-row>
-      <ion-row *ngIf="type=='Beneficiaire' ">
-          <ion-col >
-            <ion-card  (click)="onGoToParrainageEnfantPage()" color="menus">
-              <img src="../assets/imgs/QR_code.png" />
-              <ion-card-content>
-                <ion-card-title>
-                  Afficher mon QRCODE
-                </ion-card-title>
-              </ion-card-content>
-            </ion-card>
-          </ion-col>
-        </ion-row>          
   </ion-grid>
 </ion-content>
