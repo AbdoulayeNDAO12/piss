@@ -21,6 +21,7 @@ import { Medicament_Consultation } from '../../models/medicament_consultation.mo
 import { Medicament_ConsultationService } from '../../Service/medicament_consultation.service';
 import { NotificationPage } from '../notification/notification';
 import { AccueilPage } from '../pageAccueil/accueil/accueil';
+import { Utilisateur } from '../../models/Utilisateur.models';
 
 @IonicPage()
 @Component({
@@ -51,6 +52,7 @@ export class ConsutationMaladePage {
   remboursementList: Remboursement[];
   medicament_consultationSubscription: Subscription;
   medicament_consultationList: Medicament_Consultation[];
+  utilisateur: Utilisateur;
 
 
 
@@ -74,7 +76,7 @@ export class ConsutationMaladePage {
     });
   }
   ngOnInit() {
-    this.initTechnologyFields();
+   this.initTechnologyFields();
     this.consultationService.retrieveData().then(
       () => {
         this.consultationSubscription = this.consultationService.consultation$.subscribe(

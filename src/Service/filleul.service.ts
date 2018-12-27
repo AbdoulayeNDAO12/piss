@@ -11,35 +11,35 @@ export class FilleulService {
     nom: "NDIAYE",
     prenom : "Mamadou",
     situat_famillial : "orphelin",
-    date_nais: new Date(),
+    date_nais: "05-10-2002",
     id_parrain:0
   }, {
     id_filleul : 2,
     nom: "GUEYE",
     prenom : "Fallou",
     situat_famillial : "orphelin",
-    date_nais: new Date(),
+    date_nais: "12-06-2003",
     id_parrain:0
   }, {
     id_filleul : 3,
     nom : "Fall",
     prenom : "Ndeye Sokhna",
     situat_famillial : "orphelin",
-    date_nais: new Date(),
+    date_nais: "17-05-2002",
     id_parrain:0
   }, {
     id_filleul : 4,
     nom: "MBAYE",
     prenom: "Aissatou",
     situat_famillial : "orphelin",
-    date_nais: new Date(),
+    date_nais: "05-10-2005",
     id_parrain:0
   }, {
     id_filleul : 2,
     nom : "CISSE",
     prenom : "Abdoulaye",
     situat_famillial : "orphelin",
-    date_nais: new Date(),
+    date_nais: "25-11-2002",
     id_parrain:0
   } ];
   addFilleul(filleul: Filleul) {

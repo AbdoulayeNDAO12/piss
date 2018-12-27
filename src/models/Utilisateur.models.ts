@@ -6,7 +6,7 @@ export class Utilisateur{
     profession:string;
     telephone:string;
     sexe:string;
-    date_nais:Date;
+    date_nais:String;
     email:string;
     mot_de_passe:string;
     type_user:string;
@@ -17,7 +17,7 @@ export class Utilisateur{
         profession:string,
         telephone:string,
         sexe:string,
-        date_nais:Date,
+        date_nais:String,
         email:string,
         mot_de_passe:string,
         type_user:string){

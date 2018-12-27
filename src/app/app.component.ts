@@ -13,19 +13,22 @@ import { ZakatPage } from '../pages/zakat/zakat';
 import { DonPage } from '../pages/don/don';
 import { ConsutationMaladePage } from '../pages/consutation-malade/consutation-malade';
 import { VenteMedicamentPage } from '../pages/vente-medicament/vente-medicament';
+import { QrcodePage } from '../pages/qrcode/qrcode';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   rootPage: any = TabsPage;
-  authPage:any = AuthPage;
+  authPage :any= AuthPage;
   zakatPage: any = ZakatPage;
   consutationMaladePage :any = ConsutationMaladePage;
   venteMedicamentPage = VenteMedicamentPage;
   @ViewChild('content') content: NavController;
   accueilParrainagePage = AccueilParrainagePage;
   donPage= DonPage;
+  qrcodePage:any=QrcodePage;
+  isAuth:boolean;
 
   constructor(platform: Platform,
     statusBar: StatusBar,
@@ -43,6 +46,16 @@ export class MyApp {
         messagingSenderId: "1090307730027"
       };
       firebase.initializeApp(config);
+      firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+          this.isAuth = true;
+          
+        } else {
+          this.isAuth = false;
+          this.content.setRoot(this.rootPage);
+        }
+      });
+    
 
       /*var setup = new paydunya.Setup({
         masterKey: 'wQzk9ZwR-Qq9m-0hD0-zpud-je5coGC3FHKW',
@@ -57,6 +70,9 @@ export class MyApp {
   onNavigate(page: any, data?: {}) {
     this.content.setRoot(page, data ? data : null);
     this.menuCtrl.close();
+  }
+  onDisconnect(){
+    firebase.auth().signOut();
   }
 
 }

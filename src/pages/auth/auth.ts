@@ -9,6 +9,11 @@ import { Utilisateur } from '../../models/Utilisateur.models';
 import { FilleulService } from '../../Service/filleul.service';
 import { ConsultationService } from '../../Service/consultation.service';
 import { Medicament_ConsultationService } from '../../Service/medicament_consultation.service';
+import * as firebase from 'firebase';
+import { Subscription } from 'rxjs';
+import { HomePage } from '../home/home';
+import { AccueilSectionAssurancePage } from '../pageAccueil/accueil-section-assurance/accueil-section-assurance';
+
 
 @Component({
   selector: 'page-auth',
@@ -22,18 +27,43 @@ export class AuthPage implements OnInit {
   zakatPage = ZakatPage;
   person:any=Utilisateur;
   list: any[];
+  email:String ;
+  utilisateurSubscription: Subscription;
+  utilisateurList: Utilisateur[];
+  utilisateur: Utilisateur;
+  i:number;
+  compt: number;
+ 
+  
  
 
   constructor(private menuCtrl: MenuController,
               private navCtrl:NavController,
               private formBuilder: FormBuilder,
-              private user:UserService,private medicament_consultationService: Medicament_ConsultationService,
+              private utilisateurService: UserService,private filleul: FilleulService,
               private loadingCtrl:LoadingController,
-              private toastCtrl:ToastController) {}
+              private toastCtrl:ToastController) {
+              
+              }
 
   ngOnInit() {
+   
     this.initForm();
-    this.list=this.user.utilisateurList;
+    this.utilisateurService.retrieveData().then(
+      () => {
+        this.utilisateurSubscription = this.utilisateurService.utilisateur$.subscribe(
+          (utilisateur: Utilisateur[]) => {
+            this.utilisateurList = utilisateur.slice();
+          }
+        );
+        this.utilisateurService.emitUser();
+      },
+      (error) => {
+
+      }
+    );
+      
+    
   }
 
   onToggleMenu() {
@@ -46,12 +76,22 @@ export class AuthPage implements OnInit {
       password: ['', Validators.required]
     });
   }
+
+  
+  
     onSubmitForm() {
     const email = this.authForm.get('email').value;
     const password = this.authForm.get('password').value;
-    this.user.signInUser(email,password).then(
+    for(this.i=0;this.i<this.utilisateurList.length;this.i++){
+      if(this.utilisateurList[this.i].email===email){
+        this.compt=this.i;
+      }
+    }
+    this.utilisateur=this.utilisateurList[this.compt];
+    this.utilisateurService.signInUser(email,password).then(
       () => {
-        this.navCtrl.push(TabsPage);
+        
+        this.navCtrl.push(AccueilSectionAssurancePage,{utilisateur:this.utilisateur});
       },
       (error) => {
         this.errorMessage = error;
@@ -61,12 +101,12 @@ export class AuthPage implements OnInit {
     onClick(){
       this.navCtrl.push(InscriptionPage);
     }
-    enregistre(){
+   /*enregistre(){
       let loader = this.loadingCtrl.create({
         content: 'Sauvegarde en cours'
       });
       loader.present();
-      this.medicament_consultationService.saveData().then(
+      this.user.saveData().then(
         () => {
           loader.dismiss();
           this.toastCtrl.create({
@@ -85,5 +125,5 @@ export class AuthPage implements OnInit {
         }
         
       );
-    }
+   }*/
 }

@@ -6,7 +6,7 @@
   </ion-header>
   <ion-content>
       <ion-list>
-      <button ion-item icon-start (click)="onNavigate(authPage)">
+      <button ion-item icon-start (click)="onNavigate(qrcodePage )" *ngIf="isAuth">
         <ion-icon name="person"></ion-icon>
        Compte
       </button>
@@ -18,26 +18,27 @@
           <ion-icon ios="ios-people" md="md-people"></ion-icon>
           Parrainage
       </button>
-      <button ion-item icon-start (click)="onNavigate(donPage)">
+      <button ion-item icon-start (click)="onNavigate(donPage)" >
         <ion-icon ios="ios-people" md="md-people"></ion-icon>
         Faire un Don
     </button>
-      <button ion-item icon-start (click)="onNavigate(venteMedicamentPage)">
+      <button ion-item icon-start (click)="onNavigate(venteMedicamentPage)" >
           <ion-icon ios="ios-people" md="md-people"></ion-icon>
           Assurance
       </button>
-      <button ion-item icon-start (click)="onNavigate(authPage)">
+      <button ion-item icon-start (click)="onNavigate(authPage)" *ngIf="isAuth">
           <ion-icon ios="ios-archive" md="md-archive"></ion-icon>
           Consulter son historique
       </button>
-      <button ion-item icon-start (click)="onNavigate(authPage)"><ion-icon name="settings"></ion-icon>
+      <button ion-item icon-start (click)="onNavigate(authPage)" >
+        <ion-icon name="settings" ></ion-icon>
         Reglages
       </button>
-      <button ion-item icon-start (click)="onNavigate(consutationMaladePage)">
+      <button ion-item icon-start (click)="onNavigate(authPage)" *ngIf="!isAuth">
         <ion-icon name="person"></ion-icon>
         Connexion
       </button>
-        <button ion-item icon-start (click)="onNavigate(authPage, {mode: 'connect'})">
+        <button ion-item icon-start (click)="onDisconnect(authPage, {mode: 'deconnect'})" *ngIf="isAuth">
           <ion-icon name="exit"></ion-icon>
           Déconnexion
         </button>
