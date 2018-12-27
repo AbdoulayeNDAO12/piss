@@ -3,10 +3,6 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { BarcodeScanner } from '@ionic-native/barcode-scanner';
-import { Toast } from '@ionic-native/toast';
-import { HttpModule } from '@angular/http';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
@@ -20,7 +16,7 @@ import { AuthService } from '../Service/auth.sevice';
 import { AccueilPage } from '../pages/pageAccueil/accueil/accueil';
 import { InscriptionPage } from '../pages/inscription/inscription';
 import { ZakatPage } from '../pages/zakat/zakat';
-import { AccueilParrainagePage } from '../pages/Parrainage/accueilParrainage/accueilParrainage';
+import { AccueilParrainagePage} from '../pages/Parrainage/accueilParrainage/accueilParrainage';
 
 import { NotificationPage } from '../pages/notification/notification';
 import { ParrainageEnfantPage } from '../pages/Parrainage/parrainageEnfant/parrainageEnfant';
@@ -56,11 +52,7 @@ import { ConsutationMaladePage } from '../pages/consutation-malade/consutation-m
 import { VenteMedicamentPage } from '../pages/vente-medicament/vente-medicament';
 import { Medicament_ConsultationService } from '../Service/medicament_consultation.service';
 import { MedicamentService } from '../Service/medicament.service';
-import { DataServiceProvider } from '../providers/data-service/data-service';
-import { QrcodePage } from '../pages/qrcode/qrcode';
 import { AccueilSectionAssurancePage } from '../pages/pageAccueil/accueil-section-assurance/accueil-section-assurance';
-import { AccueilSectionParrainagePage } from '../pages/pageAccueil/accueil-section-parrainage/accueil-section-parrainage';
-import { AccueilSectionZakatPage } from '../pages/pageAccueil/accueil-section-zakat/accueil-section-zakat';
 
 @NgModule({
   declarations: [
@@ -84,16 +76,11 @@ import { AccueilSectionZakatPage } from '../pages/pageAccueil/accueil-section-za
     DonPage,
     ConsutationMaladePage,
     VenteMedicamentPage,
-    QrcodePage,
-    AccueilSectionAssurancePage,
-    AccueilSectionParrainagePage,
-    AccueilSectionZakatPage
+   
   ],
   imports: [
     FormsModule,
     BrowserModule,
-    HttpModule,
-    HttpClientModule,
     IonicModule.forRoot(MyApp),
     SuperTabsModule.forRoot()
   ],
@@ -119,16 +106,11 @@ import { AccueilSectionZakatPage } from '../pages/pageAccueil/accueil-section-za
     DonPage,
     ConsutationMaladePage,
     VenteMedicamentPage,
-    QrcodePage,
-    AccueilSectionAssurancePage,
-    AccueilSectionParrainagePage,
-    AccueilSectionZakatPage
+    
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    BarcodeScanner,
-    Toast,
     AuthService,
     UserService,
     TuteurService,
@@ -153,8 +135,7 @@ import { AccueilSectionZakatPage } from '../pages/pageAccueil/accueil-section-za
     Medicament_ConsultationService,
     InstitutionParrainService,
     MedicamentService,
-    { provide: ErrorHandler, useClass: IonicErrorHandler },
-    DataServiceProvider
+    {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
-export class AppModule { }
+export class AppModule {}

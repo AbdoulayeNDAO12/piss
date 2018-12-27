@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Utilisateur } from '../../../models/Utilisateur.models';
 
 /**
  * Generated class for the AccueilSectionAssurancePage page.
@@ -14,8 +15,17 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'accueil-section-assurance.html',
 })
 export class AccueilSectionAssurancePage {
-
+  
+  utilisateur:Utilisateur
+  type: string;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+  }
+  
+  ngOnInit(){
+    this.utilisateur = this.navParams.get('utilisateur'); 
+    if(this.utilisateur!=null){
+      this.type=this.utilisateur.type_user;
+    }
   }
 
   ionViewDidLoad() {
