@@ -1,17 +1,37 @@
 <ion-header >
   <ion-navbar color="menus">
+
+      <ion-buttons left>
+          <button ion-button icon-only (click)="onToggleMenu()">
+            <ion-icon ios="ios-menu" md="md-menu"></ion-icon>
+          </button>
+        </ion-buttons>
+
     <ion-title>
       Contact
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
   <ion-list>
-    <ion-list-header>Follow us on Twitter</ion-list-header>
+    <ion-list-header>Pour nous contacter:</ion-list-header>
     <ion-item>
-      <ion-icon name="ionic" item-start></ion-icon>
-      Vous povez nous contactez au 776925961
+      <ion-icon name="call" item-start></ion-icon>
+       776925961
+    </ion-item>
+    <p>suivez nous sur</p>
+    <ion-item>
+      <ion-icon name="logo-twitter" item-start></ion-icon>
+      <a href="//twitter.com/integrationservicessociaux">Twitter</a>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="logo-instagram" item-start></ion-icon>
+      <a href="https://www.instagram.com/integrationservicessociaux/?hl=fr">Instagram</a>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="logo-facebook" item-start></ion-icon>
+      <a href="https://fr-fr.facebook.com/integrationservicessociaux/">Facebook</a>
     </ion-item>
   </ion-list>
 </ion-content>

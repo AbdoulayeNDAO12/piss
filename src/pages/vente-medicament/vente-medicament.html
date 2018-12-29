@@ -1,5 +1,12 @@
-<ion-header>
-  <ion-navbar>
+<ion-header color = "menus">
+  <ion-navbar color = "menus">
+
+      <ion-buttons left>
+          <button ion-button icon-only (click)="onToggleMenu()">
+            <ion-icon ios="ios-menu" md="md-menu"></ion-icon>
+          </button>
+        </ion-buttons>
+
     <ion-title>Consultation</ion-title>
   </ion-navbar>
 </ion-header>
@@ -16,7 +23,7 @@
         <ion-input aria-placeholder="sum" formControlName="montant"></ion-input>
       </ion-item>
   </ion-list>
-    <button ion-button block margin-top color="primary" text-center (click)="onSubmitForm()">Soumettre</button>
+    <button ion-button block margin-top color="menus" text-center (click)="onSubmitForm()" class="mbutton">Soumettre</button>
   </form>
 
 </ion-content>

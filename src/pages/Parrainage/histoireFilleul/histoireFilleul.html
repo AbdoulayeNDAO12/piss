@@ -1,12 +1,22 @@
-<ion-header>
-    <ion-navbar>
+<ion-header color="menus">
+    <ion-navbar color="menus">
          <ion-title>Mon histoire</ion-title>
     </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-    <p>Le parrainage est un excellent moyen de permettre à un enfant vulnérable de grandir en bonne santé, protégé de toute forme d’abus.
-        En parrainant un enfant, vous participez à l’amélioration concrète et durable de ses conditions de vie et celles de toute sa communauté.
+    <ion-card class="aider">
+        <img src="../assets/imgs/avatar.jpeg" />
+    </ion-card>
+    <p>
+        Bonjour je m'appelle Mamadou NDIAYE, j'ai 8 ans et je vis au Sénégal. je suis orphelin de naissance et j'habite avec ma tante 
+        j'aurai besoin de votre aide pour pouvoir aller à l'école et avoir une vie heureuse. 
+        Je compte sur vous pour réaliser mon rêve.
     </p>
+    <ion-col>
+        <button ion-button full color="menus" (click)="onGoToParraineMoi()" class="mbutton">        
+            Parrainez moi
+        </button>
+    </ion-col>
 
 </ion-content>

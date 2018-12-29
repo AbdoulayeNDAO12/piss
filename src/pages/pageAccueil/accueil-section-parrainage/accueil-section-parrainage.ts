@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AccueilParrainagePage } from '../../Parrainage/accueilParrainage/accueilParrainage';
+import { SuperTabsController } from 'ionic2-super-tabs';
 
 /**
  * Generated class for the AccueilSectionParrainagePage page.
@@ -16,7 +17,10 @@ import { AccueilParrainagePage } from '../../Parrainage/accueilParrainage/accuei
 })
 export class AccueilSectionParrainagePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  rootNavCtrl: NavController;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private superTabsCtrl: SuperTabsController) {
+    this.rootNavCtrl = this.navParams.get('rootNavCtrl');
   }
 
   ionViewDidLoad() {
@@ -24,7 +28,7 @@ export class AccueilSectionParrainagePage {
   }
 
   onGoToParrainage(){
-    this.navCtrl.push(AccueilParrainagePage);
+    this.rootNavCtrl.push(AccueilParrainagePage);
   }
 
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
 import { Consultation } from '../../models/Consultation.models';
 
 /**
@@ -16,8 +16,8 @@ import { Consultation } from '../../models/Consultation.models';
 })
 export class NotificationPage implements OnInit{
   consultation: string;
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  
+  constructor(public navCtrl: NavController, public navParams: NavParams, public menuCtrl:MenuController) {
   }
   ngOnInit() {
     this.consultation = this.navParams.get('consultations'); 
@@ -25,6 +25,10 @@ export class NotificationPage implements OnInit{
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad NotificationPage');
+  }
+
+  onToggleMenu(){
+    this.menuCtrl.open() ;
   }
 
 }

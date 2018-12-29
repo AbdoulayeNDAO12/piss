@@ -1,5 +1,5 @@
-<ion-header>
-    <ion-navbar>
+<ion-header color="menus">
+    <ion-navbar color="menus">
          <ion-title>Parrainer une institution</ion-title>
     </ion-navbar>
 </ion-header>
@@ -10,23 +10,23 @@
         {{dernier}}
     </p>
     <ion-card  *ngFor="let institution of institutionList; let i = index" class="indiv">
-        <img src="../assets/imgs/sweety.jpg" />
+        <img src="../assets/imgs/parrainage.png" />
     
         <ion-card-content>
           <ion-card-title>
             {{ institution.nom}}
           </ion-card-title>
           <p>
-            {{institution.nom}} est une institutoin </p>
+            {{institution.nom}} est une institution sise... </p>
           <ion-row>
               <ion-col>
-            <button ion-button color="light" (click)="onGoToHistoire()" class="mbutton">        
-              Mon histoire
+            <button ion-button color="menus" (click)="onGoToDescription()" class="mmbutton">        
+              Description 
             </button>
             </ion-col>
             <ion-col>
-            <button ion-button color="light" (click)="onGoToParraineMoi(institution)" class="mbutton">        
-              Parrainez moi
+            <button ion-button color="menus" (click)="onGoToParraineMoi(institution)" class="mmbutton">        
+              Nous parrainer
             </button>
           </ion-col>
           </ion-row>

@@ -41,6 +41,7 @@ import { ConsultationService } from '../Service/consultation.service';
 import { RemboursementService } from '../Service/remboursement.service';
 import { AllocationService } from '../Service/allocation.service';
 import { HistoireFilleulPage } from '../pages/Parrainage/histoireFilleul/histoireFilleul';
+import { DescriptionInstitutionPage } from '../pages/Parrainage/description-institution/description-institution';
 import { FormParrainageEnfantPage } from '../pages/Parrainage/formParrainageEnfant/formParrainageEnfant';
 import { ZakatFormPage } from '../pages/zakat/zakat-form/zakat-form';
 import { FormParrainageInstitutionPage } from '../pages/Parrainage/form-parrainage-institution/form-parrainage-institution';
@@ -52,6 +53,9 @@ import { ConsutationMaladePage } from '../pages/consutation-malade/consutation-m
 import { VenteMedicamentPage } from '../pages/vente-medicament/vente-medicament';
 import { Medicament_ConsultationService } from '../Service/medicament_consultation.service';
 import { MedicamentService } from '../Service/medicament.service';
+import { ConsutationMaladePageModule } from '../pages/consutation-malade/consutation-malade.module';
+import { VenteMedicamentPageModule } from '../pages/vente-medicament/vente-medicament.module';
+import { DonPageModule } from '../pages/don/don.module';
 
 @NgModule({
   declarations: [
@@ -70,17 +74,18 @@ import { MedicamentService } from '../Service/medicament.service';
     ParrainageEnfantPage,
     ParrainageInstitutionPage,
     HistoireFilleulPage,
+    DescriptionInstitutionPage,
     FormParrainageEnfantPage,
     FormParrainageInstitutionPage,
-    DonPage,
-    ConsutationMaladePage,
-    VenteMedicamentPage
   ],
   imports: [
     FormsModule,
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    SuperTabsModule.forRoot()
+    SuperTabsModule.forRoot(),
+    ConsutationMaladePageModule,
+    VenteMedicamentPageModule,
+    DonPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -99,6 +104,7 @@ import { MedicamentService } from '../Service/medicament.service';
     ParrainageEnfantPage,
     ParrainageInstitutionPage,
     HistoireFilleulPage,
+    DescriptionInstitutionPage,
     FormParrainageEnfantPage,
     FormParrainageInstitutionPage,
     DonPage,

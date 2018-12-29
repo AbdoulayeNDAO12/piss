@@ -1,26 +1,33 @@
 <ion-header>
     <ion-navbar color="menus" no-lines no-padding>
-        <ion-title class="title">Faire un don</ion-title>
-        <ion-buttons start>
-            <button ion-button icon-only (click)="onToggleMenu()">
-                <ion-icon name="menu"></ion-icon>
-            </button>
-        </ion-buttons>
+
+            <ion-buttons start>
+                <button ion-button menuToggle>
+                    <ion-icon name="menu"></ion-icon>
+                </button>
+            </ion-buttons>
+
+        <ion-title class="title">Zakat</ion-title>
     </ion-navbar>
 </ion-header>
 
 
-<ion-content>
-    <ion-card>
+<ion-content padding>
+
+    <p class="debut">
+        La zakat est le troisième pilier de l'islam. Chaque année lunaire (hégire), Le musulman est tenu de calculer
+        ce montant et de le donner aux plus pauvres dans son pays de résidence. Parfois le donneur peut ne pas trouver de
+        récipiandaire. Ainsi notre plateforme a pour but de faciliter la tache à ce donneur. Beaucoup de personnes démunis ont 
+        été enregistrées au niveau de notre plateforme ainsi nous pouvons donner votre zakat aux pauvres de façon sûre et fiable.<br>        Faites nous confiance!
+    </p>
+    
+    <ion-card class="fini">
         <img src="../../assets/imgs/zakat.jpg" alt="">
         <ion-card-content>
-            <ion-card-title>Zakat</ion-card-title>
-            <p>Cliquer ici pour verser la zakat</p>
-            <button ion-button full [navPush]="zForm">verser zakat</button>
+            <ion-col>                      
+            <button ion-button full color = "menus" class="mbutton" [navPush]="zForm" >verser zakat</button>
+            </ion-col>
         </ion-card-content>
     </ion-card>
 </ion-content>
 
-<ion-footer>
-    <p>Nous contacter : abckonefsidy95@gmail.com</p>
-</ion-footer>

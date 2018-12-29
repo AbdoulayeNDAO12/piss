@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
 
 /**
@@ -18,7 +18,6 @@ export class AccueilPage {
   parrainage: any = 'AccueilSectionParrainagePage';
   zakat: any = 'AccueilSectionZakatPage';
   
-
   constructor(public navCtrl: NavController, public navParams: NavParams,public menuCtrl:MenuController) {
   }
 

@@ -1,12 +1,19 @@
-<ion-header>
-  <ion-navbar>
+<ion-header color = "menus">
+  <ion-navbar color = "menus">
+
+      <ion-buttons left>
+            <button ion-button icon-only (click)="onToggleMenu()">
+              <ion-icon ios="ios-menu" md="md-menu"></ion-icon>
+            </button>
+          </ion-buttons>
+
     <ion-title>Consultation</ion-title>
   </ion-navbar>
 </ion-header>
 
 
 <ion-content padding>
-  <h4>Ordannce</h4>
+  <h4>Ordonnance</h4>
    <form
       [formGroup]="form"
       (ngSubmit)="manage(form.value)">
@@ -66,7 +73,7 @@
             float-left
             icon-left
             clear
-            (click)="addNewInputField()">
+            (click)="addNewInputField()" color = "menus">
                <ion-icon name="add"></ion-icon>
                Ajouter un médicament 
          </span>
@@ -85,8 +92,8 @@
    	     ion-button
    	     block
    	     margin-top
-   	     color="primary"
-   	     text-center (click)="onSubmitForm()">Submit</button>
+   	     color="menus"
+   	     text-center (click)="onSubmitForm()"  class="mbutton">Sauvegarder</button>
    </form>
 
 </ion-content>
