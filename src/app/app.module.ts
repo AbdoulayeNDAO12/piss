@@ -53,6 +53,11 @@ import { VenteMedicamentPage } from '../pages/vente-medicament/vente-medicament'
 import { Medicament_ConsultationService } from '../Service/medicament_consultation.service';
 import { MedicamentService } from '../Service/medicament.service';
 import { AccueilSectionAssurancePage } from '../pages/pageAccueil/accueil-section-assurance/accueil-section-assurance';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { Toast } from '@ionic-native/toast';
+import { QrcodePage } from '../pages/qrcode/qrcode';
+
+import { NgxQRCodeModule } from 'ngx-qrcode2';
 
 @NgModule({
   declarations: [
@@ -76,13 +81,15 @@ import { AccueilSectionAssurancePage } from '../pages/pageAccueil/accueil-sectio
     DonPage,
     ConsutationMaladePage,
     VenteMedicamentPage,
+    QrcodePage
    
   ],
   imports: [
     FormsModule,
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    SuperTabsModule.forRoot()
+    SuperTabsModule.forRoot(),
+    NgxQRCodeModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -106,10 +113,13 @@ import { AccueilSectionAssurancePage } from '../pages/pageAccueil/accueil-sectio
     DonPage,
     ConsutationMaladePage,
     VenteMedicamentPage,
+    QrcodePage
     
   ],
   providers: [
     StatusBar,
+    BarcodeScanner,
+    Toast,
     SplashScreen,
     AuthService,
     UserService,

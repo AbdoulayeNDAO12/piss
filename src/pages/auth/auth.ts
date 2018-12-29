@@ -9,9 +9,7 @@ import { Utilisateur } from '../../models/Utilisateur.models';
 import { FilleulService } from '../../Service/filleul.service';
 import { ConsultationService } from '../../Service/consultation.service';
 import { Medicament_ConsultationService } from '../../Service/medicament_consultation.service';
-import * as firebase from 'firebase';
 import { Subscription } from 'rxjs';
-import { HomePage } from '../home/home';
 import { AccueilSectionAssurancePage } from '../pageAccueil/accueil-section-assurance/accueil-section-assurance';
 
 
@@ -41,7 +39,7 @@ export class AuthPage implements OnInit {
               private navCtrl:NavController,
               private formBuilder: FormBuilder,
               private utilisateurService: UserService,private filleul: FilleulService,
-              private loadingCtrl:LoadingController,
+              private loadingCtrl:LoadingController,private consult:Medicament_ConsultationService,
               private toastCtrl:ToastController) {
               
               }
@@ -101,12 +99,12 @@ export class AuthPage implements OnInit {
     onClick(){
       this.navCtrl.push(InscriptionPage);
     }
-   /*enregistre(){
+  /* enregistre(){
       let loader = this.loadingCtrl.create({
         content: 'Sauvegarde en cours'
       });
       loader.present();
-      this.user.saveData().then(
+      this.consult.saveData().then(
         () => {
           loader.dismiss();
           this.toastCtrl.create({

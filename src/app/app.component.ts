@@ -22,6 +22,7 @@ export class MyApp {
   rootPage: any = TabsPage;
   authPage :any= AuthPage;
   zakatPage: any = ZakatPage;
+  qrcodepage:any = QrcodePage;
   consutationMaladePage :any = ConsutationMaladePage;
   venteMedicamentPage = VenteMedicamentPage;
   @ViewChild('content') content: NavController;

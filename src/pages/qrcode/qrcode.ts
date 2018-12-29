@@ -2,7 +2,9 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { Toast } from '@ionic-native/toast';
-import { DataServiceProvider } from '../../providers/data-service/data-service';
+import { UserService } from '../../Service/utilisateur.service';
+import { Subscription } from 'rxjs';
+import { Utilisateur } from '../../models/Utilisateur.models';
 
 /**
  * Generated class for the QrcodePage page.
@@ -20,12 +22,34 @@ export class QrcodePage {
   products: any[];
   selectedProduct: any;
   productFound: boolean = false;
+  qrData = null;
+  createdCode = "pathe";
+  scannedCode = null;
+  utilisateurSubscription: Subscription;
+  utilisateurList: Utilisateur[];
 
   constructor(public navCtrl: NavController,
     private barcodeScanner: BarcodeScanner,
-    private toast: Toast,
-    public dataService: DataServiceProvider) {
-        this.products = this.dataService.Produt;
+    private toast: Toast,private utilisateurService: UserService) {
+    
+  }
+  ngOnInit() {
+   
+    this.utilisateurService.retrieveData().then(
+      () => {
+        this.utilisateurSubscription = this.utilisateurService.utilisateur$.subscribe(
+          (utilisateur: Utilisateur[]) => {
+            this.utilisateurList = utilisateur.slice();
+          }
+        );
+        this.utilisateurService.emitUser();
+      },
+      (error) => {
+
+      }
+    );
+      
+    
   }
   scan() {
   this.selectedProduct = {};
@@ -48,7 +72,7 @@ export class QrcodePage {
       }
     );
   });
-}
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad QrcodePage');

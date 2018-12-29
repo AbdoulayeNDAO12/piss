@@ -6,11 +6,29 @@
 -->
 
 
-<ion-content padding >
+<ion-content padding>
   <ion-grid>
+      <ion-row>
+          <ion-col>
+    
+            <ion-card  *ngIf="type=='Beneficiaire'">
+              <ion-card-header>
+               Mon Qrcode
+              </ion-card-header>
+                  <ngx-qrcode [(qrc-value)]="createdCode"></ngx-qrcode>
+                  <ion-card-content>
+                    <ul>
+                      <li>{{utilisateur.prenom}}</li>
+                      <li>{{utilisateur.nom}}</li>
+                      <li>{{utilisateur.date_nais}}</li>
+                    </ul>
+                  </ion-card-content>
+                  </ion-card>
+          </ion-col>
+        </ion-row>
     <ion-row>
-      <ion-col >
-        <ion-card  (click)="onGoToParrainageEnfantPage()" color="menus">
+      <ion-col>
+        <ion-card (click)="onGoToParrainageEnfantPage()" color="menus">
           <img src="../assets/imgs/assurance.jpg" />
           <ion-card-content>
             <ion-card-title>
@@ -19,30 +37,30 @@
           </ion-card-content>
         </ion-card>
       </ion-col>
-    </ion-row>   
-    <ion-row *ngIf="type=='Prestataire'">
-      <ion-col >
-        <ion-card  (click)="onGoToParrainageEnfantPage()" color="menus">
+    </ion-row>
+    <ion-row *ngIf="profession=='Medecin'">
+      <ion-col>
+        <ion-card (click)="scanMedecin()" color="menus">
           <img src="../assets/imgs/QR_code.png" />
           <ion-card-content>
             <ion-card-title>
-              Scanner le Qrcode du malade!
+              Scanner le Qrcode du Patient!
             </ion-card-title>
           </ion-card-content>
         </ion-card>
       </ion-col>
-    </ion-row> 
-    <ion-row>
-      <ion-col *ngIf="type=='Beneficiaire'" >
-        <ion-card  (click)="onGoToParrainageEnfantPage()" color="menus">
-          <img src="../assets/imgs/QR_code.png" />
-          <ion-card-content>
-            <ion-card-title>
-              Afficher mon Qrcode!
-            </ion-card-title>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-    </ion-row>        
+    </ion-row>
+    <ion-row *ngIf="profession=='Pharmacien'">
+        <ion-col>
+          <ion-card (click)="scanPharmacien()" color="menus">
+            <img src="../assets/imgs/QR_code.png" />
+            <ion-card-content>
+              <ion-card-title>
+                Scanner le Qrcode du Patient!
+              </ion-card-title>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
   </ion-grid>
 </ion-content>

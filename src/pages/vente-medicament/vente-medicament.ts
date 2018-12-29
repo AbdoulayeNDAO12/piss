@@ -22,6 +22,7 @@ import { Medicament_ConsultationService } from '../../Service/medicament_consult
 import { NotificationPage } from '../notification/notification';
 import { AccueilPage } from '../pageAccueil/accueil/accueil';
 import { Medicament } from '../../models/Medicament.models';
+import { Utilisateur } from '../../models/Utilisateur.models';
 
 
 /**
@@ -52,6 +53,13 @@ export class VenteMedicamentPage {
   remboursementList: Remboursement[];
   medicament_consultationSubscription: Subscription;
   medicament_consultationList: Medicament_Consultation[];
+  utilisateur1: Utilisateur;
+  malade: Utilisateur;
+  i: number;
+  compt: String[];
+  j: number;
+  hopital:number;
+  prestataire: Prestataire;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private _FB: FormBuilder, private consultationService: ConsultationService, private hopitalService: HopitalService,
     private pharmacieService: PharmacieService, private toastCtrl: ToastController, private beneficiaireService: BeneficiaireService,
@@ -64,6 +72,8 @@ initForm() {
   });
 }
   ngOnInit() {
+    this.utilisateur1 = this.navParams.get('utilisateur'); 
+    this.malade = this.navParams.get('malade'); 
     this.initForm();
     this.consultationService.retrieveData().then(
       () => {
@@ -156,6 +166,19 @@ initForm() {
 
       }
     );
+    for(this.i=0;this.i<this.consultationList.length;this.i++){
+     for(this.j=0;this.j<this.medicament_consultationList.length;this.j++){
+      if(this.medicament_consultationList[this.i].id_consultation===this.consultationList[this.i].id_consultation){
+        this.compt.push(this.medicament_consultationList[this.i].medicament);
+        this.hopital=this.consultationList[this.i].id_hopital;
+      }
+     }
+    }
+    for(this.i=0;this.i<this.prestataireList.length;this.i++){
+      if(this.prestataireList[this.i].id_prest=this.hopital){
+           this.prestataire=this.prestataireList[this.i];
+      }
+    }
   }
 
 

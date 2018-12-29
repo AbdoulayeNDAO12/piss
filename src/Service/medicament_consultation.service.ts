@@ -5,7 +5,17 @@ import { Medicament_Consultation } from '../models/medicament_consultation.model
 
 export class Medicament_ConsultationService {
 Medicament_Consultation$= new Subject<Medicament_Consultation[]>();
-  Medicament_ConsultationList: Medicament_Consultation[]=[] ;
+  Medicament_ConsultationList: Medicament_Consultation[]=[
+    {
+      medicament:"Frakidex",
+      id_consultation:1
+    },
+    {
+      medicament:"Doliprane",
+      id_consultation:1
+    }
+   
+  ] ;
     addMedicament_Consultation(Medicament_Consultation: Medicament_Consultation) {
     this.Medicament_ConsultationList.push(Medicament_Consultation);
     this.emitMedicament_Consultation();

@@ -53,7 +53,12 @@ export class ConsutationMaladePage {
   medicament_consultationSubscription: Subscription;
   medicament_consultationList: Medicament_Consultation[];
   utilisateur: Utilisateur;
-
+  utilisateur1: Utilisateur;
+  malade: Utilisateur;
+  utilisateurSubscription: Subscription;
+  utilisateurList: Utilisateur[];
+  compt: number;
+  compt1: number;
 
 
   constructor(public navCtrl: NavController,
@@ -76,7 +81,22 @@ export class ConsutationMaladePage {
     });
   }
   ngOnInit() {
+    this.utilisateur1 = this.navParams.get('utilisateur'); 
+    this.malade = this.navParams.get('malade'); 
    this.initTechnologyFields();
+   this.utilisateurService.retrieveData().then(
+    () => {
+      this.utilisateurSubscription = this.utilisateurService.utilisateur$.subscribe(
+        (utilisateur: Utilisateur[]) => {
+          this.utilisateurList = utilisateur.slice();
+        }
+      );
+      this.utilisateurService.emitUser();
+    },
+    (error) => {
+
+    }
+  );
     this.consultationService.retrieveData().then(
       () => {
         this.consultationSubscription = this.consultationService.consultation$.subscribe(
@@ -168,12 +188,22 @@ export class ConsutationMaladePage {
         
       }
     );
+    for(this.i=0;this.i<this.beneficiaireList.length;this.i++){
+      if(this.beneficiaireList[this.i].id_user===this.malade.id_user){
+        this.compt=this.beneficiaireList[this.i].id_benef;
+      }
+    }
+    for(this.i=0;this.i<this.prestataireList.length;this.i++){
+      if(this.prestataireList[this.i].id_user===this.utilisateur1.id_user){
+        this.compt1=this.prestataireList[this.i].id_prest;
+      }
+    }
   }
   onSubmitForm() {
     const description = this.form.get('description').value;
     const technologies = this.form.get('technologies').value;
     const montant = this.form.get('montant').value;
-    const consultations=new Consultation(1,montant,technologies,new Date(),1,2);
+    const consultations=new Consultation(this.consultationList.length+1,montant,new Date(),this.compt1,this.compt);
     this.consultationService.addUser(consultations);
     for(this.i=0;this.i<technologies.length; this.i++){
       const medicament_consultation=new Medicament_Consultation(technologies[this.i],consultations.id_consultation);
