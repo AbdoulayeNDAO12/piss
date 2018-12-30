@@ -5,7 +5,7 @@ import { Institution } from '../models/Institution.models';
 
 export class InstitutionService {
     institution$= new Subject<Institution[]>();
-institutionList: Institution[]=[] ;
+institutionList: Institution[]= [] ;
     addInstitution(institution: Institution) {
     this.institutionList.push(institution);
     this.emitInstitution();

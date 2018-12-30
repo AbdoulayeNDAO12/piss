@@ -11,6 +11,7 @@ import { ConsultationService } from '../../Service/consultation.service';
 import { Medicament_ConsultationService } from '../../Service/medicament_consultation.service';
 import { Subscription } from 'rxjs';
 import { AccueilSectionAssurancePage } from '../pageAccueil/accueil-section-assurance/accueil-section-assurance';
+import { Filleul } from '../../models/Filleul.model';
 
 
 @Component({
@@ -31,6 +32,8 @@ export class AuthPage implements OnInit {
   utilisateur: Utilisateur;
   i:number;
   compt: number;
+  filleulSubscription: Subscription;
+  filleulList: Filleul[];
  
   
  
@@ -40,7 +43,7 @@ export class AuthPage implements OnInit {
               private formBuilder: FormBuilder,
               private utilisateurService: UserService,private filleul: FilleulService,
               private loadingCtrl:LoadingController,private consult:Medicament_ConsultationService,
-              private toastCtrl:ToastController) {
+              private toastCtrl:ToastController,private filleulService:FilleulService) {
               
               }
 
@@ -58,6 +61,19 @@ export class AuthPage implements OnInit {
       },
       (error) => {
 
+      }
+    );
+    this.filleulService.retrieveData().then(
+      () => {
+        this.filleulSubscription = this.filleulService.filleul$.subscribe(
+          (filleul: Filleul[]) => {
+            this.filleulList = filleul.slice();
+          }
+        );
+        this.filleulService.emitFilleul();
+      },
+      (error) => {
+        
       }
     );
       
@@ -99,7 +115,22 @@ export class AuthPage implements OnInit {
     onClick(){
       this.navCtrl.push(InscriptionPage);
     }
-  /* enregistre(){
+    /*
+    modifFilleul(){
+      for(this.i=0;this.i<this.filleulList.length;this.i++){
+          this.filleulList[this.i].id_parrain=1;
+      }
+      this.filleulService.emitFilleul();
+      this.filleulService.saveData().then(
+        () => {
+         
+        },
+        (error) => {
+         
+        }
+      );
+  }
+   enregistre(){
       let loader = this.loadingCtrl.create({
         content: 'Sauvegarde en cours'
       });

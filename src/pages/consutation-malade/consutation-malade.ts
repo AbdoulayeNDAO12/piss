@@ -203,7 +203,7 @@ export class ConsutationMaladePage {
     const description = this.form.get('description').value;
     const technologies = this.form.get('technologies').value;
     const montant = this.form.get('montant').value;
-    const consultations=new Consultation(this.consultationList.length+1,montant,new Date(),this.compt1,this.compt);
+    const consultations=new Consultation(this.consultationList.length+1,montant,new Date(),this.compt1,this.compt,0);
     this.consultationService.addUser(consultations);
     for(this.i=0;this.i<technologies.length; this.i++){
       const medicament_consultation=new Medicament_Consultation(technologies[this.i],consultations.id_consultation);

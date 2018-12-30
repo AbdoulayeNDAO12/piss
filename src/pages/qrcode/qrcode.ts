@@ -5,6 +5,9 @@ import { Toast } from '@ionic-native/toast';
 import { UserService } from '../../Service/utilisateur.service';
 import { Subscription } from 'rxjs';
 import { Utilisateur } from '../../models/Utilisateur.models';
+import { Filleul } from '../../models/Filleul.model';
+import { ParrainService } from '../../Service/parrain.service';
+import { FilleulService } from '../../Service/filleul.service';
 
 /**
  * Generated class for the QrcodePage page.
@@ -23,10 +26,11 @@ export class QrcodePage {
   selectedProduct: any;
   productFound: boolean = false;
   qrData = null;
-  createdCode = "pathe";
+  createdCode = null;
   scannedCode = null;
   utilisateurSubscription: Subscription;
   utilisateurList: Utilisateur[];
+  i: number;
 
   constructor(public navCtrl: NavController,
     private barcodeScanner: BarcodeScanner,
@@ -48,7 +52,7 @@ export class QrcodePage {
 
       }
     );
-      
+   
     
   }
   scan() {
@@ -73,6 +77,7 @@ export class QrcodePage {
     );
   });
   }
+ 
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad QrcodePage');

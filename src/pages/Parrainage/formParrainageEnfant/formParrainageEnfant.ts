@@ -43,6 +43,7 @@ export class FormParrainageEnfantPage implements OnInit,OnDestroy{
   filleulSubscription: Subscription;
   donneurSubscription: Subscription;
   indx:number;
+  i: number;
 
 
     constructor(private menuCtrl: MenuController,
@@ -118,7 +119,6 @@ export class FormParrainageEnfantPage implements OnInit,OnDestroy{
               }
             );
             this.filleulService.emitFilleul();
-            this.indx=this.filleulService.filleulList.indexOf(this.filleul);
           },
           (error) => {
             
@@ -169,7 +169,22 @@ export class FormParrainageEnfantPage implements OnInit,OnDestroy{
     this.compteService.addCompte(this.compte);
     this.parrain=new Parrain(this.parrainService.parrainList.length+1,this.donneur.id_donneur,this.compte.id_compte);
     this.parrainService.addParrain(this.parrain);
-    this.filleulList[this.indx].id_parrain=this.parrain.id_parrain;
+      for(this.i=0;this.i<this.filleulList.length;this.i++){
+        if(this.filleulList[this.i].id_parrain=this.filleul.id_filleul){
+          this.filleulList[this.i].id_parrain=this.parrain.id_parrain;
+        }
+      }
+      this.filleulService.emitFilleul();
+      this.filleulService.saveData().then(
+        () => {
+         
+        },
+        (error) => {
+         
+        }
+      );
+  
+    
 
     let loader1 = this.loadingCtrl.create({
         content: 'Sauvegarde en cours…'

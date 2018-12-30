@@ -4,5 +4,7 @@ export class Institution{
     adresse:string;
     nbre_enfant:number;
     email:string;
-    telephone:string
+    telephone:string;
+    histoire:String
+
 }
