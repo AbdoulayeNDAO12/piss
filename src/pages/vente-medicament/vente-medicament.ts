@@ -23,6 +23,7 @@ import { NotificationPage } from '../notification/notification';
 import { AccueilPage } from '../pageAccueil/accueil/accueil';
 import { Medicament } from '../../models/Medicament.models';
 import { Utilisateur } from '../../models/Utilisateur.models';
+import { Compte } from '../../models/Compte.models';
 
 
 /**
@@ -43,6 +44,8 @@ export class VenteMedicamentPage {
   consultationSubscription: Subscription;
   hopitalSubscription: Subscription;
   hopitalList: Hopital[];
+  compteSubscription: Subscription;
+  compteListe: Compte[];
   pharmacieSubscription: Subscription;
   pharmacieList: Pharmacie[];
   beneficiaireSubscription: Subscription;
@@ -58,22 +61,31 @@ export class VenteMedicamentPage {
   i: number;
   compt: String[];
   j: number;
-  hopital:number;
+  hopital: number;
   prestataire: Prestataire;
+  utilisateurSubscription: Subscription;
+  utilisateurList: Utilisateur[];
+  utilisateur: Utilisateur;
+  medecin: Utilisateur;
+  compte: Compte;
+  indice: number;
+  indice1: number;
+  compt2: any;
+  dice: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private _FB: FormBuilder, private consultationService: ConsultationService, private hopitalService: HopitalService,
     private pharmacieService: PharmacieService, private toastCtrl: ToastController, private beneficiaireService: BeneficiaireService,
     private compteSevice: CompteService, private medicamentService: MedicamentService, private prestataireService: PrestataireService,
     private remboursementService: RemboursementService, private loadingCtrl: LoadingController, private utilisateurService: UserService, private medicament_consultationService: Medicament_ConsultationService) {
-}
-initForm() {
-  this.form = this._FB.group({
-    montant:['', Validators.required]
-  });
-}
+  }
+  initForm() {
+    this.form = this._FB.group({
+      montant: ['', Validators.required]
+    });
+  }
   ngOnInit() {
-    this.utilisateur1 = this.navParams.get('utilisateur'); 
-    this.malade = this.navParams.get('malade'); 
+    this.utilisateur1 = this.navParams.get('utilisateur');
+    this.malade = this.navParams.get('malade');
     this.initForm();
     this.consultationService.retrieveData().then(
       () => {
@@ -83,32 +95,6 @@ initForm() {
           }
         );
         this.consultationService.emitConsultation();
-      },
-      (error) => {
-
-      }
-    );
-    this.hopitalService.retrieveData().then(
-      () => {
-        this.hopitalSubscription = this.hopitalService.hopital$.subscribe(
-          (hopital: Hopital[]) => {
-            this.hopitalList = hopital.slice();
-          }
-        );
-        this.hopitalService.emitHopital();
-      },
-      (error) => {
-
-      }
-    );
-    this.pharmacieService.retrieveData().then(
-      () => {
-        this.pharmacieSubscription = this.pharmacieService.Pharmacie$.subscribe(
-          (pharmacie: Pharmacie[]) => {
-            this.pharmacieList = pharmacie.slice();
-          }
-        );
-        this.pharmacieService.emitPharmacie();
       },
       (error) => {
 
@@ -140,6 +126,19 @@ initForm() {
 
       }
     );
+    this.compteSevice.retrieveData().then(
+      () => {
+        this.compteSubscription = this.compteSevice.compte$.subscribe(
+          (compte: Compte[]) => {
+            this.compteListe = compte.slice();
+          }
+        );
+        this.compteSevice.emitCompte();
+      },
+      (error) => {
+
+      }
+    );
     this.remboursementService.retrieveData().then(
       () => {
         this.remboursementSubscription = this.remboursementService.remboursement$.subscribe(
@@ -166,34 +165,61 @@ initForm() {
 
       }
     );
-    for(this.i=0;this.i<this.consultationList.length;this.i++){
-     for(this.j=0;this.j<this.medicament_consultationList.length;this.j++){
-      if(this.medicament_consultationList[this.i].id_consultation===this.consultationList[this.i].id_consultation){
-        this.compt.push(this.medicament_consultationList[this.i].medicament);
-        this.hopital=this.consultationList[this.i].id_hopital;
+    for (this.j = 0; this.j < this.medicament_consultationList.length; this.j++) {
+      for (this.i = 0; this.i < this.consultationList.length; this.i++) {
+        if (this.medicament_consultationList[this.i].id_consultation === this.consultationList[this.i].id_consultation) {
+          this.compt.push(this.medicament_consultationList[this.i].medicament);
+          this.compt2.push(this.consultationList[this.i].id_hopital);
+        }
       }
-     }
     }
-    for(this.i=0;this.i<this.prestataireList.length;this.i++){
-      if(this.prestataireList[this.i].id_prest=this.hopital){
-           this.prestataire=this.prestataireList[this.i];
+    if (this.compt2.length != null) {
+      this.dice = this.compt2[0];
+      for (this.i = 0; this.i < this.prestataireList.length; this.i++) {
+        if (this.prestataireList[this.i].id_prest === this.dice) {
+          this.indice = this.i;
+          this.prestataire = this.prestataireList[this.i];
+        }
+      }
+    }
+    for (this.i = 0; this.i < this.prestataireList.length; this.i++) {
+      if (this.prestataireList[this.i].id_user === this.utilisateur1.id_user) {
+        this.indice1 = this.i;
+      }
+    }
+    for (this.i = 0; this.i < this.utilisateurList.length; this.i++) {
+      if (this.utilisateurList[this.i].id_user === this.prestataire.id_user) {
+        this.medecin = this.utilisateurList[this.i];
       }
     }
   }
 
 
   onSubmitForm() {
+
     const montant = this.form.get('montant').value;
-    const medicament = new Medicament(1, '', 1, montant, 1);
-    this.medicamentService.addMedicament(medicament);
+    for (this.i = 0; this.i < this.compteListe.length; this.i++) {
+      if (this.compteListe[this.i].id_compte === this.prestataireList[this.indice1].id_compte) {
+        this.compteListe[this.i].solde = this.compteListe[this.i].solde + montant;
+      }
+    }
+    this.compteSevice.emitCompte();
 
 
     let loader1 = this.loadingCtrl.create({
       content: 'Sauvegarde en cours…'
     });
     loader1.present();
-    this.medicamentService.saveData().then(
+    this.compteSevice.saveData().then(
       () => {
+        this.prestataireService.saveData().then(
+          () => {
+
+          },
+          (error) => {
+
+          }
+        );
 
 
         loader1.dismiss();
@@ -212,6 +238,7 @@ initForm() {
         }).present();
       }
     );
+
     this.navCtrl.push(AccueilPage);
 
   }
@@ -222,11 +249,20 @@ initForm() {
   }
   getHobbies(): FormArray {
     return this.form.get('montant') as FormArray;
-}
+  }
 
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad VenteMedicamentPage');
+  }
+  ngOnDestroy() {
+    this.compteSubscription.unsubscribe();
+    this.utilisateurSubscription.unsubscribe();
+    this.prestataireSubscription.unsubscribe();
+    this.medicament_consultationSubscription.unsubscribe();
+    this.consultationSubscription.unsubscribe();
+    this.beneficiaireSubscription.unsubscribe();
+    this.remboursementSubscription.unsubscribe();
   }
 
 }

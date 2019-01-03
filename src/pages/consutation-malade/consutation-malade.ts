@@ -22,6 +22,7 @@ import { Medicament_ConsultationService } from '../../Service/medicament_consult
 import { NotificationPage } from '../notification/notification';
 import { AccueilPage } from '../pageAccueil/accueil/accueil';
 import { Utilisateur } from '../../models/Utilisateur.models';
+import { Compte } from '../../models/Compte.models';
 
 @IonicPage()
 @Component({
@@ -46,6 +47,8 @@ export class ConsutationMaladePage {
   pharmacieList: Pharmacie[];
   beneficiaireSubscription: Subscription;
   beneficiaireList: Beneficiaire[];
+  compteList:Compte[];
+  compte:Compte;
   prestataireSubscription: Subscription;
   prestataireList: Prestataire[];
   remboursementSubscription: Subscription;
@@ -56,9 +59,11 @@ export class ConsutationMaladePage {
   utilisateur1: Utilisateur;
   malade: Utilisateur;
   utilisateurSubscription: Subscription;
+  compteSubscription: Subscription;
   utilisateurList: Utilisateur[];
   compt: number;
   compt1: number;
+  indice: number;
 
 
   constructor(public navCtrl: NavController,
@@ -188,6 +193,22 @@ export class ConsutationMaladePage {
         
       }
     );
+    this.compteSevice.retrieveData().then(
+      () => {
+        this.compteSubscription = this.compteSevice.compte$.subscribe(
+          (compte: Compte[]) => {
+            this.compteList = compte.slice();
+          }
+        );
+        this.compteSevice.emitCompte();
+      },
+      (error) => {
+        
+      }
+    );
+   
+  }
+  onSubmitForm() {
     for(this.i=0;this.i<this.beneficiaireList.length;this.i++){
       if(this.beneficiaireList[this.i].id_user===this.malade.id_user){
         this.compt=this.beneficiaireList[this.i].id_benef;
@@ -196,10 +217,9 @@ export class ConsutationMaladePage {
     for(this.i=0;this.i<this.prestataireList.length;this.i++){
       if(this.prestataireList[this.i].id_user===this.utilisateur1.id_user){
         this.compt1=this.prestataireList[this.i].id_prest;
+        this.indice=this.i;
       }
     }
-  }
-  onSubmitForm() {
     const description = this.form.get('description').value;
     const technologies = this.form.get('technologies').value;
     const montant = this.form.get('montant').value;
@@ -210,6 +230,11 @@ export class ConsutationMaladePage {
       this.medicament_consultationService.addMedicament_Consultation(medicament_consultation);
     }
     
+    for(this.i=0;this.i<this.compteList.length;this.i++){
+      if(this.compteList[this.i].id_compte===this.prestataireList[this.indice].id_compte){
+        this.compteList[this.i].solde=this.compteList[this.i].solde + montant;
+      }
+    }
     
     let loader1 = this.loadingCtrl.create({
       content: 'Sauvegarde en cours…'
@@ -219,14 +244,29 @@ export class ConsutationMaladePage {
       () => {
         this.medicament_consultationService.saveData().then(
           () => {
-            
-            
+           
           },
-        (error) => {
-
-               }
-      );
-        
+          (error) => {
+           
+          }
+        );
+        this.compteSevice.saveData().then(
+          () => {
+           
+          },
+          (error) => {
+           
+          }
+        );
+        this.prestataireService.saveData().then(
+          () => {
+           
+          },
+          (error) => {
+           
+          }
+        );
+     
         loader1.dismiss();
         this.toastCtrl.create({
           message: 'Données sauvegardées !',
@@ -243,6 +283,7 @@ export class ConsutationMaladePage {
       }).present();
     }
   );
+
   this.navCtrl.push(AccueilPage);
   
   }
@@ -311,6 +352,8 @@ export class ConsutationMaladePage {
     this.pharmacieSubscription.unsubscribe();
     this.beneficiaireSubscription.unsubscribe();
     this.remboursementSubscription.unsubscribe();
+    this.medicament_consultationSubscription.unsubscribe();
+    this.compteSubscription.unsubscribe();
   }
 
 

@@ -170,19 +170,14 @@ export class FormParrainageEnfantPage implements OnInit,OnDestroy{
     this.parrain=new Parrain(this.parrainService.parrainList.length+1,this.donneur.id_donneur,this.compte.id_compte);
     this.parrainService.addParrain(this.parrain);
       for(this.i=0;this.i<this.filleulList.length;this.i++){
-        if(this.filleulList[this.i].id_parrain=this.filleul.id_filleul){
+        if(this.filleulList[this.i].id_filleul==this.filleul.id_filleul && this.filleulList[this.i].date_nais==this.filleul.date_nais){
           this.filleulList[this.i].id_parrain=this.parrain.id_parrain;
         }
+        else{}
+        
       }
       this.filleulService.emitFilleul();
-      this.filleulService.saveData().then(
-        () => {
-         
-        },
-        (error) => {
-         
-        }
-      );
+      
   
     
 
@@ -251,6 +246,7 @@ export class FormParrainageEnfantPage implements OnInit,OnDestroy{
       this.parrainSubscription.unsubscribe();
       this.donneurSubscription.unsubscribe();
       this.donneurSubscription.unsubscribe();
+      this.compteSubscription.unsubscribe();
     }
     
 }

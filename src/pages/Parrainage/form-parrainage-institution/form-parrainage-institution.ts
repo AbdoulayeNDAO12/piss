@@ -246,6 +246,7 @@ ngOnDestroy() {
   this.parrainSubscription.unsubscribe();
   this.donneurSubscription.unsubscribe();
   this.donneurSubscription.unsubscribe();
+  this.compteSubscription.unsubscribe();
   this.institutionparrainSubscription.unsubscribe();
 }
 

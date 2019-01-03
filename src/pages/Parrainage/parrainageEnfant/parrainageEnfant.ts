@@ -32,8 +32,8 @@ export class ParrainageEnfantPage implements OnInit,OnDestroy{
         
       }
 
-    onGoToHistoire(){
-        this.navCtrl.push(HistoireFilleulPage);
+    onGoToHistoire(filleul: Filleul){
+        this.navCtrl.push(HistoireFilleulPage,{filleul: filleul});
     }
     onLoadFilleul(index: number) {
       let modal = this.modalCtrl.create(FormParrainageEnfantPage, {index: index});

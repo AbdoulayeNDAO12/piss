@@ -8,6 +8,9 @@ import { Utilisateur } from '../../models/Utilisateur.models';
 import { Filleul } from '../../models/Filleul.model';
 import { ParrainService } from '../../Service/parrain.service';
 import { FilleulService } from '../../Service/filleul.service';
+import { ConsutationMaladePage } from '../consutation-malade/consutation-malade';
+import { VenteMedicamentPage } from '../vente-medicament/vente-medicament';
+import { MenuController } from 'ionic-angular/components/app/menu-controller';
 
 /**
  * Generated class for the QrcodePage page.
@@ -22,23 +25,29 @@ import { FilleulService } from '../../Service/filleul.service';
   templateUrl: 'qrcode.html',
 })
 export class QrcodePage {
-  products: any[];
-  selectedProduct: any;
-  productFound: boolean = false;
+  utilisateur: Utilisateur
+  selectedMalade: Utilisateur;
+  type: string;
+  utilisateurSubscription: Subscription;
+  utilisateurList: Utilisateur[];
+  MaladeFound: boolean;
   qrData = null;
   createdCode = null;
   scannedCode = null;
-  utilisateurSubscription: Subscription;
-  utilisateurList: Utilisateur[];
-  i: number;
+  profession: string;
 
-  constructor(public navCtrl: NavController,
-    private barcodeScanner: BarcodeScanner,
-    private toast: Toast,private utilisateurService: UserService) {
-    
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    private utilisateurService: UserService, private barcodeScanner: BarcodeScanner,
+    private toast: Toast,private menuCtrl:MenuController) {
   }
   ngOnInit() {
-   
+
+    this.utilisateur = this.navParams.get('utilisateur');
+    if (this.utilisateur != null) {
+      this.type = this.utilisateur.type_user;
+      this.profession = this.utilisateur.profession;
+      this.createdCode = this.utilisateur.email;
+    }
     this.utilisateurService.retrieveData().then(
       () => {
         this.utilisateurSubscription = this.utilisateurService.utilisateur$.subscribe(
@@ -52,34 +61,66 @@ export class QrcodePage {
 
       }
     );
-   
-    
+
+
   }
-  scan() {
-  this.selectedProduct = {};
-  this.barcodeScanner.scan().then((barcodeData) => {
-    this.selectedProduct = this.products.find(product => product.plu === barcodeData.text);
-    if(this.selectedProduct !== undefined) {
-      this.productFound = true;
-    } else {
-      this.productFound = false;
-      this.toast.show(`Product not found`, '5000', 'center').subscribe(
+  scanMedecin() {
+    this.selectedMalade = null;
+    this.barcodeScanner.scan().then((barcodeData) => {
+      this.selectedMalade = this.utilisateurList.find(malade => malade.email === barcodeData.text);
+      if (this.selectedMalade !== undefined) {
+        this.MaladeFound = true;
+      } else {
+        this.selectedMalade = null;
+        this.MaladeFound = false;
+        this.toast.show('Personne existante pas dans la base de données', '5000', 'center').subscribe(
+          toast => {
+            console.log(toast);
+          }
+        );
+      }
+    }, (err) => {
+      this.toast.show(err, '5000', 'center').subscribe(
         toast => {
           console.log(toast);
         }
       );
-    }
-  }, (err) => {
-    this.toast.show(err, '5000', 'center').subscribe(
-      toast => {
-        console.log(toast);
-      }
-    );
-  });
+    });
   }
- 
+  scanPharmacien() {
+    this.selectedMalade = null;
+    this.barcodeScanner.scan().then((barcodeData) => {
+      this.selectedMalade = this.utilisateurList.find(malade => malade.email === barcodeData.text);
+      if (this.selectedMalade !== undefined) {
+        this.MaladeFound = true;
+      } else {
+        this.selectedMalade = null;
+        this.MaladeFound = false;
+        this.toast.show('Personne inexistante pas dans la base de données', '5000', 'center').subscribe(
+          toast => {
 
-  ionViewDidLoad() {
+          }
+        );
+      }
+    }, (err) => {
+      this.toast.show(err, '5000', 'center').subscribe(
+        toast => {
+
+        }
+      );
+    });
+  }
+  onToggleMenu() {
+    this.menuCtrl.open();
+}
+  onGotoConsultation() {
+    this.navCtrl.push(ConsutationMaladePage,{utilisateur:this.utilisateur,malade:this.selectedMalade});
+  }
+  onGotoVente() {
+    this.navCtrl.push(VenteMedicamentPage,{utilisateur:this.utilisateur,malade:this.selectedMalade});
+  }
+
+ionViewDidLoad() {
     console.log('ionViewDidLoad QrcodePage');
   }
 

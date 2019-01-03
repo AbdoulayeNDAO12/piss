@@ -12,6 +12,8 @@ import { Medicament_ConsultationService } from '../../Service/medicament_consult
 import { Subscription } from 'rxjs';
 import { AccueilSectionAssurancePage } from '../pageAccueil/accueil-section-assurance/accueil-section-assurance';
 import { Filleul } from '../../models/Filleul.model';
+import { VenteMedicamentPage } from '../vente-medicament/vente-medicament';
+import { QrcodePage } from '../qrcode/qrcode';
 
 
 @Component({
@@ -105,7 +107,7 @@ export class AuthPage implements OnInit {
     this.utilisateurService.signInUser(email,password).then(
       () => {
         
-        this.navCtrl.push(AccueilSectionAssurancePage,{utilisateur:this.utilisateur});
+        this.navCtrl.push(QrcodePage,{utilisateur:this.utilisateur,malade:this.utilisateurList[3]});
       },
       (error) => {
         this.errorMessage = error;
@@ -115,7 +117,7 @@ export class AuthPage implements OnInit {
     onClick(){
       this.navCtrl.push(InscriptionPage);
     }
-    /*
+    
     modifFilleul(){
       for(this.i=0;this.i<this.filleulList.length;this.i++){
           this.filleulList[this.i].id_parrain=1;
@@ -154,5 +156,5 @@ export class AuthPage implements OnInit {
         }
         
       );
-   }*/
+   }
 }

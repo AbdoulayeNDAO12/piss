@@ -1,22 +1,29 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>Consultation</ion-title>
+  <ion-navbar hideBackButton="true" color="menus">
+    <ion-title class="titre">Ordonnance</ion-title>
   </ion-navbar>
 </ion-header>
 
 
-<ion-content padding>
-  <h4>Ordonnance</h4>
-    <ion-item class="item" *ngFor="let medicament of medicament_consultationList"><h5>{{medicament.medicament}}</h5></ion-item>
+<ion-content class="login-content"  padding>
+  <div> <h4>Hopital:</h4></div>
+  <ion-item class="item" *ngFor="let medicament of compt">
+    <h5>{{medicament}}</h5>
+  </ion-item>
+  <div class="login-box">
   <form [formGroup]="form">
     <ion-list margin-bottom>
 
       <ion-item>
-        <ion-label floating>Entrez le montant du medicament</ion-label><br>
+        <ion-label floating>Entrez le montant de l'ordonnance</ion-label><br>
         <ion-input aria-placeholder="sum" formControlName="montant"></ion-input>
       </ion-item>
-  </ion-list>
-    <button ion-button block margin-top color="primary" text-center (click)="onSubmitForm()">Soumettre</button>
+    </ion-list>
+    <ion-col class="signup-col">
+    <button ion-button block margin-top color="primary" class="submit-btn" text-center (click)="onSubmitForm()">Soumettre</button>
+  </ion-col>
   </form>
+  </div>
 
+  <div class="hopital"> <h4>Dr  </h4></div>
 </ion-content>
