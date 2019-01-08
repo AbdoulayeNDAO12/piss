@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuController, NavParams,NavController, ToastController, LoadingController } from 'ionic-angular';
+import { MenuController, NavParams,NavController, ToastController, LoadingController, IonicPage } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {TabsPage} from '../tabs/tabs';
 import { InscriptionPage } from '../inscription/inscription';
@@ -20,6 +20,9 @@ import { Consultation } from '../../models/Consultation.models';
 import { ConsutationMaladePage } from '../consutation-malade/consutation-malade';
 
 
+@IonicPage({
+  
+})
 @Component({
   selector: 'page-auth',
   templateUrl: './auth.html'

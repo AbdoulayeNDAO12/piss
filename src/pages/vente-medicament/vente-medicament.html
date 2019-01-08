@@ -1,6 +1,13 @@
-<ion-header>
-  <ion-navbar hideBackButton="true" color="menus">
-    <ion-title class="titre">Ordonnance</ion-title>
+<ion-header color = "menus">
+  <ion-navbar color = "menus">
+
+      <ion-buttons left>
+          <button ion-button icon-only (click)="onToggleMenu()">
+            <ion-icon name="menu"></ion-icon>
+          </button>
+        </ion-buttons>
+
+    <ion-title>Consultation</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -21,6 +28,16 @@
   <div>
     <form [formGroup]="form">
       <ion-list margin-bottom>
+  <form [formGroup]="form">
+    <ion-list margin-bottom>
+
+      <ion-item>
+        <ion-label floating>Entrez le montant du medicament</ion-label><br>
+        <ion-input aria-placeholder="sum" formControlName="montant"></ion-input>
+      </ion-item>
+  </ion-list>
+    <button ion-button block margin-top color="menus" text-center (click)="onSubmitForm()" class="mbutton">Soumettre</button>
+  </form>
 
         <ion-item>
           <ion-label floating>Entrez le montant de l'ordonnance</ion-label><br>

@@ -13,7 +13,9 @@ import { Subscription } from 'rxjs/Subscription';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+@IonicPage({
+  
+})
 @Component({
   selector: 'page-don',
   templateUrl: 'don.html',
@@ -85,9 +87,5 @@ export class DonPage {
     this.navCtrl.push(AccueilPage);
   
     
-  }
-  ngOnDestroy() {
-    this.donSubscription.unsubscribe();
-   
   }
 }

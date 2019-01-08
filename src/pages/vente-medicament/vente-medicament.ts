@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, ToastController, MenuController } from 'ionic-angular';
 import { FormArray, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ConsultationService } from '../../Service/consultation.service';
 import { HopitalService } from '../../Service/hopital.service';
@@ -80,7 +80,7 @@ export class VenteMedicamentPage {
   consultations: number;
   compt1: number;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private _FB: FormBuilder, private consultationService: ConsultationService, private hopitalService: HopitalService,
+  constructor(public navCtrl: NavController, public navParams: NavParams,public menuCtrl:MenuController, private _FB: FormBuilder, private consultationService: ConsultationService, private hopitalService: HopitalService,
     private pharmacieService: PharmacieService, private toastCtrl: ToastController, private beneficiaireService: BeneficiaireService,
     private compteSevice: CompteService, private medicamentService: MedicamentService, private prestataireService: PrestataireService,
     private remboursementService: RemboursementService, private loadingCtrl: LoadingController, private utilisateurService: UserService, private medicament_consultationService: Medicament_ConsultationService) {
@@ -275,6 +275,10 @@ export class VenteMedicamentPage {
     this.consultationSubscription.unsubscribe();
     this.beneficiaireSubscription.unsubscribe();
     this.remboursementSubscription.unsubscribe();
+  }
+
+  onToggleMenu(){
+    this.menuCtrl.open() ;
   }
 
 }

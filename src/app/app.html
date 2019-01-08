@@ -1,48 +1,65 @@
-<ion-menu [content]="content">
-  <ion-header> 
-    <ion-toolbar  color="menus">
-      <ion-title>Menu</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <ion-content>
-      <ion-list>
-      <button ion-item icon-start (click)="onNavigate(qrcodePage )" *ngIf="isAuth">
-        <ion-icon name="person"></ion-icon>
-       Compte
-      </button>
-       <button ion-item icon-start (click)="onNavigate(zakatPage)">
-          <ion-icon ios="ios-hand" md="md-hand"></ion-icon>
-          Donner une Zakat
-      </button>
-      <button ion-item icon-start (click)="onNavigate(accueilParrainagePage)">
-          <ion-icon ios="ios-people" md="md-people"></ion-icon>
-          Parrainage
-      </button>
-      <button ion-item icon-start (click)="onNavigate(donPage)" >
-        <ion-icon ios="ios-people" md="md-people"></ion-icon>
-        Faire un Don
-    </button>
-      <button ion-item icon-start (click)="onNavigate(venteMedicamentPage)" >
-          <ion-icon ios="ios-people" md="md-people"></ion-icon>
-          Assurance
-      </button>
-      <button ion-item icon-start (click)="onNavigate(authPage)" *ngIf="isAuth">
-          <ion-icon ios="ios-archive" md="md-archive"></ion-icon>
-          Consulter son historique
-      </button>
-      <button ion-item icon-start (click)="onNavigate(qrcodepage)" >
-        <ion-icon name="settings" ></ion-icon>
-        Reglages
-      </button>
-      <button ion-item icon-start (click)="onNavigate(authPage)" *ngIf="!isAuth">
-        <ion-icon name="person"></ion-icon>
-        Connexion
-      </button>
-        <button ion-item icon-start (click)="onDisconnect(authPage, {mode: 'deconnect'})" *ngIf="isAuth">
-          <ion-icon name="exit"></ion-icon>
-          Déconnexion
-        </button>
-      </ion-list>
-  </ion-content>
-</ion-menu>
-<ion-nav [root]="rootPage" #content></ion-nav>
+    <ion-header> 
+      <ion-toolbar  color="menus">
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+  
+    <ion-content>
+        <ion-list>
+            <button ion-item (click)="onNavigate(accueilPage )">
+                <ion-icon item-start name="home"></ion-icon>
+               Accueil
+            </button>
+
+            <button ion-item (click)="onNavigate(qrcodePage )" *ngIf="isAuth">
+                <ion-icon item-start name="person"></ion-icon>
+               Compte
+              </button>
+
+            <button ion-item (click)="onNavigate(accueilAssurancePage)" >
+              <ion-icon item-start name="medkit"></ion-icon>
+              Assurance
+            </button>
+
+            <button ion-item (click)="onNavigate(accueilParrainagePage)">
+              <ion-icon item-start name="people"></ion-icon>
+              Parrainage
+            </button>
+
+            <button ion-item (click)="onNavigate(zakatPage)">
+              <ion-icon item-start name="cash"></ion-icon>
+              Zakat
+            </button>
+
+            <button ion-item (click)="onNavigate(donPage)" >
+              <ion-icon item-start name="cash"></ion-icon>
+              Don
+            </button>
+
+            <button ion-item (click)="onNavigate(accueilPage)" *ngIf="isAuth">
+                <ion-icon item-start name="list"></ion-icon>
+                Historique
+            </button>
+
+            <button ion-item (click)="onNavigate(accueilPage)" *ngIf="isAuth">
+                <ion-icon item-start name="settings" ></ion-icon>
+                Reglages
+              </button>
+          
+          
+          <button ion-item (click)="onNavigate(authPage)" *ngIf="!isAuth">
+            <ion-icon item-start name="log-in"></ion-icon>
+            Connexion
+          </button>
+
+            <button ion-item (click)="onDisconnect(authPage, {mode: 'deconnect'})" *ngIf="isAuth">
+              <ion-icon item-start name="log-out"></ion-icon>
+              Déconnexion
+            </button>
+              
+        </ion-list>
+    </ion-content>
+  </ion-menu>
+  <ion-nav [root]="rootPage" #content ></ion-nav>
+  
+>>>>>>> 718c29fc52c3312e90ccc6742f11d63c79c9cf45

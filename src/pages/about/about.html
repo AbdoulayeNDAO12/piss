@@ -1,14 +1,53 @@
 <ion-header >
   <ion-navbar color="menus">
+
+      <ion-buttons left>
+          <button ion-button icon-only (click)="onToggleMenu()">
+            <ion-icon name = "menu"></ion-icon>
+          </button>
+        </ion-buttons>
+        
     <ion-title>
-      About
+      A propos
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  Cette plateforme est un systeme d'integration regoupant 3 services sociaux:
-  - Zakat
-  -Assurance maladie
-  -Parrainage
+
+    <ion-card class="aider">
+        <img src="../assets/imgs/aide.jpg" />
+    </ion-card>
+
+  <p>Dans un pays comme le Sénégal où la pauvreté est très présente, la plupart des gens ont des problèmes
+    pour se soigner correctement ou pour faire une planification maladie efficace. Certains ont du mal à 
+    s’inscrire à une compagnie d’assurance maladie car les frais d'entrée et d'arbitrage sont généralement
+    assez élevés. D’autres par contre rencontrent de sérieux problèmes de subsistance ou de gérer la scolarité
+    de leurs enfants.
+    Il serait donc intéressant de mettre en place une plateforme d’intégration de services
+    sociaux qui permettrait aux  personnes démunies de pouvoir bénéficier d’aide.
+  </p>
+    Cette présente plateforme regoupe différents services sociaux notamment:
+    <ion-row>
+        <ion-col>
+      <button ion-button full color="menus" (click)="onGoToSectionAssurance()" class="mbutton">        
+        Assurance
+      </button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+      <button ion-button full color="menus" (click)="onGoToSectionParrainage()" class="mbutton">        
+        Parrainage
+      </button>
+    </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col>
+        <button ion-button full color="menus" (click)="onGoToSectionZakat()" class="mbutton">        
+          Zakat
+        </button>
+      </ion-col>
+      </ion-row>
+  
 </ion-content>

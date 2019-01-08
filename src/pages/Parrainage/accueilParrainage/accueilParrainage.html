@@ -1,5 +1,11 @@
 <ion-header color="menus">
-  <ion-navbar color="menus">
+  <ion-navbar color="menus" hideBackButton="true">
+
+      <ion-buttons left>
+          <button ion-button icon-only (click)="onToggleMenu()">
+            <ion-icon name="menu"></ion-icon>
+          </button>
+        </ion-buttons>
 
     <ion-title class="titre1">Parrainage</ion-title>    
   </ion-navbar>
@@ -9,7 +15,7 @@
   <ion-grid>
     <ion-row>
       <ion-col >
-        <ion-card  (click)="onGoToParrainageEnfantPage()" color="menus">
+        <ion-card class="fini" (click)="onGoToParrainageEnfantPage()" color="menus">
           <img src="../assets/imgs/parrainer.jpg" />
           <ion-card-content>
             <ion-card-title>
@@ -22,7 +28,7 @@
 
       <ion-row>
       <ion-col >
-        <ion-card  (click)="onGoToParrainageInstitutionPage()" color="menus">
+        <ion-card class="fini" (click)="onGoToParrainageInstitutionPage()" color="menus">
           <img src="../assets/imgs/parrainageInst.jpg" />
           <ion-card-content>
             <ion-card-title>

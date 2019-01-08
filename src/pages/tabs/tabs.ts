@@ -4,6 +4,7 @@ import { AboutPage } from '../about/about';
 import { ContactPage } from '../contact/contact';
 import { AccueilPage } from '../pageAccueil/accueil/accueil';
 import { NotificationPage } from '../notification/notification';
+import { NavParams } from 'ionic-angular';
 
 @Component({
   selector: 'page-tabs',
@@ -16,7 +17,7 @@ export class TabsPage {
   tab3Root = ContactPage;
   tab4Root = NotificationPage;
 
-  constructor() {
+  constructor(navParams: NavParams) {
 
   }
 }

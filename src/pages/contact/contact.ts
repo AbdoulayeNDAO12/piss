@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, MenuController } from 'ionic-angular';
+import { AccueilPage } from '../pageAccueil/accueil/accueil';
 
 @Component({
   selector: 'page-contact',
@@ -7,8 +8,12 @@ import { NavController } from 'ionic-angular';
 })
 export class ContactPage {
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public menuCtrl:MenuController) {
 
+  }
+
+  onToggleMenu(){
+    this.menuCtrl.open() ;
   }
 
 }

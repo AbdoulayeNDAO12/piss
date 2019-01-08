@@ -1,13 +1,19 @@
-<ion-header>
-   <ion-navbar hideBackButton="true" color="menus">
-    <ion-title class="titre">Consultation</ion-title>
+<ion-header color = "menus">
+  <ion-navbar color = "menus">
+
+      <ion-buttons left>
+            <button ion-button icon-only (click)="onToggleMenu()">
+              <ion-icon name="menu"></ion-icon>
+            </button>
+          </ion-buttons>
+
+    <ion-title>Consultation</ion-title>
   </ion-navbar>
 </ion-header>
 
-
-<ion-content class="login-content"  padding>
-   <div><h4>Ordonnance</h4></div>
-   <div class="login-box">
+<div class="login-box">
+<ion-content padding>
+  <h4>Ordonnance</h4>
    <form
       [formGroup]="form"
       (ngSubmit)="manage(form.value)">
@@ -37,6 +43,12 @@
 
          <!-- Allow new input field to be generated/added -->
          <span ion-button float-left icon-left clear (click)="addNewInputField()">
+         <span
+            ion-button
+            float-left
+            icon-left
+            clear
+            (click)="addNewInputField()" color = "menus">
                <ion-icon name="add"></ion-icon>
                Ajouter un médicament 
          </span>
@@ -54,6 +66,12 @@
               <ion-col class="signup-col">
          <button  ion-button block margin-top (click)="onSubmitForm()" color="primary" class="submit-btn"   text-center >Soumettre</button>
               </ion-col>
+         <button
+   	     ion-button
+   	     block
+   	     margin-top
+   	     color="menus"
+   	     text-center (click)="onSubmitForm()"  class="mbutton">Sauvegarder</button>
    </form>
    </div>
 

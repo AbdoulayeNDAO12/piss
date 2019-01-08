@@ -10,7 +10,7 @@ page-auth{
       position: -ms-page;
     }
     .buton{
-      background: #51CFB1;
+      background: "menus";
       border-radius: 15px !important;
 
     }
@@ -20,9 +20,6 @@ page-auth{
       padding: 20px 20px 0px 20px;
       margin-top: 30px;
       border-radius: 30px !important;
-    }
-    .don{
-      color: #51CFB1;;
     }
  
     ion-row {
@@ -55,17 +52,17 @@ page-auth{
   }
 
   .submit-btn{
-    background: #51CFB1;
+    background: "menus";
     border-radius: 30px !important;
     border: 1px solid #ffffff;
   }
 
   .register-btn {
-    color: #51CFB1;;
+    color: "menus";
     font-size: 0.8em;
   }
   .register-btns {
-    color: #51CFB1;;
+    color: "menus";
     font-size: 0.8em;
     background-position-x: right;
   }

@@ -1,6 +1,12 @@
-<ion-header>
+<ion-header color = "menus">
+  <ion-navbar color = "menus">
+    
+      <ion-buttons left>
+          <button ion-button icon-only (click)="onToggleMenu()">
+            <ion-icon name="menu"></ion-icon>
+          </button>
+        </ion-buttons>
 
-  <ion-navbar>
     <ion-title>Don</ion-title>
   </ion-navbar>
 
@@ -20,7 +26,7 @@
                   <ion-input aria-placeholder="sum" formControlName="don"></ion-input>
                 </ion-item>
               </ion-list>
-              <button full ion-button color="secondary" (click)="onSubmitForm()" class="submit-btn">Confirmer le don</button>
+              <button full ion-button color="menus" (click)="onSubmitForm()" class="mbutton">Confirmer le don</button>
             </form>
           </div>
       </ion-list>

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ZakatPage } from '../../zakat/zakat';
+import { SuperTabsController } from 'ionic2-super-tabs';
 
 /**
  * Generated class for the AccueilSectionZakatPage page.
@@ -15,11 +17,18 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class AccueilSectionZakatPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  rootNavCtrl: NavController;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private superTabsCtrl: SuperTabsController) {
+    this.rootNavCtrl = this.navParams.get('rootNavCtrl');
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AccueilSectionZakatPage');
+  }
+
+  onGoToZakatPage(){
+    this.rootNavCtrl.push(ZakatPage);
   }
 
 }

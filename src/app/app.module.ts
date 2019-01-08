@@ -11,12 +11,10 @@ import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { AuthPage } from '../pages/auth/auth';
 import { AuthService } from '../Service/auth.sevice';
 import { AccueilPage } from '../pages/pageAccueil/accueil/accueil';
 import { InscriptionPage } from '../pages/inscription/inscription';
-import { ZakatPage } from '../pages/zakat/zakat';
-import { AccueilParrainagePage} from '../pages/Parrainage/accueilParrainage/accueilParrainage';
+
 
 import { NotificationPage } from '../pages/notification/notification';
 import { ParrainageEnfantPage } from '../pages/Parrainage/parrainageEnfant/parrainageEnfant';
@@ -41,6 +39,7 @@ import { ConsultationService } from '../Service/consultation.service';
 import { RemboursementService } from '../Service/remboursement.service';
 import { AllocationService } from '../Service/allocation.service';
 import { HistoireFilleulPage } from '../pages/Parrainage/histoireFilleul/histoireFilleul';
+import { DescriptionInstitutionPage } from '../pages/Parrainage/description-institution/description-institution';
 import { FormParrainageEnfantPage } from '../pages/Parrainage/formParrainageEnfant/formParrainageEnfant';
 import { ZakatFormPage } from '../pages/zakat/zakat-form/zakat-form';
 import { FormParrainageInstitutionPage } from '../pages/Parrainage/form-parrainage-institution/form-parrainage-institution';
@@ -52,12 +51,19 @@ import { ConsutationMaladePage } from '../pages/consutation-malade/consutation-m
 import { VenteMedicamentPage } from '../pages/vente-medicament/vente-medicament';
 import { Medicament_ConsultationService } from '../Service/medicament_consultation.service';
 import { MedicamentService } from '../Service/medicament.service';
+import { ConsutationMaladePageModule } from '../pages/consutation-malade/consutation-malade.module';
+import { VenteMedicamentPageModule } from '../pages/vente-medicament/vente-medicament.module';
+import { DonPageModule } from '../pages/don/don.module';
 import { AccueilSectionAssurancePage } from '../pages/pageAccueil/accueil-section-assurance/accueil-section-assurance';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { Toast } from '@ionic-native/toast';
 import { QrcodePage } from '../pages/qrcode/qrcode';
 
 import { NgxQRCodeModule } from 'ngx-qrcode2';
+import { AccueilAssurancePageModule } from '../pages/pageAccueil/accueil-assurance/accueil-assurance.module';
+import { AccueilParrainagePageModule } from '../pages/Parrainage/accueilParrainage/accueilParrainage.module';
+import { ZakatPageModule } from '../pages/zakat/zakat.module';
+import { AuthPageModule } from '../pages/auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -66,22 +72,17 @@ import { NgxQRCodeModule } from 'ngx-qrcode2';
     ContactPage,
     HomePage,
     TabsPage,
-    AuthPage,
     AccueilPage,
     InscriptionPage,
-    ZakatPage,
     ZakatFormPage,
-    AccueilParrainagePage,
     NotificationPage,
     ParrainageEnfantPage,
     ParrainageInstitutionPage,
     HistoireFilleulPage,
+    DescriptionInstitutionPage,
     FormParrainageEnfantPage,
     FormParrainageInstitutionPage,
-    DonPage,
-    ConsutationMaladePage,
-    VenteMedicamentPage,
-    QrcodePage
+    QrcodePage,
    
   ],
   imports: [
@@ -89,7 +90,17 @@ import { NgxQRCodeModule } from 'ngx-qrcode2';
     BrowserModule,
     IonicModule.forRoot(MyApp),
     SuperTabsModule.forRoot(),
-    NgxQRCodeModule
+    ConsutationMaladePageModule,
+    VenteMedicamentPageModule,
+    DonPageModule,
+    NgxQRCodeModule,
+    DonPageModule,
+    ConsutationMaladePageModule,
+    VenteMedicamentPageModule,
+    AccueilAssurancePageModule,
+    AccueilParrainagePageModule,
+    ZakatPageModule,
+    AuthPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -98,22 +109,20 @@ import { NgxQRCodeModule } from 'ngx-qrcode2';
     ContactPage,
     HomePage,
     TabsPage,
-    AuthPage,
     AccueilPage,
     InscriptionPage,
-    ZakatPage,
     ZakatFormPage,
-    AccueilParrainagePage,
     NotificationPage,
     ParrainageEnfantPage,
     ParrainageInstitutionPage,
     HistoireFilleulPage,
+    DescriptionInstitutionPage,
     FormParrainageEnfantPage,
     FormParrainageInstitutionPage,
     DonPage,
     ConsutationMaladePage,
     VenteMedicamentPage,
-    QrcodePage
+    QrcodePage,
     
   ],
   providers: [

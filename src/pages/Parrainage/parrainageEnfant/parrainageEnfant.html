@@ -1,6 +1,5 @@
-<ion-header>
-  
-  <ion-navbar hideBackButton="true" color="menus"> 
+<ion-header color="menus">
+  <ion-navbar color="menus">
     <ion-title>Parrainer un enfant</ion-title>
   </ion-navbar>
 </ion-header>
@@ -15,8 +14,8 @@
 
   <p class="demande"> Le parrainage change des vies</p>
 
-  <ion-card  *ngFor="let filleul of filleulList; let i = index" class="indiv">
-    <img src="../assets/imgs/sweety.jpg" />
+  <ion-card class="indiv" *ngFor="let filleul of filleulList; let i = index">
+    <img src="../assets/imgs/avatar.jpeg" />
 
     <ion-card-content>
       <ion-card-title>
@@ -26,12 +25,12 @@
         Bonjour, je m'appelle {{ filleul.prenom}} {{ filleul.nom}}, j'ai </p>
       <ion-row>
           <ion-col>
-        <button ion-button color="light" (click)="onGoToHistoire(filleul)" class="mbutton">        
+        <button ion-button color="light" (click)="onGoToHistoire(filleul)" class="mbutton">       
           Mon histoire
         </button>
         </ion-col>
         <ion-col>
-        <button ion-button color="light" (click)="onGoToParraineMoi(filleul)" class="mbutton">        
+        <button ion-button color="menus" (click)="onGoToParraineMoi(filleul)" class="mbutton">        
           Parrainez moi
         </button>
       </ion-col>

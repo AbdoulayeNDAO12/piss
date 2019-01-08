@@ -3,7 +3,7 @@
 
     <ion-buttons left>
       <button ion-button icon-only (click)="onToggleMenu()">
-        <ion-icon ios="ios-menu" md="md-menu"></ion-icon>
+        <ion-icon name="menu"></ion-icon>
       </button>
     </ion-buttons>
 
@@ -12,7 +12,7 @@
 </ion-header>
 
 <ion-content padding >
-  <super-tabs>
+  <super-tabs tabsPlacement="top">
     <super-tab [root]="assurance" title="Assurance"></super-tab>    
     <super-tab [root]="parrainage" title="Parrainage"></super-tab>
     <super-tab [root]="zakat" title="Zakat"></super-tab>

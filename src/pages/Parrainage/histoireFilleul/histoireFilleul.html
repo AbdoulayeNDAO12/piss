@@ -1,11 +1,21 @@
 <ion-header>
     
   <ion-navbar hideBackButton="true" color="menus"> 
+<ion-header color="menus">
+    <ion-navbar color="menus">
          <ion-title>Mon histoire</ion-title>
     </ion-navbar>
 </ion-header>
 
 <ion-content padding>
+    <ion-card class="aider">
+        <img src="../assets/imgs/avatar.jpeg" />
+    </ion-card>
     <p>{{filleul.histoire}}</p>
+    <ion-col>
+        <button ion-button full color="menus" (click)="onGoToParraineMoi()" class="mbutton">        
+            Parrainez moi
+        </button>
+    </ion-col>
 
 </ion-content>

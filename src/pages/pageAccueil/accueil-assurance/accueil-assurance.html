@@ -1,0 +1,33 @@
+<ion-header color="menus">
+    <ion-navbar color="menus" hideBackButton="true">
+  
+        <ion-buttons left>
+            <button ion-button icon-only (click)="onToggleMenu()">
+              <ion-icon name="menu"></ion-icon>
+            </button>
+          </ion-buttons>
+  
+      <ion-title class="titre1">Assurance</ion-title>    
+    </ion-navbar>
+  </ion-header>
+
+
+<ion-content padding>
+
+    <ion-card class="aider">
+        <img src="../assets/imgs/assurance258x263.jpg" />
+    </ion-card>
+
+  <p>Grace à notre plateforme, les personnes démunies peuvent en cas de maladie, bénéfier d'une aide appelée "assurance".
+     Une fois à l'hôpital ou à la pharmacie, le bénéficiaire doit s'authenfier pour effectuer les opérations necessaires
+
+  </p>
+    Pour bénéficier d'une assurance, vous devez vous connecter
+    <ion-row>
+        <ion-col>
+      <button ion-button full color="menus"  class="mbutton" (click)="onGoToAuthPage()">        
+        Se connecter.
+      </button>
+      </ion-col>
+    </ion-row>
+</ion-content>

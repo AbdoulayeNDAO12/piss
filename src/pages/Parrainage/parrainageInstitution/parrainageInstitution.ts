@@ -6,20 +6,25 @@ import { FilleulService } from '../../../Service/filleul.service';
 import { Filleul } from '../../../models/Filleul.model';
 import { InstitutionService } from '../../../Service/institution.service';
 import { FormParrainageInstitutionPage } from '../form-parrainage-institution/form-parrainage-institution';
+import { DescriptionInstitutionPage } from '../description-institution/description-institution';
 
 @Component({
     selector: 'page-parrainageInstitution',
     templateUrl: 'parrainageInstitution.html'
 })
 export class ParrainageInstitutionPage{
-
-    
+  
     institutionList: Institution[];
     institutionSubscription: Subscription;
     constructor(public navCtrl: NavController,private institutionService: InstitutionService,
         private toastCtrl: ToastController,
         private loadingCtrl: LoadingController ){
     }
+
+    onGoToDescription(){
+      this.navCtrl.push(DescriptionInstitutionPage);
+    }
+
     ngOnInit() {
        
         this.institutionService.retrieveData().then(
@@ -43,9 +48,11 @@ export class ParrainageInstitutionPage{
         this.institutionService.emitInstitution();
 
       }
+
       onGoToParraineMoi(institution: Institution){
         this.navCtrl.push(FormParrainageInstitutionPage, {institution: institution});
     }
+    
       ngOnDestroy() {
         this.institutionSubscription.unsubscribe();
       }
