@@ -14,6 +14,10 @@ import { AccueilSectionAssurancePage } from '../pageAccueil/accueil-section-assu
 import { Filleul } from '../../models/Filleul.model';
 import { VenteMedicamentPage } from '../vente-medicament/vente-medicament';
 import { QrcodePage } from '../qrcode/qrcode';
+import { PrestataireService } from '../../Service/prestataire.service';
+import { VenteMedicamentPageModule } from '../vente-medicament/vente-medicament.module';
+import { Consultation } from '../../models/Consultation.models';
+import { ConsutationMaladePage } from '../consutation-malade/consutation-malade';
 
 
 @Component({
@@ -36,6 +40,9 @@ export class AuthPage implements OnInit {
   compt: number;
   filleulSubscription: Subscription;
   filleulList: Filleul[];
+  
+  consultationList: Consultation[]=[];
+  dice: number;
  
   
  
@@ -44,8 +51,8 @@ export class AuthPage implements OnInit {
               private navCtrl:NavController,
               private formBuilder: FormBuilder,
               private utilisateurService: UserService,private filleul: FilleulService,
-              private loadingCtrl:LoadingController,private consult:Medicament_ConsultationService,
-              private toastCtrl:ToastController,private filleulService:FilleulService) {
+              private loadingCtrl:LoadingController,private consult:ConsultationService,
+              private toastCtrl:ToastController,private filleulService:FilleulService,private prestataireService:PrestataireService) {
               
               }
 
@@ -103,11 +110,12 @@ export class AuthPage implements OnInit {
         this.compt=this.i;
       }
     }
+   
     this.utilisateur=this.utilisateurList[this.compt];
     this.utilisateurService.signInUser(email,password).then(
       () => {
         
-        this.navCtrl.push(QrcodePage,{utilisateur:this.utilisateur,malade:this.utilisateurList[3]});
+        this.navCtrl.push(QrcodePage,{utilisateur:this.utilisateur});
       },
       (error) => {
         this.errorMessage = error;

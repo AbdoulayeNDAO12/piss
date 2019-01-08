@@ -40,38 +40,45 @@ import { Compte } from '../../models/Compte.models';
 })
 export class VenteMedicamentPage {
   public form: FormGroup;
-  consultationList: Consultation[];
+  consultationList: Consultation[]=[];
   consultationSubscription: Subscription;
   hopitalSubscription: Subscription;
-  hopitalList: Hopital[];
+  hopitalList: Hopital[]=[];
   compteSubscription: Subscription;
-  compteListe: Compte[];
+  compteListe: Compte[]=[];
   pharmacieSubscription: Subscription;
-  pharmacieList: Pharmacie[];
+  pharmacieList: Pharmacie[]=[];
   beneficiaireSubscription: Subscription;
-  beneficiaireList: Beneficiaire[];
+  beneficiaireList: Beneficiaire[]=[];
   prestataireSubscription: Subscription;
-  prestataireList: Prestataire[];
+  prestataireList: Prestataire[]=[];
   remboursementSubscription: Subscription;
-  remboursementList: Remboursement[];
+  remboursementList: Remboursement[]=[];
   medicament_consultationSubscription: Subscription;
-  medicament_consultationList: Medicament_Consultation[];
+  medicament_consultationList: Medicament_Consultation[]=[];
   utilisateur1: Utilisateur;
   malade: Utilisateur;
   i: number;
-  compt: String[];
+  compt: String[]=[];
   j: number;
   hopital: number;
   prestataire: Prestataire;
   utilisateurSubscription: Subscription;
-  utilisateurList: Utilisateur[];
+  utilisateurList: Utilisateur[]=[];
   utilisateur: Utilisateur;
   medecin: Utilisateur;
   compte: Compte;
   indice: number;
   indice1: number;
-  compt2: any;
-  dice: any;
+  compt2: number[]=[];
+  dice: number;
+  indices: number;
+  indices1: number;
+  indices2: number;
+  indices3: number;
+  indices4: number;
+  consultations: number;
+  compt1: number;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private _FB: FormBuilder, private consultationService: ConsultationService, private hopitalService: HopitalService,
     private pharmacieService: PharmacieService, private toastCtrl: ToastController, private beneficiaireService: BeneficiaireService,
@@ -95,6 +102,7 @@ export class VenteMedicamentPage {
           }
         );
         this.consultationService.emitConsultation();
+       
       },
       (error) => {
 
@@ -126,6 +134,20 @@ export class VenteMedicamentPage {
 
       }
     );
+    this.utilisateurService.retrieveData().then(
+      () => {
+        this.utilisateurSubscription = this.utilisateurService.utilisateur$.subscribe(
+          (utilisateur: Utilisateur[]) => {
+            this.utilisateurList = utilisateur.slice();
+          }
+        );
+        this.utilisateurService.emitUser();
+      },
+      (error) => {
+
+      }
+    );
+    
     this.compteSevice.retrieveData().then(
       () => {
         this.compteSubscription = this.compteSevice.compte$.subscribe(
@@ -146,6 +168,7 @@ export class VenteMedicamentPage {
             this.remboursementList = remboursement.slice();
           }
         );
+      
         this.remboursementService.emitRemboursement();
       },
       (error) => {
@@ -157,53 +180,41 @@ export class VenteMedicamentPage {
         this.medicament_consultationSubscription = this.medicament_consultationService.Medicament_Consultation$.subscribe(
           (medicament_consultation: Medicament_Consultation[]) => {
             this.medicament_consultationList = medicament_consultation.slice();
+   
           }
+          
         );
+        
+     
         this.medicament_consultationService.emitMedicament_Consultation();
+        
+  
+ 
       },
       (error) => {
 
       }
+      
     );
-    for (this.j = 0; this.j < this.medicament_consultationList.length; this.j++) {
-      for (this.i = 0; this.i < this.consultationList.length; this.i++) {
-        if (this.medicament_consultationList[this.i].id_consultation === this.consultationList[this.i].id_consultation) {
-          this.compt.push(this.medicament_consultationList[this.i].medicament);
-          this.compt2.push(this.consultationList[this.i].id_hopital);
-        }
-      }
-    }
-    if (this.compt2.length != null) {
-      this.dice = this.compt2[0];
-      for (this.i = 0; this.i < this.prestataireList.length; this.i++) {
-        if (this.prestataireList[this.i].id_prest === this.dice) {
-          this.indice = this.i;
-          this.prestataire = this.prestataireList[this.i];
-        }
-      }
-    }
-    for (this.i = 0; this.i < this.prestataireList.length; this.i++) {
-      if (this.prestataireList[this.i].id_user === this.utilisateur1.id_user) {
-        this.indice1 = this.i;
-      }
-    }
-    for (this.i = 0; this.i < this.utilisateurList.length; this.i++) {
-      if (this.utilisateurList[this.i].id_user === this.prestataire.id_user) {
-        this.medecin = this.utilisateurList[this.i];
-      }
-    }
+    
   }
-
+  
 
   onSubmitForm() {
-
-    const montant = this.form.get('montant').value;
-    for (this.i = 0; this.i < this.compteListe.length; this.i++) {
-      if (this.compteListe[this.i].id_compte === this.prestataireList[this.indice1].id_compte) {
-        this.compteListe[this.i].solde = this.compteListe[this.i].solde + montant;
+    for(this.i=0;this.i<this.prestataireList.length;this.i++){
+      if(this.prestataireList[this.i].id_user===this.utilisateur1.id_user){
+        this.compt1=this.prestataireList[this.i].id_prest;
       }
     }
-    this.compteSevice.emitCompte();
+    for(this.i=0;this.i<this.consultationList.length;this.i++){
+      if(this.consultationList[this.i].id_user===this.malade.id_user && this.consultationList[this.i].etat==0){
+        this.consultationList[this.i].etat=1;
+      }
+    }
+    const montant = this.form.get('montant').value;
+    const compte = new Compte(this.compteListe.length + 1,montant,this.compt1,0);
+    this.compteSevice.addCompte(compte);
+
 
 
     let loader1 = this.loadingCtrl.create({
@@ -212,14 +223,15 @@ export class VenteMedicamentPage {
     loader1.present();
     this.compteSevice.saveData().then(
       () => {
-        this.prestataireService.saveData().then(
+        this.consultationService.saveData().then(
           () => {
-
+           
           },
           (error) => {
-
+           
           }
         );
+        
 
 
         loader1.dismiss();

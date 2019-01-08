@@ -176,7 +176,6 @@ export class FormParrainageInstitutionPage implements OnInit,OnDestroy {
     this.utilisateurService.addUser(this.utilisateur);
     this.donneur = new Donneur(this.donneurList.length + 1, this.utilisateur.id_user);
     this.donneurService.addDonneur(this.donneur);
-    this.compte = new Compte(this.compteList.length + 1, 0);
     this.compteService.addCompte(this.compte);
     this.parrain = new Parrain(this.parrainList.length + 1, this.donneur.id_donneur, this.compte.id_compte);
     this.parrainService.addParrain(this.parrain);

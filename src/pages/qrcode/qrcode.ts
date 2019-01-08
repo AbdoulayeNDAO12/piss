@@ -11,6 +11,8 @@ import { FilleulService } from '../../Service/filleul.service';
 import { ConsutationMaladePage } from '../consutation-malade/consutation-malade';
 import { VenteMedicamentPage } from '../vente-medicament/vente-medicament';
 import { MenuController } from 'ionic-angular/components/app/menu-controller';
+import { Consultation } from '../../models/Consultation.models';
+import { ConsultationService } from '../../Service/consultation.service';
 
 /**
  * Generated class for the QrcodePage page.
@@ -35,10 +37,14 @@ export class QrcodePage {
   createdCode = null;
   scannedCode = null;
   profession: string;
+  consultationList: Consultation[]=[];
+  consultationSubscription: Subscription;
+  i: number;
+  dice: number;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private utilisateurService: UserService, private barcodeScanner: BarcodeScanner,
-    private toast: Toast,private menuCtrl:MenuController) {
+    private toast: Toast,private menuCtrl:MenuController,private consultationService:ConsultationService) {
   }
   ngOnInit() {
 
@@ -61,7 +67,22 @@ export class QrcodePage {
 
       }
     );
+    this.consultationService.retrieveData().then(
+      () => {
+        this.consultationSubscription = this.consultationService.consultation$.subscribe(
+          (consultation: Consultation[]) => {
+            this.consultationList = consultation.slice();
+          }
+        );
+      
+        this.consultationService.emitConsultation();
+       
+      },
+      (error) => {
 
+      }
+    );
+    
 
   }
   scanMedecin() {
@@ -70,6 +91,11 @@ export class QrcodePage {
       this.selectedMalade = this.utilisateurList.find(malade => malade.email === barcodeData.text);
       if (this.selectedMalade !== undefined) {
         this.MaladeFound = true;
+        this.toast.show('Scan validé', '5000', 'center').subscribe(
+          toast => {
+
+          }
+        );
       } else {
         this.selectedMalade = null;
         this.MaladeFound = false;
@@ -93,6 +119,12 @@ export class QrcodePage {
       this.selectedMalade = this.utilisateurList.find(malade => malade.email === barcodeData.text);
       if (this.selectedMalade !== undefined) {
         this.MaladeFound = true;
+        this.toast.show('Scan validé', '5000', 'center').subscribe(
+          toast => {
+
+          }
+        );
+              
       } else {
         this.selectedMalade = null;
         this.MaladeFound = false;
@@ -117,6 +149,7 @@ export class QrcodePage {
     this.navCtrl.push(ConsutationMaladePage,{utilisateur:this.utilisateur,malade:this.selectedMalade});
   }
   onGotoVente() {
+  
     this.navCtrl.push(VenteMedicamentPage,{utilisateur:this.utilisateur,malade:this.selectedMalade});
   }
 

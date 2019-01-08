@@ -64,6 +64,7 @@ export class ConsutationMaladePage {
   compt: number;
   compt1: number;
   indice: number;
+  medicaments: string[]=[];
 
 
   constructor(public navCtrl: NavController,
@@ -220,21 +221,20 @@ export class ConsutationMaladePage {
         this.indice=this.i;
       }
     }
-    const description = this.form.get('description').value;
+   
     const technologies = this.form.get('technologies').value;
     const montant = this.form.get('montant').value;
-    const consultations=new Consultation(this.consultationList.length+1,montant,new Date(),this.compt1,this.compt,0);
-    this.consultationService.addUser(consultations);
+    const date:Date=new Date();
     for(this.i=0;this.i<technologies.length; this.i++){
-      const medicament_consultation=new Medicament_Consultation(technologies[this.i],consultations.id_consultation);
-      this.medicament_consultationService.addMedicament_Consultation(medicament_consultation);
+      this.medicaments.push(technologies[this.i]);
     }
+  
+    const consultations=new Consultation(this.consultationList.length+1,montant,new Date(),this.compt1,this.compt,0,this.malade.id_user,this.medicaments);
+    this.consultationService.addUser(consultations);
+    const compte = new Compte(this.compteList.length+1,montant,this.compt1,0);
+    this.compteSevice.addCompte(compte);
     
-    for(this.i=0;this.i<this.compteList.length;this.i++){
-      if(this.compteList[this.i].id_compte===this.prestataireList[this.indice].id_compte){
-        this.compteList[this.i].solde=this.compteList[this.i].solde + montant;
-      }
-    }
+   
     
     let loader1 = this.loadingCtrl.create({
       content: 'Sauvegarde en cours…'
