@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { ZakatFormPage } from "./zakat-form/zakat-form";
-import { MenuController } from "ionic-angular";
+import { MenuController, NavController, NavParams } from "ionic-angular";
 
 @Component({
     selector: 'page-zakat',
@@ -10,9 +10,13 @@ import { MenuController } from "ionic-angular";
 export class ZakatPage {
     zForm = ZakatFormPage;
     dForm = null;
-    constructor(public menuCtrl:MenuController) {
+    constructor(public navCtrl: NavController, public navParams: NavParams, public menuCtrl:MenuController) {
         
     }
+
+    ionViewDidLoad() {
+        console.log('ionViewDidLoad ZakatPage');
+      }
 
     onToggleMenu() {
         this.menuCtrl.open();

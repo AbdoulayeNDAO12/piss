@@ -11,12 +11,10 @@ import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { AuthPage } from '../pages/auth/auth';
 import { AuthService } from '../Service/auth.sevice';
 import { AccueilPage } from '../pages/pageAccueil/accueil/accueil';
 import { InscriptionPage } from '../pages/inscription/inscription';
-import { ZakatPage } from '../pages/zakat/zakat';
-import { AccueilParrainagePage} from '../pages/Parrainage/accueilParrainage/accueilParrainage';
+
 
 import { NotificationPage } from '../pages/notification/notification';
 import { ParrainageEnfantPage } from '../pages/Parrainage/parrainageEnfant/parrainageEnfant';
@@ -56,6 +54,16 @@ import { MedicamentService } from '../Service/medicament.service';
 import { ConsutationMaladePageModule } from '../pages/consutation-malade/consutation-malade.module';
 import { VenteMedicamentPageModule } from '../pages/vente-medicament/vente-medicament.module';
 import { DonPageModule } from '../pages/don/don.module';
+import { AccueilSectionAssurancePage } from '../pages/pageAccueil/accueil-section-assurance/accueil-section-assurance';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { Toast } from '@ionic-native/toast';
+import { QrcodePage } from '../pages/qrcode/qrcode';
+
+import { NgxQRCodeModule } from 'ngx-qrcode2';
+import { AccueilAssurancePageModule } from '../pages/pageAccueil/accueil-assurance/accueil-assurance.module';
+import { AccueilParrainagePageModule } from '../pages/Parrainage/accueilParrainage/accueilParrainage.module';
+import { ZakatPageModule } from '../pages/zakat/zakat.module';
+import { AuthPageModule } from '../pages/auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -64,12 +72,9 @@ import { DonPageModule } from '../pages/don/don.module';
     ContactPage,
     HomePage,
     TabsPage,
-    AuthPage,
     AccueilPage,
     InscriptionPage,
-    ZakatPage,
     ZakatFormPage,
-    AccueilParrainagePage,
     NotificationPage,
     ParrainageEnfantPage,
     ParrainageInstitutionPage,
@@ -77,6 +82,8 @@ import { DonPageModule } from '../pages/don/don.module';
     DescriptionInstitutionPage,
     FormParrainageEnfantPage,
     FormParrainageInstitutionPage,
+    QrcodePage,
+   
   ],
   imports: [
     FormsModule,
@@ -85,7 +92,15 @@ import { DonPageModule } from '../pages/don/don.module';
     SuperTabsModule.forRoot(),
     ConsutationMaladePageModule,
     VenteMedicamentPageModule,
-    DonPageModule
+    DonPageModule,
+    NgxQRCodeModule,
+    DonPageModule,
+    ConsutationMaladePageModule,
+    VenteMedicamentPageModule,
+    AccueilAssurancePageModule,
+    AccueilParrainagePageModule,
+    ZakatPageModule,
+    AuthPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -94,12 +109,9 @@ import { DonPageModule } from '../pages/don/don.module';
     ContactPage,
     HomePage,
     TabsPage,
-    AuthPage,
     AccueilPage,
     InscriptionPage,
-    ZakatPage,
     ZakatFormPage,
-    AccueilParrainagePage,
     NotificationPage,
     ParrainageEnfantPage,
     ParrainageInstitutionPage,
@@ -110,9 +122,13 @@ import { DonPageModule } from '../pages/don/don.module';
     DonPage,
     ConsutationMaladePage,
     VenteMedicamentPage,
+    QrcodePage,
+    
   ],
   providers: [
     StatusBar,
+    BarcodeScanner,
+    Toast,
     SplashScreen,
     AuthService,
     UserService,

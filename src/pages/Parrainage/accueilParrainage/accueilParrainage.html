@@ -1,10 +1,10 @@
 <ion-header color="menus">
-  <ion-navbar color="menus">
+  <ion-navbar color="menus" hideBackButton="true">
 
-      <ion-buttons start>
-          <button ion-button menuToggle>
-          <ion-icon name="menu"></ion-icon>
-        </button>
+      <ion-buttons left>
+          <button ion-button icon-only (click)="onToggleMenu()">
+            <ion-icon name="menu"></ion-icon>
+          </button>
         </ion-buttons>
 
     <ion-title class="titre1">Parrainage</ion-title>    

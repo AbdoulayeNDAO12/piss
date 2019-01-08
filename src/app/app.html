@@ -7,12 +7,59 @@
   
     <ion-content>
         <ion-list>
-            <button ion-item menuClose *ngFor="let p of pages" (click)="openPage(p)">
-                <ion-icon item-start [name]="p.icon" [color]="isActive(p)"></ion-icon>
-                {{ p.title }}
+            <button ion-item (click)="onNavigate(accueilPage )">
+                <ion-icon item-start name="home"></ion-icon>
+               Accueil
+            </button>
+
+            <button ion-item (click)="onNavigate(qrcodePage )" *ngIf="isAuth">
+                <ion-icon item-start name="person"></ion-icon>
+               Compte
               </button>
+
+            <button ion-item (click)="onNavigate(accueilAssurancePage)" >
+              <ion-icon item-start name="medkit"></ion-icon>
+              Assurance
+            </button>
+
+            <button ion-item (click)="onNavigate(accueilParrainagePage)">
+              <ion-icon item-start name="people"></ion-icon>
+              Parrainage
+            </button>
+
+            <button ion-item (click)="onNavigate(zakatPage)">
+              <ion-icon item-start name="cash"></ion-icon>
+              Zakat
+            </button>
+
+            <button ion-item (click)="onNavigate(donPage)" >
+              <ion-icon item-start name="cash"></ion-icon>
+              Don
+            </button>
+
+            <button ion-item (click)="onNavigate(accueilPage)" *ngIf="isAuth">
+                <ion-icon item-start name="list"></ion-icon>
+                Historique
+            </button>
+
+            <button ion-item (click)="onNavigate(accueilPage)" *ngIf="isAuth">
+                <ion-icon item-start name="settings" ></ion-icon>
+                Reglages
+              </button>
+          
+          
+          <button ion-item (click)="onNavigate(authPage)" *ngIf="!isAuth">
+            <ion-icon item-start name="log-in"></ion-icon>
+            Connexion
+          </button>
+
+            <button ion-item (click)="onDisconnect(authPage, {mode: 'deconnect'})" *ngIf="isAuth">
+              <ion-icon item-start name="log-out"></ion-icon>
+              Déconnexion
+            </button>
+              
         </ion-list>
     </ion-content>
   </ion-menu>
-  <ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
+  <ion-nav [root]="rootPage" #content ></ion-nav>
   

@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, MenuController } from 'ionic-angular';
-import { AccueilSectionAssurancePage } from '../pageAccueil/accueil-section-assurance/accueil-section-assurance';
-import { AccueilSectionParrainagePage } from '../pageAccueil/accueil-section-parrainage/accueil-section-parrainage';
 import { AccueilParrainagePage } from '../Parrainage/accueilParrainage/accueilParrainage';
 import { ZakatPage } from '../zakat/zakat';
+import { AccueilAssurancePage } from '../pageAccueil/accueil-assurance/accueil-assurance';
 
 @Component({
   selector: 'page-about',
@@ -16,7 +15,7 @@ export class AboutPage {
   }
 
   onGoToSectionAssurance(){
-    this.navCtrl.push(AccueilSectionAssurancePage);
+    this.navCtrl.push(AccueilAssurancePage);
   }
 
   onGoToSectionParrainage(){

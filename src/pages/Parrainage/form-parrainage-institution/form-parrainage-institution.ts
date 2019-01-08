@@ -30,7 +30,7 @@ import { constructor, auth } from 'firebase';
   selector: 'page-form-parrainage-institution',
   templateUrl: 'form-parrainage-institution.html',
 })
-export class FormParrainageInstitutionPage implements OnInit,OnDestroy {
+export class FormParrainageInstitutionPage implements OnInit {
 
   authForm: FormGroup;
   errorMessage: string;
@@ -240,14 +240,7 @@ export class FormParrainageInstitutionPage implements OnInit,OnDestroy {
     
   this.navCtrl.push(ParrainageInstitutionPage);
 }
-ngOnDestroy() {
-  this.filleulSubscription.unsubscribe();
-  this.utilisateurSubscription.unsubscribe();
-  this.parrainSubscription.unsubscribe();
-  this.donneurSubscription.unsubscribe();
-  this.donneurSubscription.unsubscribe();
-  this.institutionparrainSubscription.unsubscribe();
-}
+
 
 }
 

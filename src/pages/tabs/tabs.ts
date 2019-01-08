@@ -16,9 +16,8 @@ export class TabsPage {
   tab2Root = AboutPage;
   tab3Root = ContactPage;
   tab4Root = NotificationPage;
-  myIndex: number;
 
   constructor(navParams: NavParams) {
-    this.myIndex = navParams.data.tabIndex || 0;
+
   }
 }
