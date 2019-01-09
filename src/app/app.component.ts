@@ -17,6 +17,8 @@ import { QrcodePage } from '../pages/qrcode/qrcode';
 import { isDefaultChangeDetectionStrategy } from '@angular/core/src/change_detection/constants';
 import { AccueilPage } from '../pages/pageAccueil/accueil/accueil';
 import { AccueilAssurancePage } from '../pages/pageAccueil/accueil-assurance/accueil-assurance';
+import { HistoriquePage } from '../pages/historique/historique';
+import { ReglagesPage } from '../pages/reglages/reglages';
 
 
 @Component({
@@ -33,8 +35,10 @@ export class MyApp {
   @ViewChild('content') content: NavController;
   accueilParrainagePage :any = AccueilParrainagePage;
   accueilAssurancePage :any = AccueilAssurancePage;
-  donPage= DonPage;
+  donPage :any = DonPage;
   qrcodePage:any=QrcodePage;
+  historiquePage :any = HistoriquePage;
+  reglagesPage :any = ReglagesPage;
   isAuth:boolean;
   
 constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private menuCtrl: MenuController) {

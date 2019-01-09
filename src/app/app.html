@@ -12,7 +12,7 @@
                Accueil
             </button>
 
-            <button ion-item (click)="onNavigate(qrcodePage )" *ngIf="isAuth">
+            <button ion-item (click)="onNavigate(accueilPage )" *ngIf="isAuth">
                 <ion-icon item-start name="person"></ion-icon>
                Compte
               </button>
@@ -37,12 +37,12 @@
               Don
             </button>
 
-            <button ion-item (click)="onNavigate(accueilPage)" *ngIf="isAuth">
+            <button ion-item (click)="onNavigate(historiquePage)" *ngIf="isAuth">
                 <ion-icon item-start name="list"></ion-icon>
                 Historique
             </button>
 
-            <button ion-item (click)="onNavigate(accueilPage)" *ngIf="isAuth">
+            <button ion-item (click)="onNavigate(reglagesPage)" *ngIf="isAuth">
                 <ion-icon item-start name="settings" ></ion-icon>
                 Reglages
               </button>

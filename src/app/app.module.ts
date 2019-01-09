@@ -64,6 +64,8 @@ import { AccueilAssurancePageModule } from '../pages/pageAccueil/accueil-assuran
 import { AccueilParrainagePageModule } from '../pages/Parrainage/accueilParrainage/accueilParrainage.module';
 import { ZakatPageModule } from '../pages/zakat/zakat.module';
 import { AuthPageModule } from '../pages/auth/auth.module';
+import { ReglagesPage } from '../pages/reglages/reglages';
+import { HistoriquePage } from '../pages/historique/historique';
 
 @NgModule({
   declarations: [
@@ -83,6 +85,8 @@ import { AuthPageModule } from '../pages/auth/auth.module';
     FormParrainageEnfantPage,
     FormParrainageInstitutionPage,
     QrcodePage,
+    HistoriquePage,
+    ReglagesPage
    
   ],
   imports: [
@@ -123,6 +127,8 @@ import { AuthPageModule } from '../pages/auth/auth.module';
     ConsutationMaladePage,
     VenteMedicamentPage,
     QrcodePage,
+    HistoriquePage,
+    ReglagesPage
     
   ],
   providers: [
