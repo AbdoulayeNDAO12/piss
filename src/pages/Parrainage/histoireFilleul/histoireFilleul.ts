@@ -2,8 +2,8 @@ import {Component} from '@angular/core';
 import { NavParams } from 'ionic-angular';
 import { FilleulService } from '../../../Service/filleul.service';
 import { Filleul } from '../../../models/Filleul.model';
-import { ParrainageEnfantPage } from '../parrainageEnfant/parrainageEnfant';
 import { NavController, MenuController } from 'ionic-angular';
+import { FormParrainageEnfantPage } from '../formParrainageEnfant/formParrainageEnfant';
 
 @Component({
     selector: 'page-histoireFilleul',
@@ -19,8 +19,8 @@ export class HistoireFilleulPage{
     }
     
     
-    onGoToParraineMoi(){
-    this.navCtrl.push(ParrainageEnfantPage);
-}
+    onGoToParraineMoi(filleul: Filleul){
+        this.navCtrl.push(FormParrainageEnfantPage, {filleul: filleul});
+    }
 }
 
