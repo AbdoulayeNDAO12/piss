@@ -11,11 +11,8 @@ import { FilleulService } from '../../Service/filleul.service';
 import { ConsutationMaladePage } from '../consutation-malade/consutation-malade';
 import { VenteMedicamentPage } from '../vente-medicament/vente-medicament';
 import { MenuController } from 'ionic-angular/components/app/menu-controller';
-<<<<<<< HEAD
 import { Consultation } from '../../models/Consultation.models';
 import { ConsultationService } from '../../Service/consultation.service';
-=======
->>>>>>> 718c29fc52c3312e90ccc6742f11d63c79c9cf45
 
 /**
  * Generated class for the QrcodePage page.

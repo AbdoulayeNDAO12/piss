@@ -10,7 +10,8 @@
         En parrainant un enfant, vous participez à l’amélioration concrète et durable de ses conditions de vie et celles de toute sa communauté.
         
     </p>
-    <ion-card  *ngFor="let institution of institutionList; let i = index" class="indiv">
+    <div *ngFor="let institution of institutionList; let i = index" > 
+    <ion-card  class="indiv">
         <img src="../assets/imgs/parrainage.png" />
     
         <ion-card-content>
@@ -18,20 +19,22 @@
             {{ institution.nom}}
           </ion-card-title>
           <p>
-            {{institution.nom}} est une institution sise... </p>
-          <ion-row>
-              <ion-col>
-            <button ion-button color="menus" (click)="onGoToDescription()" class="mmbutton">        
-              Description 
-            </button>
-            </ion-col>
-            <ion-col>
-            <button ion-button color="menus" (click)="onGoToParraineMoi(institution)" class="mmbutton">        
-              Nous parrainer
-            </button>
-          </ion-col>
-          </ion-row>
+            {{institution.nom}} est une institution... </p>
+          
         </ion-card-content>
       </ion-card>
+        <ion-row>
+          <ion-col>
+        <button ion-button color="menus" (click)="onGoToDescription(institution)" class="mmbutton">        
+          Description 
+        </button>
+        </ion-col>
+        <ion-col>
+        <button ion-button color="menus" (click)="onGoToParraineMoi(institution)" class="mmbutton">        
+          Nous parrainer
+        </button>
+      </ion-col>
+      </ion-row>
+      </div>
 
 </ion-content>

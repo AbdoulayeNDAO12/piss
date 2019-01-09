@@ -1,5 +1,5 @@
 <ion-header color = "menus">
-  <ion-navbar color = "menus">
+  <ion-navbar color = "menus" hideBackButton="true">
 
       <ion-buttons left>
           <button ion-button icon-only (click)="onToggleMenu()">
@@ -26,8 +26,6 @@
       </ion-item-divider>
   </div>
   <div>
-    <form [formGroup]="form">
-      <ion-list margin-bottom>
   <form [formGroup]="form">
     <ion-list margin-bottom>
 
@@ -38,15 +36,5 @@
   </ion-list>
     <button ion-button block margin-top color="menus" text-center (click)="onSubmitForm()" class="mbutton">Soumettre</button>
   </form>
-
-        <ion-item>
-          <ion-label floating>Entrez le montant de l'ordonnance</ion-label><br>
-          <ion-input aria-placeholder="sum" formControlName="montant"></ion-input>
-        </ion-item>
-      </ion-list>
-      <ion-col>
-        <button ion-button block margin-top color="primary" class="submit-btn" text-center (click)="onSubmitForm()">Soumettre</button>
-      </ion-col>
-    </form>
   </div>
 </ion-content>

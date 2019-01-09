@@ -224,12 +224,12 @@ export class ConsutationMaladePage {
    
     const technologies = this.form.get('technologies').value;
     const montant = this.form.get('montant').value;
-    const date:Date=new Date();
+    const date=new Date();
     for(this.i=0;this.i<technologies.length; this.i++){
       this.medicaments.push(technologies[this.i]);
     }
   
-    const consultations=new Consultation(this.consultationList.length+1,montant,new Date(),this.compt1,this.compt,0,this.malade.id_user,this.medicaments);
+    const consultations=new Consultation(this.consultationList.length+1,montant,date,this.compt1,this.compt,0,this.malade.id_user,this.medicaments);
     this.consultationService.addUser(consultations);
     const compte = new Compte(this.compteList.length+1,montant,this.compt1,0);
     this.compteSevice.addCompte(compte);
