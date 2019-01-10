@@ -13,10 +13,8 @@ import { Parrain } from '../../../models/Parrain.models';
 import { InstitutionParrain } from '../../../models/Institution_Parrain.models';
 import { InstitutionParrainService } from '../../../Service/institution_parrain.service';
 import { Institution } from '../../../models/Institution.models';
-import { ParrainageInstitutionPage } from '../parrainageInstitution/parrainageInstitution';
 import { InstitutionService } from '../../../Service/institution.service';
 import { Subscription } from 'rxjs/Subscription';
-import { constructor, auth } from 'firebase';
 import { AccueilPage } from '../../pageAccueil/accueil/accueil';
 
 /**

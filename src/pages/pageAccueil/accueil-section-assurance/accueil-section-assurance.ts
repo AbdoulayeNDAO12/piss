@@ -5,8 +5,6 @@ import { Subscription } from 'rxjs';
 import { UserService } from '../../../Service/utilisateur.service';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { Toast } from '@ionic-native/toast';
-import { ConsutationMaladePage } from '../../consutation-malade/consutation-malade';
-import { VenteMedicamentPage } from '../../vente-medicament/vente-medicament';
 import { AccueilParrainagePage } from '../../Parrainage/accueilParrainage/accueilParrainage';
 import { AccueilAssurancePage } from '../accueil-assurance/accueil-assurance';
 

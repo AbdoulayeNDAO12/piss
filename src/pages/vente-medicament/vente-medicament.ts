@@ -19,12 +19,9 @@ import { Remboursement } from '../../models/Remboursement.models';
 import { Subscription } from 'rxjs/Subscription';
 import { Medicament_Consultation } from '../../models/medicament_consultation.model';
 import { Medicament_ConsultationService } from '../../Service/medicament_consultation.service';
-import { NotificationPage } from '../notification/notification';
 import { AccueilPage } from '../pageAccueil/accueil/accueil';
-import { Medicament } from '../../models/Medicament.models';
 import { Utilisateur } from '../../models/Utilisateur.models';
 import { Compte } from '../../models/Compte.models';
-import { QrcodePage } from '../qrcode/qrcode';
 
 
 /**
@@ -255,7 +252,7 @@ export class VenteMedicamentPage {
       }
     );
 
-    this.navCtrl.push(QrcodePage);
+    this.navCtrl.push(AccueilPage);
 
   }
   initMontantFields(): FormGroup {

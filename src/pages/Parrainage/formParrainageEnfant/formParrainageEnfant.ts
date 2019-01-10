@@ -2,8 +2,6 @@ import {Component, OnInit, OnDestroy} from '@angular/core';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { MenuController, NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
 import { AuthService } from '../../../Service/auth.sevice';
-import { TabsPage } from '../../tabs/tabs';
-import { AuthPage } from '../../auth/auth';
 import { Utilisateur } from '../../../models/Utilisateur.models';
 import { Parrain } from '../../../models/Parrain.models';
 import { Donneur } from '../../../models/Donneur.models';
@@ -15,9 +13,6 @@ import { DonneurService } from '../../../Service/Donneur.service';
 import { Filleul } from '../../../models/Filleul.model';
 import { Subscription } from 'rxjs/Subscription';
 import { FilleulService } from '../../../Service/filleul.service';
-import { ParrainageEnfantPage } from '../parrainageEnfant/parrainageEnfant';
-import * as firebase from 'firebase';
-import { formArrayNameProvider } from '@angular/forms/src/directives/reactive_directives/form_group_name';
 import { AccueilPage } from '../../pageAccueil/accueil/accueil';
 
 

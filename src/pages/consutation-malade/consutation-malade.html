@@ -14,6 +14,12 @@
 
 <ion-content class="login-content"  padding>
    <div><h4>Ordonnance</h4></div>
+   <div *ngFor="let hopital of prestataireList">
+         <ion-list *ngIf="hopital.type=='Hopital'"><h6>hopital:</h6>{{hopital.nom}}</ion-list>
+     </div>
+     <ion-list><h6>Prenom:</h6> {{malade.prenom}}</ion-list>
+     <ion-list><h6>Nom:</h6> {{ malade.nom}}</ion-list>
+     <ion-list><h6>Date de Nais:</h6> {{malade.date_nais}}</ion-list>
    <div class="login-box">
    <form
       [formGroup]="form"
