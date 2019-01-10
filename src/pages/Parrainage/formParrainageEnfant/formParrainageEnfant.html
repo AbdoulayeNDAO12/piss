@@ -1,71 +1,72 @@
 <ion-header color="menus">
     <ion-navbar color="menus">
-        <ion-title>Formulaire</ion-title>
+      <ion-title>Formulaire</ion-title>
     </ion-navbar>
-</ion-header>
-
-<ion-content class="login-content" padding>   
-    <h4> Vos informations</h4> 
+  </ion-header>
+  
+  <ion-content class="login-content" padding>
+    <h4> Vos informations</h4>
     <div class="login-box">
-    <form [formGroup]="authForm">
-            <ion-row>
-              <ion-col>
-                 <ion-list inset>
-                     <ion-item>
-                       <ion-label floating>Prenom</ion-label>
-                       <ion-input type="text" formControlName="prenom"></ion-input>
-                     </ion-item>
-                     <ion-item>
-                        <ion-label floating>Nom</ion-label>
-                        <ion-input type="text" formControlName="nom"></ion-input>
-                      </ion-item>
-                      <ion-item>
-                          <ion-label floating>Adresse</ion-label>
-                          <ion-input type="text" formControlName="adresse"></ion-input>
-                        </ion-item>
-                        <ion-item>
-                            <ion-label floating>profession</ion-label>
-                            <ion-input type="text" formControlName="profession"></ion-input>
-                          </ion-item>
-                        <ion-item>
-                            <ion-label floating>Telephone</ion-label>
-                            <ion-input type="tel" formControlName="telephone"></ion-input>
-                          </ion-item>
-                          <ion-item>
-                              <ion-label>Sexe</ion-label>
-                              <ion-select formControlName="sexe">
-                                <ion-option value="f">Féminin</ion-option>
-                                <ion-option value="m">Masculin</ion-option>
-                              </ion-select>
-                            </ion-item>
-
-                      <ion-item>
-                          <ion-label floating>Date de Naissance</ion-label>
-                          <ion-input type="date" formControlName="dateNaiss"></ion-input>
-                        </ion-item>
-                     <ion-item>
-                        <ion-label floating>Adresse mail</ion-label>
-                        <ion-input type="email" formControlName="email"></ion-input>
-                      </ion-item>
-                      <ion-item>
-                        <ion-label floating>Mot de passe</ion-label>
-                        <ion-input type="password" formControlName="password"></ion-input>
-                      </ion-item>
-                     <ion-item>
-                       <ion-label floating>Conditions générales d'utilisation</ion-label>
-                       <ion-checkbox type="checkbox" formControlName="checkbox" desabled="false"></ion-checkbox>
-                     </ion-item>
-                     
-                  </ion-list>
-              </ion-col>
-            </ion-row>
-              <ion-row>
-                <ion-col class="signup-col">
-                   <button ion-button full (click)="onSubmitForm()" (desabled)=!authForm.valid class="submit-btn" color = "menus"> Soumettre</button>
-                  </ion-col>
-              </ion-row>
-                 <span ion-text color="danger">{{ message }}</span>
-           </form>
+      <form [formGroup]="authForm">
+        <ion-row>
+          <ion-col>
+            <ion-list inset>
+              <ion-item>
+                <ion-label floating>Prenom</ion-label>
+                <ion-input type="text" formControlName="prenom" aria-required="true"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label floating>Nom</ion-label>
+                <ion-input type="text" formControlName="nom" aria-required="true"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label floating>Adresse</ion-label>
+                <ion-input type="text" formControlName="adresse" aria-required="true"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label floating>profession</ion-label>
+                <ion-input type="text" formControlName="profession" aria-required="true"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label floating>Telephone</ion-label>
+                <ion-input type="tel" formControlName="telephone" aria-required="true"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label>Sexe</ion-label>
+                <ion-select formControlName="sexe">
+                  <ion-option value="f">Féminin</ion-option>
+                  <ion-option value="m">Masculin</ion-option>
+                </ion-select>
+              </ion-item>
+  
+              <ion-item>
+                <ion-label floating>Date de Naissance</ion-label>
+                <ion-input type="date" formControlName="dateNaiss" aria-required="true"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label floating>Adresse mail</ion-label>
+                <ion-input type="email" formControlName="email" aria-required="true"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label floating>Mot de passe à 6 caractères</ion-label>
+                <ion-input type="password" formControlName="password" aria-required="true"></ion-input>
+              </ion-item>
+  
+              <ion-item>
+                <ion-label floating>Confirmer le mot de passe</ion-label>
+                <ion-input type="password" formControlName="password2" aria-required="true"></ion-input>
+              </ion-item>
+  
+            </ion-list>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="signup-col">
+            <button ion-button full (click)="onSubmitForm()" [disabled]="authForm.invalid" class="submit-btn">Soumettre</button>
+          </ion-col>
+        </ion-row>
+        <span ion-text color="danger" *ngIf = "message">Les deux mots de passe ne sont pas identiques</span>
+      </form>
     </div>
-
-</ion-content>
+  
+  </ion-content>

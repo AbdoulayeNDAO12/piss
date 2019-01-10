@@ -46,6 +46,8 @@ export class AuthPage implements OnInit {
   
   consultationList: Consultation[]=[];
   dice: number;
+  valid = true;
+  invalid = false;
  
   
  

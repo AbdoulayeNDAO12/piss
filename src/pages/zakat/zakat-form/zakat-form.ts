@@ -38,6 +38,8 @@ export class ZakatFormPage implements OnInit{
   donneur_zakat:Donneur_Zakat;
   donneur_zakatList:Donneur_Zakat[];
   donneurSubscription:Subscription;
+  valid: true;
+  invalid: false;
 
   constructor(private menuCtrl: MenuController,
     private navCtrl: NavController, private loadingCtrl: LoadingController, private toastCtrl: ToastController,
@@ -48,11 +50,10 @@ export class ZakatFormPage implements OnInit{
     this.zakatForm = this.formBuilder.group({
       prenom: ['', Validators.required],
       nom: ['', Validators.required],
+      telephone: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
       adresse: ['', Validators.required],
       profession: ['', Validators.required],
-      telephone: ['', Validators.required],
-      sexe: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
       sum: ['', Validators.required],
     });
   }
@@ -146,12 +147,12 @@ export class ZakatFormPage implements OnInit{
     const telephone = this.zakatForm.get('telephone').value;
     const email = this.zakatForm.get('email').value;
     const montant = this.zakatForm.get('sum').value;
+    const profession = this.zakatForm.get('profession').value;
 
-    this.utilisateur = new Utilisateur(this.utilisateurList.length+1, prenom, nom, adresse, "", telephone, "", null, email, "", "donneur zakat");
+    this.utilisateur = new Utilisateur(this.utilisateurList.length+1, prenom, nom, adresse,profession,telephone, "", null, email, "", "donneur zakat");
     this.utilisateurService.addUser(this.utilisateur);
     this.donneur = new Donneur(this.donneurList.length+1, this.utilisateur.id_user);
     this.donneurService.addDonneur(this.donneur);
-    this.compteService.addCompte(this.compte);
     this.versement = new Versement(this.versementList.length+1, montant,new Date(),this.donneur.id_donneur);
     this.versementService.addVersement(this.versement);
     this.donneur_zakat = new Donneur_Zakat(this.donneur_zakatList.length+1, this.donneur.id_donneur);

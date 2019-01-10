@@ -25,6 +25,8 @@ export class DonPage {
   don:Don;
   donList: Don[];
   donSubscription: Subscription;
+  valid: true;
+  invalid: false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,private formBuilder:FormBuilder,
     private menuCtrl:MenuController,private donService:DonService,private loadingCtrl:LoadingController,

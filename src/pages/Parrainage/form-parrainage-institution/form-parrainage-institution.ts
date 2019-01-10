@@ -17,6 +17,7 @@ import { ParrainageInstitutionPage } from '../parrainageInstitution/parrainageIn
 import { InstitutionService } from '../../../Service/institution.service';
 import { Subscription } from 'rxjs/Subscription';
 import { constructor, auth } from 'firebase';
+import { AccueilPage } from '../../pageAccueil/accueil/accueil';
 
 /**
  * Generated class for the FormParrainageInstitutionPage page.
@@ -33,6 +34,8 @@ import { constructor, auth } from 'firebase';
 export class FormParrainageInstitutionPage implements OnInit {
 
   authForm: FormGroup;
+  valid: true;
+  invalid: false;
   errorMessage: string;
   utilisateur: Utilisateur;
   parrain: Parrain;
@@ -52,6 +55,7 @@ export class FormParrainageInstitutionPage implements OnInit {
   institutionparrainSubscription: Subscription;
   institution_parrain:InstitutionParrain;
   donneurSubscription:Subscription;
+  message: boolean = false;
 
   constructor(private menuCtrl: MenuController,
     private navCtrl: NavController, private loadingCtrl: LoadingController, private toastCtrl: ToastController,
@@ -70,8 +74,7 @@ export class FormParrainageInstitutionPage implements OnInit {
       dateNaiss: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
-      password2: ['', Validators.required],
-      checkbox: ['', Validators.required]
+      password2: ['', Validators.required]
     });
   }
 
@@ -169,15 +172,14 @@ export class FormParrainageInstitutionPage implements OnInit {
     const dateNais = this.authForm.get('dateNaiss').value;
     const email = this.authForm.get('email').value;
     const password = this.authForm.get('password').value;
-    const checkbox = this.authForm.get('checkbox').value;
-
-    this.utilisateur = new Utilisateur(this.utilisateurList.length + 1, prenom, nom, adresse, profession, telephone, sexe, dateNais, email, password, "parrain");
+    const password2 = this.authForm.get('password2').value;
+    if(password===password2){
+      this.utilisateur = new Utilisateur(this.utilisateurList.length + 1, prenom, nom, adresse, profession, telephone, sexe, dateNais, email, password, "parrain");
     this.utilisateurService.signUpUser(email, password);
     this.utilisateurService.addUser(this.utilisateur);
     this.donneur = new Donneur(this.donneurList.length + 1, this.utilisateur.id_user);
     this.donneurService.addDonneur(this.donneur);
-    this.compteService.addCompte(this.compte);
-    this.parrain = new Parrain(this.parrainList.length + 1, this.donneur.id_donneur, this.compte.id_compte);
+    this.parrain = new Parrain(this.parrainList.length + 1, this.donneur.id_donneur, 0);
     this.parrainService.addParrain(this.parrain);
     this.institution_parrain = new InstitutionParrain(this.institution.id_institution, this.parrain.id_parrain);
     this.institution_parrainService.addInstitutionParrain(this.institution_parrain);
@@ -237,10 +239,20 @@ export class FormParrainageInstitutionPage implements OnInit {
   );
   
     
-  this.navCtrl.push(ParrainageInstitutionPage);
-}
+  this.navCtrl.push(AccueilPage);
+
+
+    }
+    else{
+      this.message=true;
+      
+      
+    }
+  
+    }
 
 }
+
 
 
 

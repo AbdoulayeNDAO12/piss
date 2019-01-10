@@ -11,27 +11,35 @@
                  <ion-list inset>
                     <ion-item>
                        <ion-label floating>Prénom</ion-label>
-                       <ion-input type="text" formControlName="prenom"></ion-input>
+                       <ion-input type="text" formControlName="prenom" aria-required="true"></ion-input>
                     </ion-item>
                     <ion-item>
                        <ion-label floating>Nom</ion-label>
-                       <ion-input type="text" formControlName="nom"></ion-input>
+                       <ion-input type="text" formControlName="nom" aria-required="true"></ion-input>
                     </ion-item>
                     <ion-item>
                        <ion-label floating>Telephone</ion-label>
-                       <ion-input type="tel" formControlName="telephone"></ion-input>
+                       <ion-input type="tel" formControlName="telephone" aria-required="true"></ion-input>
                     </ion-item>
                     <ion-item>
                        <ion-label floating>Adresse mail</ion-label>
-                       <ion-input type="email" formControlName="email"></ion-input>
+                       <ion-input type="email" formControlName="email" aria-required="true"></ion-input>
                     </ion-item>
                     <ion-item>
+                     <ion-label floating>Adresse</ion-label>
+                     <ion-input type="text" formControlName="adresse" aria-required="true"></ion-input>
+                  </ion-item>
+                  <ion-item>
+                     <ion-label floating>Profession</ion-label>
+                     <ion-input type="text" formControlName="profession" aria-required="true"></ion-input>
+                  </ion-item>
+                    <ion-item>
                       <ion-label floating>Montant de la zakat</ion-label>
-                      <ion-input type="text" formControlName="sum"></ion-input>
+                      <ion-input type="number" formControlName="sum" aria-required="true"></ion-input>
                     </ion-item>
 
                  </ion-list>
-                 <button full ion-button color="menus" (click)="onSubmitForm()" class="submit-btn">Confirmer le don</button>
+                 <button full ion-button color="menus" (click)="onSubmitForm()" class="submit-btn" [disabled]="zakatForm.invalid" >Confirmer le don</button>
 
               </form>
            </div>
