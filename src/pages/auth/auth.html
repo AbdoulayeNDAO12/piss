@@ -28,20 +28,18 @@
                  <ion-list inset>
                      <ion-item>
                        <ion-label floating>Adresse mail</ion-label>
-                       <ion-input type="email" formControlName="email"></ion-input>
+                       <ion-input type="email" formControlName="email" aria-required="true"></ion-input>
                      </ion-item>
                      <ion-item>
                        <ion-label floating>Mot de passe</ion-label>
-                       <ion-input type="password" formControlName="password"></ion-input>
+                       <ion-input type="password" formControlName="password" aria-required="true"></ion-input>
                      </ion-item>
                   </ion-list>
               </ion-col>
             </ion-row>
               <ion-row>
                 <ion-col class="signup-col">
-                   <button ion-button full (click)="onSubmitForm()" class="submit-btn">Soumettre</button>
-                   <button ion-button class="register-btns" bloc clear>mot de passe oublié</button>
-                   <button ion-button  class="register-btn" (click)="onClick()"  bloc clear>S'inscrire</button>
+                   <button ion-button full type="submit" (click)="onSubmitForm()" class="submit-btn" [disabled]="authForm.invalid" color="menus">Soumettre</button>
                 </ion-col>
               </ion-row>
                  <span ion-text color="danger">{{ errorMessage }}</span>

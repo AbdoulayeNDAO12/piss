@@ -22,11 +22,11 @@
               <ion-list>
                
                 <ion-item>
-                  <ion-label floating>Veuillez entrer la somme que vous voulez donner</ion-label><br>
-                  <ion-input aria-placeholder="sum" formControlName="don"></ion-input>
+                  <ion-label floating>Entrez le mmontant du don</ion-label><br>
+                  <ion-input type = "number" aria-required="true" aria-placeholder="somme" formControlName="don"></ion-input>
                 </ion-item>
               </ion-list>
-              <button full ion-button color="menus" (click)="onSubmitForm()" class="mbutton">Confirmer le don</button>
+              <button full ion-button color="menus" (click)="onSubmitForm()" class="mbutton" [disabled]="donForm.invalid">Confirmer le don</button>
             </form>
           </div>
       </ion-list>

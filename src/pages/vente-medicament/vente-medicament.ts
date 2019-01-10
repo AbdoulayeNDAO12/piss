@@ -24,6 +24,7 @@ import { AccueilPage } from '../pageAccueil/accueil/accueil';
 import { Medicament } from '../../models/Medicament.models';
 import { Utilisateur } from '../../models/Utilisateur.models';
 import { Compte } from '../../models/Compte.models';
+import { QrcodePage } from '../qrcode/qrcode';
 
 
 /**
@@ -251,7 +252,7 @@ export class VenteMedicamentPage {
       }
     );
 
-    this.navCtrl.push(AccueilPage);
+    this.navCtrl.push(QrcodePage);
 
   }
   initMontantFields(): FormGroup {

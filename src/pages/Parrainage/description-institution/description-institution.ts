@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ParrainageInstitutionPage } from '../parrainageInstitution/parrainageInstitution';
 import { Institution } from '../../../models/Institution.models';
+import { FormParrainageInstitutionPage } from '../form-parrainage-institution/form-parrainage-institution';
 
 /**
  * Generated class for the DescriptionInstitutionPage page.
@@ -28,8 +29,8 @@ ngOnInit(){
     console.log('ionViewDidLoad DescriptionInstitutionPage');
   }
 
-  onGoToNousParrainer(){
-    this.navCtrl.push(ParrainageInstitutionPage);
+  onGoToNousParrainer(institution: Institution) {
+    this.navCtrl.push(FormParrainageInstitutionPage, { institution: institution });
   }
 
 }

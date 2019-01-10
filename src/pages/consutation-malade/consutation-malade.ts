@@ -23,6 +23,7 @@ import { NotificationPage } from '../notification/notification';
 import { AccueilPage } from '../pageAccueil/accueil/accueil';
 import { Utilisateur } from '../../models/Utilisateur.models';
 import { Compte } from '../../models/Compte.models';
+import { QrcodePage } from '../qrcode/qrcode';
 
 @IonicPage()
 @Component({
@@ -284,7 +285,7 @@ export class ConsutationMaladePage {
     }
   );
 
-  this.navCtrl.push(AccueilPage);
+  this.navCtrl.push(QrcodePage);
   
   }
 

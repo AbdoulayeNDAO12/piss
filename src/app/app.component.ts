@@ -19,6 +19,7 @@ import { AccueilPage } from '../pages/pageAccueil/accueil/accueil';
 import { AccueilAssurancePage } from '../pages/pageAccueil/accueil-assurance/accueil-assurance';
 import { HistoriquePage } from '../pages/historique/historique';
 import { ReglagesPage } from '../pages/reglages/reglages';
+import { ComptePage } from '../pages/compte/compte';
 
 
 @Component({
@@ -39,6 +40,8 @@ export class MyApp {
   qrcodePage:any=QrcodePage;
   historiquePage :any = HistoriquePage;
   reglagesPage :any = ReglagesPage;
+  comptePage :any = ComptePage;
+  
   isAuth:boolean;
   
 constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private menuCtrl: MenuController) {

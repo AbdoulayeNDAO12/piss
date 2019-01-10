@@ -66,6 +66,7 @@ import { ZakatPageModule } from '../pages/zakat/zakat.module';
 import { AuthPageModule } from '../pages/auth/auth.module';
 import { ReglagesPage } from '../pages/reglages/reglages';
 import { HistoriquePage } from '../pages/historique/historique';
+import { ComptePage } from '../pages/compte/compte';
 
 @NgModule({
   declarations: [
@@ -86,7 +87,8 @@ import { HistoriquePage } from '../pages/historique/historique';
     FormParrainageInstitutionPage,
     QrcodePage,
     HistoriquePage,
-    ReglagesPage
+    ReglagesPage,
+    ComptePage
    
   ],
   imports: [
@@ -128,7 +130,8 @@ import { HistoriquePage } from '../pages/historique/historique';
     VenteMedicamentPage,
     QrcodePage,
     HistoriquePage,
-    ReglagesPage
+    ReglagesPage,
+    ComptePage
     
   ],
   providers: [

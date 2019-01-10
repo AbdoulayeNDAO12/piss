@@ -18,6 +18,7 @@ import { FilleulService } from '../../../Service/filleul.service';
 import { ParrainageEnfantPage } from '../parrainageEnfant/parrainageEnfant';
 import * as firebase from 'firebase';
 import { formArrayNameProvider } from '@angular/forms/src/directives/reactive_directives/form_group_name';
+import { AccueilPage } from '../../pageAccueil/accueil/accueil';
 
 
 @Component({
@@ -26,6 +27,8 @@ import { formArrayNameProvider } from '@angular/forms/src/directives/reactive_di
 })
 export class FormParrainageEnfantPage implements OnInit,OnDestroy{
     authForm: FormGroup;
+    valid: true;
+    invalid: false;
   errorMessage: string;
   utilisateur:Utilisateur;
   parrain:Parrain;
@@ -42,6 +45,7 @@ export class FormParrainageEnfantPage implements OnInit,OnDestroy{
   compteSubscription: Subscription;
   filleulSubscription: Subscription;
   donneurSubscription: Subscription;
+  message: boolean = false;
   indx:number;
   i: number;
 
@@ -62,8 +66,7 @@ export class FormParrainageEnfantPage implements OnInit,OnDestroy{
           dateNaiss:['',  Validators.required],
           email: ['', [Validators.required, Validators.email]],
           password: ['', Validators.required],
-          password2: ['', Validators.required],
-          checkbox:['',Validators.required]
+          password2: ['', Validators.required]          
           });
           }
     
@@ -159,14 +162,14 @@ export class FormParrainageEnfantPage implements OnInit,OnDestroy{
     const dateNais = this.authForm.get('dateNaiss').value;
     const email = this.authForm.get('email').value;
     const password = this.authForm.get('password').value;
-    const checkbox = this.authForm.get('checkbox').value;
-    this.utilisateur= new Utilisateur(this.utilisateurService.utilisateurList.length+1,prenom,nom,adresse,profession,telephone,sexe,dateNais,email,password,"parrain");
+    const password2 = this.authForm.get('password2').value;
+    if(password===password2){
+      this.utilisateur= new Utilisateur(this.utilisateurService.utilisateurList.length+1,prenom,nom,adresse,profession,telephone,sexe,dateNais,email,password,"parrain");
     this.utilisateurService.signUpUser(email,password);
     this.utilisateurService.addUser(this.utilisateur);
     this.donneur=new Donneur(this.donneurService.donneurList.length+1,this.utilisateur.id_user);
     this.donneurService.addDonneur(this.donneur);
-    this.compteService.addCompte(this.compte);
-    this.parrain=new Parrain(this.parrainService.parrainList.length+1,this.donneur.id_donneur,this.compte.id_compte);
+    this.parrain=new Parrain(this.parrainService.parrainList.length+1,this.donneur.id_donneur,0);
     this.parrainService.addParrain(this.parrain);
       for(this.i=0;this.i<this.filleulList.length;this.i++){
         if(this.filleulList[this.i].id_filleul==this.filleul.id_filleul && this.filleulList[this.i].date_nais==this.filleul.date_nais){
@@ -236,7 +239,14 @@ export class FormParrainageEnfantPage implements OnInit,OnDestroy{
     );
     
       
-      this.navCtrl.push(ParrainageEnfantPage);
+      this.navCtrl.push(AccueilPage);
+    
+    }
+    else{
+      this.message=true;
+      
+      
+    }
     
     }
     ngOnDestroy() {
