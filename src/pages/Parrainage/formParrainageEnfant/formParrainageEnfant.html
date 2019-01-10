@@ -61,7 +61,7 @@
             </ion-row>
               <ion-row>
                 <ion-col class="signup-col">
-                   <button ion-button full (click)="onSubmitForm()" class="submit-btn" color = "menus"> Soumettre</button>
+                   <button ion-button full (click)="onSubmitForm()" (desabled)=!authForm.valid class="submit-btn" color = "menus"> Soumettre</button>
                   </ion-col>
               </ion-row>
                  <span ion-text color="danger">{{ message }}</span>

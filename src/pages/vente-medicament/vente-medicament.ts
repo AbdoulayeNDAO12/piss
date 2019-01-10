@@ -79,6 +79,8 @@ export class VenteMedicamentPage {
   indices4: number;
   consultations: number;
   compt1: number;
+  invalid=false;
+  valid=true;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public menuCtrl:MenuController, private _FB: FormBuilder, private consultationService: ConsultationService, private hopitalService: HopitalService,
     private pharmacieService: PharmacieService, private toastCtrl: ToastController, private beneficiaireService: BeneficiaireService,
@@ -197,6 +199,7 @@ export class VenteMedicamentPage {
       
     );
     
+    
   }
   
 
@@ -251,7 +254,6 @@ export class VenteMedicamentPage {
       }
     );
 
-    this.navCtrl.push(AccueilPage);
 
   }
   initMontantFields(): FormGroup {

@@ -14,9 +14,10 @@
 
   <p class="demande"> Le parrainage change des vies</p>
 
-  <div *ngFor="let filleul of filleulList; let i = index">
-    <ion-card class="indiv">
-      <img src="../assets/imgs/avatar.jpeg" />
+ <div  *ngFor="let filleul of filleulList; let i = index">
+  <div *ngIf="filleul.etat===0">
+    <ion-card class="indiv" >
+      <img src="../assets/imgs/{{filleul.id_filleul}}.jpg" />
   
       <ion-card-content>
         <ion-card-title>
@@ -40,5 +41,6 @@
   </ion-col>
   </ion-row>
   </div>
+ </div>
 
 </ion-content>
