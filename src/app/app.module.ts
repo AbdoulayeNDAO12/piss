@@ -67,6 +67,7 @@ import { AuthPageModule } from '../pages/auth/auth.module';
 import { ReglagesPage } from '../pages/reglages/reglages';
 import { HistoriquePage } from '../pages/historique/historique';
 import { ComptePage } from '../pages/compte/compte';
+import { ConfirmationpaiePage } from '../pages/confirmationpaie/confirmationpaie';
 
 @NgModule({
   declarations: [
@@ -88,7 +89,8 @@ import { ComptePage } from '../pages/compte/compte';
     QrcodePage,
     HistoriquePage,
     ReglagesPage,
-    ComptePage
+    ComptePage,
+    ConfirmationpaiePage
    
   ],
   imports: [
@@ -131,7 +133,8 @@ import { ComptePage } from '../pages/compte/compte';
     QrcodePage,
     HistoriquePage,
     ReglagesPage,
-    ComptePage
+    ComptePage,
+    ConfirmationpaiePage
     
   ],
   providers: [

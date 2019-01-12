@@ -5,6 +5,7 @@ import { DonService } from '../../Service/don.service';
 import { Don } from '../../models/Don.models';
 import { AccueilPage } from '../pageAccueil/accueil/accueil';
 import { Subscription } from 'rxjs/Subscription';
+import { ConfirmationpaiePage } from '../confirmationpaie/confirmationpaie';
 
 /**
  * Generated class for the DonPage page.
@@ -34,25 +35,14 @@ export class DonPage {
   }
   initForm() {
     this.donForm = this.formBuilder.group({
-      don: ['', Validators.required]
+      don: ['', Validators.required],
+      telephone: ['', Validators.required]
     });
   }
 
   ngOnInit() {
     this.initForm();
-    this.donService.retrieveData().then(
-      () => {
-        this.donSubscription = this.donService.don$.subscribe(
-          (don: Don[]) => {
-            this.donList = don.slice();
-          }
-        );
-        this.donService.emitDon();
-      },
-      (error) => {
-        
-      }
-    );
+   
   }
 
   onToggleMenu() {
@@ -62,31 +52,10 @@ export class DonPage {
 
   onSubmitForm() {
     const don = this.donForm.get('don').value;
-    this.don= new Don(this.donService.donList.length+1,don,"Don",new Date());
-    this.donService.addDon(this.don);
-    let loader = this.loadingCtrl.create({
-      content: ''
-    });
-    loader.present();
-    this.donService.saveData().then(
-      () => {
-        loader.dismiss();
-        this.toastCtrl.create({
-          message: 'Données sauvegardées !',
-          duration: 3000,
-          position: 'bottom'
-        }).present();
-      },
-      (error) => {
-        loader.dismiss();
-        this.toastCtrl.create({
-          message: error,
-          duration: 3000,
-          position: 'bottom'
-        }).present();
-      }
-    );
-    this.navCtrl.push(AccueilPage);
+    const telephone = this.donForm.get('telephone').value;
+
+  
+    this.navCtrl.push(ConfirmationpaiePage,{don:don});
   
     
   }
