@@ -80,6 +80,8 @@ export class VenteMedicamentPage {
   indices4: number;
   consultations: number;
   compt1: number;
+  invalid=false;
+  valid=true;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public menuCtrl:MenuController, private _FB: FormBuilder, private consultationService: ConsultationService, private hopitalService: HopitalService,
     private pharmacieService: PharmacieService, private toastCtrl: ToastController, private beneficiaireService: BeneficiaireService,
@@ -198,6 +200,7 @@ export class VenteMedicamentPage {
       
     );
     
+    
   }
   
 
@@ -252,7 +255,10 @@ export class VenteMedicamentPage {
       }
     );
 
+<<<<<<< HEAD
+=======
     this.navCtrl.push(QrcodePage);
+>>>>>>> 53d9337d7132976157a60bee41763fbbd0205cf7
 
   }
   initMontantFields(): FormGroup {

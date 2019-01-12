@@ -174,6 +174,7 @@ export class FormParrainageEnfantPage implements OnInit,OnDestroy{
       for(this.i=0;this.i<this.filleulList.length;this.i++){
         if(this.filleulList[this.i].id_filleul==this.filleul.id_filleul && this.filleulList[this.i].date_nais==this.filleul.date_nais){
           this.filleulList[this.i].id_parrain=this.parrain.id_parrain;
+          this.filleulList[this.i].etat=1;
         }
         else{}
         

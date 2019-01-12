@@ -153,7 +153,6 @@ export class ZakatFormPage implements OnInit{
     this.utilisateurService.addUser(this.utilisateur);
     this.donneur = new Donneur(this.donneurList.length+1, this.utilisateur.id_user);
     this.donneurService.addDonneur(this.donneur);
-    this.compteService.addCompte(this.compte);
     this.versement = new Versement(this.versementList.length+1, montant,new Date(),this.donneur.id_donneur);
     this.versementService.addVersement(this.versement);
     this.donneur_zakat = new Donneur_Zakat(this.donneur_zakatList.length+1, this.donneur.id_donneur);

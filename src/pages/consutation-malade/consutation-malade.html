@@ -49,7 +49,7 @@
          </span>
          <ion-item>
             <ion-label floating>Montant de la consultation</ion-label><br>
-            <ion-input aria-placeholder="sum" formControlName="montant"></ion-input>
+            <ion-input aria-placeholder="sum" type="number" aria-required="true" formControlName="montant"></ion-input>
           </ion-item>
 
 
@@ -59,8 +59,8 @@
    	 <!-- Only allow form to be submitted IF validation criteria for
               input fields has been successfully passed -->
               <ion-col class="signup-col">
-         <button  ion-button block margin-top (click)="onSubmitForm()" color="menus" class="submit-btn" >Soumettre</button>
-              </ion-col>
+         <button  ion-button block margin-top (click)="onSubmitForm()" color="menus" class="submit-btn" [disabled]="form.invalid"  text-center >Soumettre</button>
+         </ion-col>
    </form>
    </div>
 

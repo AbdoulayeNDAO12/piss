@@ -66,6 +66,8 @@ export class ConsutationMaladePage {
   compt1: number;
   indice: number;
   medicaments: string[]=[];
+  invalid=false;
+  valid=true;
 
 
   constructor(public navCtrl: NavController,
@@ -79,8 +81,6 @@ export class ConsutationMaladePage {
     // (with sub-FormGroup objects for handling
     // the dynamically generated form input fields)
     this.form = this._FB.group({
-      name: ['', Validators.required],
-      description:['',Validators.required],
       technologies: this._FB.array([
         this.initTechnologyFields()
       ]),
