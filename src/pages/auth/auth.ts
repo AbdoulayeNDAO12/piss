@@ -120,7 +120,7 @@ export class AuthPage implements OnInit {
     this.utilisateurService.signInUser(email,password).then(
       () => {
         
-        this.navCtrl.push(VenteMedicamentPage,{utilisateur:this.utilisateur,malade:this.utilisateurList[3]});
+        this.navCtrl.push(QrcodePage,{utilisateur:this.utilisateur,malade:this.utilisateurList[3]});
       },
       (error) => {
         this.errorMessage = error;

@@ -1,0 +1,41 @@
+<!--
+  Generated template for the ConfirmationpaiePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header color = "menus">
+    <ion-navbar color = "menus" hideBackButton="true">
+      
+        <ion-buttons left>
+            <button ion-button icon-only (click)="onToggleMenu()">
+              <ion-icon name="menu"></ion-icon>
+            </button>
+          </ion-buttons>
+  
+      <ion-title>Confirmation de paiement</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+
+
+  <ion-content padding class="login-content">
+      <ion-row>
+        <ion-col>
+          <ion-list inset>
+            <div class="login-box">
+              <form [formGroup]="confForm">
+                  <ion-list>
+                      <ion-item>
+                          <ion-label floating>Saisir le code à 4 chiffres reçu</ion-label><br>
+                          <ion-input type="number" formControlName="code" aria-required="true"></ion-input>
+                        </ion-item>
+                  </ion-list>
+                  <button full ion-button color="menus" (click)="onSubmitForm()" class="mbutton" [disabled]="confForm.invalid">Confirmer le don</button>
+                </form>
+              </div>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+    
+    </ion-content>

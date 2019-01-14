@@ -20,11 +20,16 @@
         <div class="login-box">
           <form [formGroup]="donForm">
               <ion-list>
+                  <ion-item>
+                      <ion-label floating>Entrez votre numéro de téléphone</ion-label><br>
+                      <ion-input type="tel" formControlName="telephone" aria-required="true"></ion-input>
+                    </ion-item>
                
                 <ion-item>
-                  <ion-label floating>Entrez le mmontant du don</ion-label><br>
+                  <ion-label floating>Entrez le montant du don</ion-label><br>
                   <ion-input type = "number" aria-required="true" aria-placeholder="somme" formControlName="don"></ion-input>
                 </ion-item>
+                
               </ion-list>
               <button full ion-button color="menus" (click)="onSubmitForm()" class="mbutton" [disabled]="donForm.invalid">Confirmer le don</button>
             </form>

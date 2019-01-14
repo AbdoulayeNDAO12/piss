@@ -20,6 +20,7 @@ import { AccueilAssurancePage } from '../pages/pageAccueil/accueil-assurance/acc
 import { HistoriquePage } from '../pages/historique/historique';
 import { ReglagesPage } from '../pages/reglages/reglages';
 import { ComptePage } from '../pages/compte/compte';
+import { ConfirmationpaiePage } from '../pages/confirmationpaie/confirmationpaie';
 
 
 @Component({
@@ -41,6 +42,7 @@ export class MyApp {
   historiquePage :any = HistoriquePage;
   reglagesPage :any = ReglagesPage;
   comptePage :any = ComptePage;
+  confirmationpaiePage :any = ConfirmationpaiePage;
   
   isAuth:boolean;
   
