@@ -67,6 +67,7 @@
               <ion-col class="signup-col">
          <button  ion-button block margin-top (click)="onSubmitForm()" color="menus" class="submit-btn" [disabled]="form.invalid"  text-center >Soumettre</button>
          </ion-col>
+         <span ion-text color="danger" *ngIf = "message">Vous n'avez prescrit aucun médicament</span>
    </form>
    </div>
 

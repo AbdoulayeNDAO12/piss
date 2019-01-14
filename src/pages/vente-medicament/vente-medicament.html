@@ -23,24 +23,21 @@
   <div *ngFor="let medicament of consultationList" class="centrer">
     <ion-item-divider *ngIf="medicament.id_user==malade.id_user && medicament.etat==0">
       <h6 *ngFor="let medoc of medicament.medicaments">{{medoc.name}}</h6>
-      </ion-item-divider>
+    </ion-item-divider>
   </div>
   <div>
   <form [formGroup]="form">
     <ion-list margin-bottom>
-  
-      <div *ngFor="let medicament of consultationList">
-          <ion-item *ngIf="medicament.id_user==malade.id_user && medicament.etat==0">
+          <ion-item *ngIf="consulr">
               <ion-label floating>Entrez le montant de l'ordonnance</ion-label><br>
               <ion-input type="number" aria-required="true"  aria-placeholder="sum" formControlName="montant"></ion-input>
             </ion-item>
-      </div>
   </ion-list>
-  <div *ngFor="let medicament of consultationList">
-    <button  *ngIf="medicament.id_user==malade.id_user && medicament.etat==0" ion-button block margin-top color="menus" text-center (click)="onSubmitForm()" class="mbutton"
+  <div *ngIf="consulr">
+    <button  ion-button block margin-top color="menus" text-center (click)="onSubmitForm()" class="mbutton"
       [disabled]="form.invalid">Soumettre</button>
-      <h6 *ngIf="medicament.id_user==malade.id_user && medicament.etat==1">Pas d'ordonnance disponible pour cette personne!</h6>
-  </div>
-  </form>
+    </div>
+      <span ion-text color="danger" *ngIf="!consulr">Aucune ordonnance pour cette personne</span>
+ </form>
   </div>
 </ion-content>

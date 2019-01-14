@@ -79,6 +79,7 @@ export class VenteMedicamentPage {
   compt1: number;
   invalid=false;
   valid=true;
+  consulr:boolean;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public menuCtrl:MenuController, private _FB: FormBuilder, private consultationService: ConsultationService, private hopitalService: HopitalService,
     private pharmacieService: PharmacieService, private toastCtrl: ToastController, private beneficiaireService: BeneficiaireService,
@@ -188,7 +189,11 @@ export class VenteMedicamentPage {
      
         this.medicament_consultationService.emitMedicament_Consultation();
         
-  
+        for(this.i=0;this.i<this.consultationList.length;this.i++){
+          if(this.consultationList[this.i].id_user===this.malade.id_user && this.consultationList[this.i].etat===0){
+            this.consulr=true;
+          }
+        }
  
       },
       (error) => {
@@ -196,7 +201,8 @@ export class VenteMedicamentPage {
       }
       
     );
-    
+   
+      
     
   }
   
@@ -208,7 +214,7 @@ export class VenteMedicamentPage {
       }
     }
     for(this.i=0;this.i<this.consultationList.length;this.i++){
-      if(this.consultationList[this.i].id_user===this.malade.id_user && this.consultationList[this.i].etat==0){
+      if(this.consultationList[this.i].id_user===this.malade.id_user && this.consultationList[this.i].etat===0){
         this.consultationList[this.i].etat=1;
       }
     }
