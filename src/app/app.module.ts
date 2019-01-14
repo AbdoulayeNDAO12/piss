@@ -68,6 +68,7 @@ import { ReglagesPage } from '../pages/reglages/reglages';
 import { HistoriquePage } from '../pages/historique/historique';
 import { ComptePage } from '../pages/compte/compte';
 import { ConfirmationpaiePage } from '../pages/confirmationpaie/confirmationpaie';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -108,7 +109,8 @@ import { ConfirmationpaiePage } from '../pages/confirmationpaie/confirmationpaie
     AccueilAssurancePageModule,
     AccueilParrainagePageModule,
     ZakatPageModule,
-    AuthPageModule
+    AuthPageModule,
+    HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

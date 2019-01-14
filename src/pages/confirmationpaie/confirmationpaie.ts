@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { DonService } from '../../Service/don.service';
 import { Don } from '../../models/Don.models';
 import { Subscription } from 'rxjs';
+import { HttpHeaders, HttpClient } from '@angular/common/http';
 
 /**
  * Generated class for the ConfirmationpaiePage page.
@@ -29,7 +30,7 @@ export class ConfirmationpaiePage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams,private formBuilder:FormBuilder,
     private menuCtrl:MenuController,private donService:DonService,private loadingCtrl:LoadingController,
-    private toastCtrl:ToastController) {
+    private toastCtrl:ToastController, private httpClient: HttpClient) {
   }
   initForm() {
     this.confForm = this.formBuilder.group({
@@ -86,7 +87,33 @@ export class ConfirmationpaiePage {
         }).present();
       }
     );
-    this.navCtrl.push(ConfirmationpaiePage);
+
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'PAYDUNYA-MASTER-KEY': 'CfrF4mIa-Q54d-8hmc-wIcO-FcSuYVZxTguW',
+        'PAYDUNYA-PRIVATE-KEY': 'test_private_dbrrzKsdAuk7BZduawjBygXVENu',
+        'PAYDUNYA-TOKEN': 'KnuCJZ0RMlDF7foZdm8j'
+      })
+    }
+
+  var facture2 = {"token" : this.navParams.get("token"), "confirm_token" : code};
+  var url1 = 'https://cors-anywhere.herokuapp.com/https://app.paydunya.com/sandbox-api/v1/opr/charge';
+  var conf = this;
+  //http request complete with url, json content and header
+  this.httpClient.post(url1, JSON.stringify(facture2), httpOptions)
+      .subscribe(
+        (res) =>{
+          var response_text = res['response_text'];
+        
+        console.log('Le paiement a fonctionné : '+ response_text);
+        alert(response_text);
+      },
+      (error) => {
+        console.log('Erreur !');
+      });
+    //this.navCtrl.push(ConfirmationpaiePage);
   
     
   }
