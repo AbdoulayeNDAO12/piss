@@ -255,10 +255,7 @@ export class VenteMedicamentPage {
       }
     );
 
-<<<<<<< HEAD
-=======
     this.navCtrl.push(QrcodePage);
->>>>>>> 53d9337d7132976157a60bee41763fbbd0205cf7
 
   }
   initMontantFields(): FormGroup {
