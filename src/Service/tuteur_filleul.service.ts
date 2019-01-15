@@ -1,7 +1,7 @@
 import {Subject} from 'rxjs/Subject';
 import * as firebase from 'firebase';
 import DataSnapshot= firebase.database.DataSnapshot; 
-import { Tuteur_Filleul } from '../models/tuteur_filleul.models';
+import { Tuteur_Filleul } from '../models/Tuteur_Filleul.models';
 
 export class Tuteur_FilleulService {
 tuteur_Filleul$= new Subject<Tuteur_Filleul[]>();
