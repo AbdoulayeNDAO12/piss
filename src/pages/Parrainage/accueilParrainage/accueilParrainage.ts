@@ -2,7 +2,6 @@ import {Component} from '@angular/core';
 import { ParrainageEnfantPage} from '../parrainageEnfant/parrainageEnfant';
 import { NavController , MenuController, IonicPage} from 'ionic-angular';
 import { ParrainageInstitutionPage } from '../parrainageInstitution/parrainageInstitution';
-import { AccueilPage } from '../../pageAccueil/accueil/accueil';
 
 
 @IonicPage({

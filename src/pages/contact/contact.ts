@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController, MenuController } from 'ionic-angular';
-import { AccueilPage } from '../pageAccueil/accueil/accueil';
 
 @Component({
   selector: 'page-contact',

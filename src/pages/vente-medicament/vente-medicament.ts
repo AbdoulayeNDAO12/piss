@@ -19,12 +19,9 @@ import { Remboursement } from '../../models/Remboursement.models';
 import { Subscription } from 'rxjs/Subscription';
 import { Medicament_Consultation } from '../../models/medicament_consultation.model';
 import { Medicament_ConsultationService } from '../../Service/medicament_consultation.service';
-import { NotificationPage } from '../notification/notification';
 import { AccueilPage } from '../pageAccueil/accueil/accueil';
-import { Medicament } from '../../models/Medicament.models';
 import { Utilisateur } from '../../models/Utilisateur.models';
 import { Compte } from '../../models/Compte.models';
-import { QrcodePage } from '../qrcode/qrcode';
 
 
 /**
@@ -82,6 +79,7 @@ export class VenteMedicamentPage {
   compt1: number;
   invalid=false;
   valid=true;
+  consulr:boolean;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public menuCtrl:MenuController, private _FB: FormBuilder, private consultationService: ConsultationService, private hopitalService: HopitalService,
     private pharmacieService: PharmacieService, private toastCtrl: ToastController, private beneficiaireService: BeneficiaireService,
@@ -191,7 +189,11 @@ export class VenteMedicamentPage {
      
         this.medicament_consultationService.emitMedicament_Consultation();
         
-  
+        for(this.i=0;this.i<this.consultationList.length;this.i++){
+          if(this.consultationList[this.i].id_user===this.malade.id_user && this.consultationList[this.i].etat===0){
+            this.consulr=true;
+          }
+        }
  
       },
       (error) => {
@@ -199,7 +201,8 @@ export class VenteMedicamentPage {
       }
       
     );
-    
+   
+      
     
   }
   
@@ -211,7 +214,7 @@ export class VenteMedicamentPage {
       }
     }
     for(this.i=0;this.i<this.consultationList.length;this.i++){
-      if(this.consultationList[this.i].id_user===this.malade.id_user && this.consultationList[this.i].etat==0){
+      if(this.consultationList[this.i].id_user===this.malade.id_user && this.consultationList[this.i].etat===0){
         this.consultationList[this.i].etat=1;
       }
     }
@@ -255,7 +258,7 @@ export class VenteMedicamentPage {
       }
     );
 
-    this.navCtrl.push(QrcodePage);
+    this.navCtrl.push(AccueilPage);
 
   }
   initMontantFields(): FormGroup {

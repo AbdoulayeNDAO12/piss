@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import { NavParams } from 'ionic-angular';
 import { FilleulService } from '../../../Service/filleul.service';
 import { Filleul } from '../../../models/Filleul.model';
-import { NavController, MenuController } from 'ionic-angular';
+import { NavController} from 'ionic-angular';
 import { FormParrainageEnfantPage } from '../formParrainageEnfant/formParrainageEnfant';
 
 @Component({

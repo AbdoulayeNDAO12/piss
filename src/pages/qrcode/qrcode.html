@@ -19,9 +19,9 @@
                   <ngx-qrcode [(qrc-value)]="createdCode"></ngx-qrcode>
                   <ion-card-content>
                     <ul>
-                      <li>{{utilisateur.prenom}}</li>
-                      <li>{{utilisateur.nom}}</li>
-                      <li>{{utilisateur.date_nais}}</li>
+                      <li>Prenom: {{utilisateur.prenom}}</li>
+                      <li>Nom: {{utilisateur.nom}}</li>
+                      <li>Date de Nais: {{utilisateur.date_nais}}</li>
                     </ul>
                   </ion-card-content>
                   </ion-card>
@@ -58,39 +58,38 @@
             </button>          
         </ion-col>
       </ion-row>
-      <div *ngIf="profession=='Medecin'">
-      <ion-row *ngIf="MaladeFound">
-          <ion-card class="aider">
-              <img src="../assets/imgs/Consultez.jpg" />
-          </ion-card>
-
-          <p>
-              Cliquer ici pour prescrire une ordonnance au patient
-            </p>
+      <ion-row *ngIf="profession=='Medecin'">
+          <div *ngIf="MaladeFound">
+              <ion-card class="aider">
+                  <img src="../assets/imgs/Consultez.jpg" />
+              </ion-card>
     
-        <ion-col>        
-            <button ion-button full (click)="onGotoConsultation()" color="menus" class="mbutton">       
-                Prescrire une ordonnance
-            </button>  
-        </ion-col>
-      </ion-row>
-    </div>
-    <div *ngIf="profession=='Pharmacien'">
-      <ion-row *ngIf="MaladeFound">
-          <ion-card class="aider">
-              <img src="../assets/imgs/Consultez.jpg" />
-            </ion-card>
-
-            <p>
-                Cliquer ici pour voir l'ordonnance au patient
-              </p>
-        <ion-col>
-            <button ion-button full (click)="onGotoVente()" color="menus" class="mbutton">       
-                Consulter ordonnance
-            </button> 
-        </ion-col>
-      </ion-row>
-    </div>
-  </ion-grid>
+              <p>
+                  Cliquer ici pour prescrire une ordonnance au patient
+                </p>
+        
+            <div>        
+                <button ion-button full (click)="onGotoConsultation()" color="menus" class="mbutton">       
+                    Prescrire une ordonnance
+                </button>  
+            </div>
+          </div>
+        </ion-row>
+        <ion-row *ngIf="profession=='Pharmacien'">
+            <div *ngIf="MaladeFound">
+                <ion-card class="aider">
+                    <img src="../assets/imgs/Consultez.jpg" />
+                </ion-card>
+      
+                <p>Cliquer ici pour voir l'ordonnance au patient et éventuellement lui vendre ses medicaments</p>
+          
+              <div>        
+                  <button ion-button full (click)="onGotoVente()" color="menus" class="mbutton">       
+                      Consulter ordonnance
+                  </button>  
+                </div>
+            </div>
+          </ion-row>
+      </ion-grid>
   
 </ion-content>

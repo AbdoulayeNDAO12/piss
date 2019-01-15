@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 import { Institution } from '../../../models/Institution.models';
 import { Subscription } from 'rxjs/Subscription';
 import { NavController, ToastController, LoadingController } from 'ionic-angular';
-import { FilleulService } from '../../../Service/filleul.service';
-import { Filleul } from '../../../models/Filleul.model';
 import { InstitutionService } from '../../../Service/institution.service';
 import { FormParrainageInstitutionPage } from '../form-parrainage-institution/form-parrainage-institution';
 import { DescriptionInstitutionPage } from '../description-institution/description-institution';

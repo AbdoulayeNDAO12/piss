@@ -19,11 +19,9 @@ import { Remboursement } from '../../models/Remboursement.models';
 import { Subscription } from 'rxjs/Subscription';
 import { Medicament_Consultation } from '../../models/medicament_consultation.model';
 import { Medicament_ConsultationService } from '../../Service/medicament_consultation.service';
-import { NotificationPage } from '../notification/notification';
 import { AccueilPage } from '../pageAccueil/accueil/accueil';
 import { Utilisateur } from '../../models/Utilisateur.models';
 import { Compte } from '../../models/Compte.models';
-import { QrcodePage } from '../qrcode/qrcode';
 
 @IonicPage()
 @Component({
@@ -68,6 +66,7 @@ export class ConsutationMaladePage {
   medicaments: string[]=[];
   invalid=false;
   valid=true;
+  message: boolean=false;
 
 
   constructor(public navCtrl: NavController,
@@ -226,66 +225,70 @@ export class ConsutationMaladePage {
     const technologies = this.form.get('technologies').value;
     const montant = this.form.get('montant').value;
     const date=new Date();
-    for(this.i=0;this.i<technologies.length; this.i++){
-      this.medicaments.push(technologies[this.i]);
-    }
-  
-    const consultations=new Consultation(this.consultationList.length+1,montant,date,this.compt1,this.compt,0,this.malade.id_user,this.medicaments);
-    this.consultationService.addUser(consultations);
-    const compte = new Compte(this.compteList.length+1,montant,this.compt1,0);
-    this.compteSevice.addCompte(compte);
+    if(technologies.length>0){
+      for(this.i=0;this.i<technologies.length; this.i++){
+        this.medicaments.push(technologies[this.i]);
+      }
     
-   
-    
-    let loader1 = this.loadingCtrl.create({
-      content: 'Sauvegarde en cours…'
-    });
-    loader1.present();
-    this.consultationService.saveData().then(
-      () => {
-        this.medicament_consultationService.saveData().then(
-          () => {
-           
-          },
-          (error) => {
-           
-          }
-        );
-        this.compteSevice.saveData().then(
-          () => {
-           
-          },
-          (error) => {
-           
-          }
-        );
-        this.prestataireService.saveData().then(
-          () => {
-           
-          },
-          (error) => {
-           
-          }
-        );
+      const consultations=new Consultation(this.consultationList.length+1,montant,date,this.compt1,this.compt,0,this.malade.id_user,this.medicaments);
+      this.consultationService.addUser(consultations);
+      const compte = new Compte(this.compteList.length+1,montant,this.compt1,0);
+      this.compteSevice.addCompte(compte);
+      
      
+      
+      let loader1 = this.loadingCtrl.create({
+        content: 'Sauvegarde en cours…'
+      });
+      loader1.present();
+      this.consultationService.saveData().then(
+        () => {
+          this.medicament_consultationService.saveData().then(
+            () => {
+             
+            },
+            (error) => {
+             
+            }
+          );
+          this.compteSevice.saveData().then(
+            () => {
+             
+            },
+            (error) => {
+             
+            }
+          );
+          this.prestataireService.saveData().then(
+            () => {
+             
+            },
+            (error) => {
+             
+            }
+          );
+       
+          loader1.dismiss();
+          this.toastCtrl.create({
+            message: 'Données sauvegardées !',
+            duration: 3000,
+            position: 'bottom'
+          }).present();
+        },
+      (error) => {
         loader1.dismiss();
         this.toastCtrl.create({
-          message: 'Données sauvegardées !',
+          message: error,
           duration: 3000,
           position: 'bottom'
         }).present();
-      },
-    (error) => {
-      loader1.dismiss();
-      this.toastCtrl.create({
-        message: error,
-        duration: 3000,
-        position: 'bottom'
-      }).present();
+      }
+    );
+  
+    this.navCtrl.push(AccueilPage);
+    }else{
+      this.message=true;
     }
-  );
-
-  this.navCtrl.push(QrcodePage);
   
   }
 

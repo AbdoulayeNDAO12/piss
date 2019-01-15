@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { ParrainageInstitutionPage } from '../parrainageInstitution/parrainageInstitution';
 import { Institution } from '../../../models/Institution.models';
 import { FormParrainageInstitutionPage } from '../form-parrainage-institution/form-parrainage-institution';
 
