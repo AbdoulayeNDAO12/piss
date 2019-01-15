@@ -69,6 +69,7 @@ import { HistoriquePage } from '../pages/historique/historique';
 import { ComptePage } from '../pages/compte/compte';
 import { ConfirmationpaiePage } from '../pages/confirmationpaie/confirmationpaie';
 import { HttpClientModule } from '@angular/common/http';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 @NgModule({
   declarations: [
@@ -168,7 +169,8 @@ import { HttpClientModule } from '@angular/common/http';
     Medicament_ConsultationService,
     InstitutionParrainService,
     MedicamentService,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    InAppBrowser
   ]
 })
 export class AppModule {}

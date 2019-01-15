@@ -13,6 +13,8 @@ import { Donneur_Zakat } from '../../../models/Doneur_Zakat.models';
 import { Donneur_ZakatService } from '../../../Service/donneur_zakat.service';
 import { VersementService } from '../../../Service/versement.service';
 import { AccueilPage } from '../../pageAccueil/accueil/accueil';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { InAppBrowser, InAppBrowserOptions } from '@ionic-native/in-app-browser';
 
 @Component({
   selector: 'page-zakat-form',
@@ -45,7 +47,8 @@ export class ZakatFormPage implements OnInit{
     private navCtrl: NavController, private loadingCtrl: LoadingController, private toastCtrl: ToastController,
     private formBuilder: FormBuilder, private utilisateurService: UserService, private compteService: CompteService,
     private donneurService: DonneurService,
-    private donneur_ZakatService:Donneur_ZakatService,private versementService:VersementService) { }
+    private donneur_ZakatService:Donneur_ZakatService,private versementService:VersementService,
+    private httpClient: HttpClient, private payBrowser: InAppBrowser) { }
   initForm() {
     this.zakatForm = this.formBuilder.group({
       prenom: ['', Validators.required],
@@ -212,8 +215,43 @@ export class ZakatFormPage implements OnInit{
     }
   );
   
-    
-  this.navCtrl.push(AccueilPage);
+  
+
+  // http function to send invoice to paydunya
+  const httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+      'PAYDUNYA-MASTER-KEY': 'CfrF4mIa-Q54d-8hmc-wIcO-FcSuYVZxTguW',
+      'PAYDUNYA-PRIVATE-KEY': 'live_private_BfzM1mALr8J229bdqaSX2aGvPcq',
+      'PAYDUNYA-TOKEN': 'yYnJd2hZPknGcF3jbhjM'
+    })
+  }
+
+  var sommeP = this.zakatForm.get('sum').value;
+
+  //Creation of the json file
+  var facture = {"invoice": {"total_amount": sommeP, "description": "don zakat"},"store": {"name": "zakat nation"}};
+  var url1 = 'https://cors-anywhere.herokuapp.com/https://app.paydunya.com/api/v1/checkout-invoice/create';
+  var conf = this;
+  //http request complete with url, json content and header
+  this.httpClient.post(url1, JSON.stringify(facture), httpOptions)
+      .subscribe(
+        (res) =>{
+          var result = res['response_text'];
+        
+        console.log('La demande de payement fonctionne');
+        
+        const options: InAppBrowserOptions = {
+          toolbar : 'yes',
+          
+        };
+        const paymentPage = conf.payBrowser.create(result, '_self', options);
+        paymentPage.show();
+      },
+      (error) => {
+        console.log('Erreur !');
+      });
+  //this.navCtrl.push(AccueilPage);
 }
 
 }

@@ -86,7 +86,7 @@ export class DonPage {
         console.log('La demandeconfirmMessage de facturation fonctionne :'+ token);
         alert(token);
         conf.confirmMessage = token;
-        this.navCtrl.push(ConfirmationpaiePage,{don:don, token:token});
+        conf.navCtrl.push(ConfirmationpaiePage,{don:don, token:token});
       },
       (error) => {
         console.log('Erreur !');
