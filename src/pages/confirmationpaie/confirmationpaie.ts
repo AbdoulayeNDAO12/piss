@@ -117,5 +117,8 @@ export class ConfirmationpaiePage {
   
     
   }
+  onToggleMenu(){
+    this.menuCtrl.open() ;
+  }
 
 }

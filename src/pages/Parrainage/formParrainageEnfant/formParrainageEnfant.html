@@ -21,32 +21,24 @@
               </ion-item>
               <ion-item>
                 <ion-label floating>Adresse</ion-label>
-                <ion-input type="text" formControlName="adresse" aria-required="true"></ion-input>
+                <ion-input type="text" formControlName="adresse"></ion-input>
               </ion-item>
               <ion-item>
                 <ion-label floating>profession</ion-label>
-                <ion-input type="text" formControlName="profession" aria-required="true"></ion-input>
+                <ion-input type="text" formControlName="profession"></ion-input>
               </ion-item>
               <ion-item>
                 <ion-label floating>Telephone</ion-label>
                 <ion-input type="tel" formControlName="telephone" aria-required="true"></ion-input>
               </ion-item>
               <ion-item>
-                <ion-label>Sexe</ion-label>
-                <ion-select formControlName="sexe">
-                  <ion-option value="f">Féminin</ion-option>
-                  <ion-option value="m">Masculin</ion-option>
-                </ion-select>
-              </ion-item>
-  
-              <ion-item>
-                <ion-label floating>Date de Naissance</ion-label>
-                <ion-input type="date" formControlName="dateNaiss" aria-required="true"></ion-input>
-              </ion-item>
-              <ion-item>
                 <ion-label floating>Adresse mail</ion-label>
                 <ion-input type="email" formControlName="email" aria-required="true"></ion-input>
               </ion-item>
+              <ion-item>
+                  <ion-label floating>Entrez le montant mensuel que vous pouvez verser par mois</ion-label><br>
+                  <ion-input type = "number" aria-required="true" aria-placeholder="somme" formControlName="don"></ion-input>
+                </ion-item>
               <ion-item>
                 <ion-label floating>Mot de passe à 6 caractères</ion-label>
                 <ion-input type="password" formControlName="password" aria-required="true"></ion-input>

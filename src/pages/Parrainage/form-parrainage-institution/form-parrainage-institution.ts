@@ -16,6 +16,7 @@ import { Institution } from '../../../models/Institution.models';
 import { InstitutionService } from '../../../Service/institution.service';
 import { Subscription } from 'rxjs/Subscription';
 import { AccueilPage } from '../../pageAccueil/accueil/accueil';
+import { ConfirmationParrainagePage } from '../../confirmation-parrainage/confirmation-parrainage';
 
 /**
  * Generated class for the FormParrainageInstitutionPage page.
@@ -51,8 +52,8 @@ export class FormParrainageInstitutionPage implements OnInit {
   filleulSubscription: Subscription;
   institutionparrainList: InstitutionParrain[];
   institutionparrainSubscription: Subscription;
-  institution_parrain:InstitutionParrain;
-  donneurSubscription:Subscription;
+  institution_parrain: InstitutionParrain;
+  donneurSubscription: Subscription;
   message: boolean = false;
 
   constructor(private menuCtrl: MenuController,
@@ -63,14 +64,13 @@ export class FormParrainageInstitutionPage implements OnInit {
     private institution_parrainService: InstitutionParrainService, private institutionService: InstitutionService) { }
   initForm() {
     this.authForm = this.formBuilder.group({
+      don: ['', Validators.required],
       prenom: ['', Validators.required],
       nom: ['', Validators.required],
-      adresse: ['', Validators.required],
-      profession: ['', Validators.required],
+      adresse: [''],
+      profession: [''],
       telephone: ['', Validators.required],
-      sexe: ['', Validators.required],
-      dateNaiss: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
+      email: ['', [ Validators.email]],
       password: ['', Validators.required],
       password2: ['', Validators.required]
     });
@@ -146,7 +146,7 @@ export class FormParrainageInstitutionPage implements OnInit {
           this.donneurService.emitDonneur();
         },
         (error) => {
-          
+
         }
       );
 
@@ -166,88 +166,87 @@ export class FormParrainageInstitutionPage implements OnInit {
     const adresse = this.authForm.get('adresse').value;
     const profession = this.authForm.get('profession').value;
     const telephone = this.authForm.get('telephone').value;
-    const sexe = this.authForm.get('sexe').value;
-    const dateNais = this.authForm.get('dateNaiss').value;
     const email = this.authForm.get('email').value;
+    const don = this.authForm.get('don').value;
     const password = this.authForm.get('password').value;
     const password2 = this.authForm.get('password2').value;
-    if(password===password2){
-      this.utilisateur = new Utilisateur(this.utilisateurList.length + 1, prenom, nom, adresse, profession, telephone, sexe, dateNais, email, password, "parrain");
-    this.utilisateurService.signUpUser(email, password);
-    this.utilisateurService.addUser(this.utilisateur);
-    this.donneur = new Donneur(this.donneurList.length + 1, this.utilisateur.id_user);
-    this.donneurService.addDonneur(this.donneur);
-    this.parrain = new Parrain(this.parrainList.length + 1, this.donneur.id_donneur, 0);
-    this.parrainService.addParrain(this.parrain);
-    this.institution_parrain = new InstitutionParrain(this.institution.id_institution, this.parrain.id_parrain);
-    this.institution_parrainService.addInstitutionParrain(this.institution_parrain);
-    let loader1 = this.loadingCtrl.create({
-      content: 'Sauvegarde en cours…'
-    });
-    loader1.present();
-    this.utilisateurService.saveData().then(
-      () => {
-        this.donneurService.saveData().then(
-          () => {
-           
-          },
-          (error) => {
-           
-          }
-        );
-        this.compteService.saveData().then(
-          () => {
-           
-          },
-          (error) => {
-           
-          }
-        );
-        this.parrainService.saveData().then(
-          () => {
-           
-          },
-          (error) => {
-           
-          }
-        );
-        this.institution_parrainService.saveData().then(
-          () => {
-           
-          },
-          (error) => {
-           
-          }
-        );
-        loader1.dismiss();
-        this.toastCtrl.create({
-          message: 'Données sauvegardées !',
-          duration: 3000,
-          position: 'bottom'
-        }).present();
-      },
-    (error) => {
-      loader1.dismiss();
-      this.toastCtrl.create({
-        message: error,
-        duration: 3000,
-        position: 'bottom'
-      }).present();
-    }
-  );
-  
-    
-  this.navCtrl.push(AccueilPage);
+    if (password === password2) {
+      this.utilisateur = new Utilisateur(this.utilisateurList.length + 1, prenom, nom, adresse, profession, telephone, "", "", email, password, "parrain");
+      this.utilisateurService.signUpUser(email, password);
+      this.utilisateurService.addUser(this.utilisateur);
+      this.donneur = new Donneur(this.donneurList.length + 1, this.utilisateur.id_user);
+      this.donneurService.addDonneur(this.donneur);
+      this.parrain = new Parrain(this.parrainList.length + 1, this.donneur.id_donneur, 0);
+      this.parrainService.addParrain(this.parrain);
+      this.institution_parrain = new InstitutionParrain(this.institution.id_institution, this.parrain.id_parrain);
+      this.institution_parrainService.addInstitutionParrain(this.institution_parrain);
+      let loader1 = this.loadingCtrl.create({
+        content: 'Sauvegarde en cours…'
+      });
+      loader1.present();
+      this.utilisateurService.saveData().then(
+        () => {
+          this.donneurService.saveData().then(
+            () => {
+
+            },
+            (error) => {
+
+            }
+          );
+          this.compteService.saveData().then(
+            () => {
+
+            },
+            (error) => {
+
+            }
+          );
+          this.parrainService.saveData().then(
+            () => {
+
+            },
+            (error) => {
+
+            }
+          );
+          this.institution_parrainService.saveData().then(
+            () => {
+
+            },
+            (error) => {
+
+            }
+          );
+          loader1.dismiss();
+          this.toastCtrl.create({
+            message: 'Données sauvegardées !',
+            duration: 3000,
+            position: 'bottom'
+          }).present();
+        },
+        (error) => {
+          loader1.dismiss();
+          this.toastCtrl.create({
+            message: error,
+            duration: 3000,
+            position: 'bottom'
+          }).present();
+        }
+      );
+
+
+      this.navCtrl.push(ConfirmationParrainagePage,{institution:this.institution, don:don});
 
 
     }
-    else{
-      this.message=true;
-      
-      
+    else {
+      this.message = true;
+
+
     }
-  
-    }
+
+  }
 
 }
 

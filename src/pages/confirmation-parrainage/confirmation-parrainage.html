@@ -1,0 +1,37 @@
+<ion-header color="menus">
+    <ion-navbar color="menus"  hideBackButton="true">
+
+        <ion-buttons left>
+            <button ion-button icon-only (click)="onToggleMenu()">
+              <ion-icon name="menu"></ion-icon>
+            </button>
+          </ion-buttons>
+
+    <ion-title>Parrainage</ion-title>
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div *ngIf="institution">
+      <ion-card class="aider">
+          <img src="../assets/imgs/1{{institution.id_institution}}.jpg" />
+      </ion-card>
+      <p>Félicitation vous venez de parainer {{institution.nom}}. Merci de votre soutien.</p>
+      <p><b> Modalités de versement:</b> Vous devez vous acquiter d'un versement mensuel de <b>{{don}} fcfa </b>pour la prise
+        en charge de l'institution. cette somme sera utilisée pour assurer les frais divers des enfants de l'institution.
+      </p>
+  </div>
+  <div *ngIf="filleul">
+      <ion-card class="aider">
+          <img src="../assets/imgs/{{filleul.id_filleul}}.jpg" />
+      </ion-card>
+      <p>Félicitation vous venez de parainer {{filleul.prenom}} {{filleul.nom}}. Merci de votre soutien.</p>
+      <p> <b> Modalités de versement:</b> Vous devez vous acquiter d'un versement mensuel de <b>{{dons}} fcfa</b> pour la prise
+        en charge de votre filleul. cette somme sera utilisée pour assurer sa survie, son habillement...
+      </p>
+  </div>
+ 
+   
+
+</ion-content>
