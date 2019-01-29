@@ -30,7 +30,7 @@ export class AccueilAssurancePage {
   }
 
   onGoToAuthPage(){
-    this.rootNavCtrl.push(AuthPage);
+    this.navCtrl.push(AuthPage);
   }
 
 }

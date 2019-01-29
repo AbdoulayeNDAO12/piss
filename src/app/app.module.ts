@@ -70,6 +70,7 @@ import { ComptePage } from '../pages/compte/compte';
 import { ConfirmationpaiePage } from '../pages/confirmationpaie/confirmationpaie';
 import { HttpClientModule } from '@angular/common/http';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { ConfirmationParrainagePage } from '../pages/confirmation-parrainage/confirmation-parrainage';
 
 @NgModule({
   declarations: [
@@ -92,7 +93,8 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
     HistoriquePage,
     ReglagesPage,
     ComptePage,
-    ConfirmationpaiePage
+    ConfirmationpaiePage,
+    ConfirmationParrainagePage
    
   ],
   imports: [
@@ -137,7 +139,8 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
     HistoriquePage,
     ReglagesPage,
     ComptePage,
-    ConfirmationpaiePage
+    ConfirmationpaiePage,
+    ConfirmationParrainagePage
     
   ],
   providers: [
