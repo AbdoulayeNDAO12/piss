@@ -270,7 +270,7 @@ export class ConsutationMaladePage {
        
           loader1.dismiss();
           this.toastCtrl.create({
-            message: 'Données sauvegardées !',
+            message: 'Ordonnance enregistrée avec succès !',
             duration: 3000,
             position: 'bottom'
           }).present();

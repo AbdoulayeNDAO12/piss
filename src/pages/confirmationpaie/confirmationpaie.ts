@@ -73,7 +73,7 @@ export class ConfirmationpaiePage {
       () => {
         loader.dismiss();
         this.toastCtrl.create({
-          message: 'Données sauvegardées !',
+          message: 'Don effectué avec succès !',
           duration: 3000,
           position: 'bottom'
         }).present();

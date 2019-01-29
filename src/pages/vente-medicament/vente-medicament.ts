@@ -243,7 +243,7 @@ export class VenteMedicamentPage {
 
         loader1.dismiss();
         this.toastCtrl.create({
-          message: 'Données sauvegardées !',
+          message: 'Achat effectué avec succès!',
           duration: 3000,
           position: 'bottom'
         }).present();

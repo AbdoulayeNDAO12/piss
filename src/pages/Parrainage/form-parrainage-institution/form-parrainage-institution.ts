@@ -220,7 +220,7 @@ export class FormParrainageInstitutionPage implements OnInit {
           );
           loader1.dismiss();
           this.toastCtrl.create({
-            message: 'Données sauvegardées !',
+            message: 'Parrainage effectué avec succès !',
             duration: 3000,
             position: 'bottom'
           }).present();

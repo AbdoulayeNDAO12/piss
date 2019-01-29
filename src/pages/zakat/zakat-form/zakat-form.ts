@@ -200,7 +200,7 @@ export class ZakatFormPage implements OnInit{
         );
         loader1.dismiss();
         this.toastCtrl.create({
-          message: 'Données sauvegardées !',
+          message: 'Veuillez poursuivre sur PayDunya pour valider la transaction !',
           duration: 3000,
           position: 'bottom'
         }).present();
