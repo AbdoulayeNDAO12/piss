@@ -245,8 +245,9 @@ export class ZakatFormPage implements OnInit{
           toolbar : 'yes',
           
         };
-        const paymentPage = conf.payBrowser.create(result, '_self', options);
+        const paymentPage = conf.payBrowser.create(result, '_system', options);
         paymentPage.show();
+        paymentPage.on;
       },
       (error) => {
         console.log('Erreur !');
